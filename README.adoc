@@ -1,0 +1,13 @@
+= libsodium-ffi
+
+_libsodium-ffi_ is a library that wrap calls to the Linux `libsodium.23.so` library
+using the JDK 16 JEP 389 _Foreign Linker_ support in the incubating
+module `jdk.incubator.foreign`.
+
+This code has notably served as the base for the following blog post:
+
+https://blog.arkey.fr/2021/02/20/a-practical-look-at-jep-389-in-jdk16-with-libsodium/
+
+
+This could should work on macOS and Linux, and probably Windows too, however
+the test only provides a location for a libsodium installed via Homebrew on macOS.
