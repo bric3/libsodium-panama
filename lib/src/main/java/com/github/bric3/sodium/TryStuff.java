@@ -1,41 +1,36 @@
 package com.github.bric3.sodium;
 
-import jdk.incubator.foreign.CLinker;
-import jdk.incubator.foreign.FunctionDescriptor;
-import jdk.incubator.foreign.LibraryLookup;
-import jdk.incubator.foreign.MemoryAddress;
+import jdk.incubator.foreign.*;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodType;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 
 public class TryStuff {
     public static void main(String[] args) throws Throwable {
         var tryStuff = new TryStuff();
         System.out.println("pid: " + tryStuff.c_getpid_smokeTest());
-        tryStuff.c_printf_smokeTest("Hello C", StandardCharsets.UTF_8);
+        tryStuff.c_printf_smokeTest("Hello C");
 
         tryStuff.thread_dump();
     }
 
-    public long c_printf_smokeTest(String str, Charset charset) throws Throwable {
+    public long c_printf_smokeTest(String str) throws Throwable {
         MethodHandle printf = CLinker.getInstance()
                                      .downcallHandle(
-                                             LibraryLookup.ofDefault().lookup("printf").get(),
+                                             CLinker.systemLookup().lookup("printf").get(),
                                              MethodType.methodType(long.class, MemoryAddress.class),
                                              FunctionDescriptor.of(CLinker.C_LONG, CLinker.C_POINTER)
                                      );
 
-        try (var cString = CLinker.toCString(str, charset)) {
-            return (long) printf.invokeExact(cString.address());
+        try (var scope = ResourceScope.newConfinedScope()) {
+            return (long) printf.invokeExact(CLinker.toCString(str, scope).address());
         }
     }
 
     public long c_getpid_smokeTest() throws Throwable {
         var getpid = CLinker.getInstance()
                             .downcallHandle(
-                                    LibraryLookup.ofDefault().lookup("getpid").get(),
+                                    CLinker.systemLookup().lookup("getpid").get(),
                                     MethodType.methodType(long.class),
                                     FunctionDescriptor.of(CLinker.C_LONG)
                             );
@@ -77,14 +72,14 @@ public class TryStuff {
 
         MethodHandle raise = CLinker.getInstance()
                                     .downcallHandle(
-                                            LibraryLookup.ofDefault().lookup("raise").get(),
+                                            CLinker.systemLookup().lookup("raise").get(),
                                             MethodType.methodType(int.class, int.class),
                                             FunctionDescriptor.of(CLinker.C_INT, CLinker.C_INT)
                                     );
 
         MethodHandle kill = CLinker.getInstance()
                                    .downcallHandle(
-                                           LibraryLookup.ofDefault().lookup("kill").get(),
+                                           CLinker.systemLookup().lookup("kill").get(),
                                            MethodType.methodType(int.class, long.class, int.class),
                                            FunctionDescriptor.of(CLinker.C_INT, CLinker.C_LONG, CLinker.C_INT)
                                    );

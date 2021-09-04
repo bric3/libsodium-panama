@@ -18,7 +18,7 @@ java {
     // ./gradlew -q javaToolchains
     // https://docs.gradle.org/current/userguide/toolchains.html
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(16))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
     modularity.inferModulePath.set(true)
 
@@ -28,24 +28,19 @@ java {
 
 tasks {
     withType<JavaCompile>().configureEach {
-        // https://github.com/gradle/gradle/issues/15538#issuecomment-744299876
-        options.forkOptions.jvmArgs = listOf(
-                "--add-opens", "jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED"
-        )
-
-        // javaC --add-modules jdk.incubator.foreign ...
+        // javac --add-modules jdk.incubator.foreign ...
         options.compilerArgs = listOf(
                 "--add-modules", "jdk.incubator.foreign"
         )
-        options.release.set(16)
+        options.release.set(17)
     }
 
     withType<JavaExec>().configureEach {
-        // java -Dforeign.restricted=permit --add-modules jdk.incubator.foreign
-        jvmArgs(
-                "-Dforeign.restricted=permit",
+        // java --add-modules jdk.incubator.foreign --enable-native-access=ALL-UNNAMED
+        jvmArgs("--enable-native-access=ALL-UNNAMED",
                 "--add-modules", "jdk.incubator.foreign"
         )
+        javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
     }
 
     getByName<Test>("test") {
@@ -55,9 +50,8 @@ tasks {
             exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
         }
 
-        // java -Dforeign.restricted=permit --add-modules jdk.incubator.foreign
-        jvmArgs(
-                "-Dforeign.restricted=permit",
+        // java --add-modules jdk.incubator.foreign --enable-native-access=ALL-UNNAMED
+        jvmArgs("--enable-native-access=ALL-UNNAMED",
                 "--add-modules", "jdk.incubator.foreign"
         )
     }

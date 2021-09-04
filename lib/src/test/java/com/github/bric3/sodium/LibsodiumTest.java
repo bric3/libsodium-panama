@@ -19,9 +19,10 @@ public class LibsodiumTest {
     @BeforeEach
     void can_set_path_on_macos() {
         assumeThat(OS.IS_MACOS).isTrue();
-        assumeThat(Path.of("/usr/local/opt/libsodium/lib/libsodium.23.dylib")).exists().isRegularFile();
+        assumeThat(Path.of("/usr/local/lib/libsodium.dylib")).exists().isRegularFile();
 
-        libsodium = Libsodium.withPath(Path.of("/usr/local/opt/libsodium/lib/libsodium.23.dylib")).ofJextract();
+//        libsodium = Libsodium.withName("sodium");
+        libsodium = Libsodium.withPath(Path.of("/usr/local/lib/libsodium.dylib")).ofJextract();
     }
 
     @Test
@@ -59,7 +60,7 @@ public class LibsodiumTest {
 
         var cipherText = libsodium.crypto_box_seal("Hello foreign code !", pk);
 
-        assertThat(cipherText).hasSize(68);
+        assertThat(cipherText).hasSize(69);
     }
 
     @Test
@@ -72,10 +73,27 @@ public class LibsodiumTest {
 
         var cipherText = libsodium.crypto_box_seal("Hello foreign code !", pk);
 
-        assertThat(cipherText).hasSize(68);
+        assertThat(cipherText).hasSize(69);
 
         var deciphered = libsodium.crypto_box_seal_open(cipherText, pk, sk);
 
         assertThat(deciphered).isEqualTo("Hello foreign code !");
+    }
+
+    @Test
+    void can_invoke_crypto_box_with_large_char() throws Throwable {
+        var libsodium = this.libsodium;
+        var keyPair = libsodium.crypto_box_keypair();
+
+        var pk = Utils.hexToBytes("A8D1304EFA7D85AB9612AC95B1B191AA2C17891CA9FF6AD4CFCD81C245DF6F5A");
+        var sk = Utils.hexToBytes("1DF2D6487E5587F2B40019981FEB7812086DFA625D538C61E4EC8CF9A5D4E618");
+
+        var cipherText = libsodium.crypto_box_seal("中文鍵盤/中文键盘", pk);
+
+        assertThat(cipherText).hasSize(74);
+
+        var deciphered = libsodium.crypto_box_seal_open(cipherText, pk, sk);
+
+        assertThat(deciphered).isEqualTo("中文鍵盤/中文键盘");
     }
 }

@@ -3,6 +3,7 @@
  */
 package com.github.bric3.sodium;
 
+import com.github.bric3.libsodium.sodium_h;
 import jdk.incubator.foreign.*;
 
 import java.lang.invoke.MethodHandle;
@@ -24,20 +25,30 @@ import static jdk.incubator.foreign.CLinker.*;
  * $ ls -lh /usr/local/opt/libsodium/lib/libsodium.23.dylib
  * .r--r--r--  352k bric3 16 Feb 22:16  /usr/local/opt/libsodium/lib/libsodium.23.dylib
  * </code></pre>
+ *
+ *
  */
 public class Libsodium {
 
-    private final LibraryLookup libsodiumLookup;
+    private final SymbolLookup libsodiumLookup;
+
+//    static SymbolLookup lookup() {
+//        SymbolLookup loaderLookup = SymbolLookup.loaderLookup();
+//        SymbolLookup systemLookup = CLinker.systemLookup();
+//        return name -> loaderLookup.lookup(name).or(() -> systemLookup.lookup(name));
+//    }
 
     private Libsodium(String libraryName) {
-        libsodiumLookup = LibraryLookup.ofLibrary(libraryName);
+        System.loadLibrary("sodium");
+        libsodiumLookup = SymbolLookup.loaderLookup();
     }
 
     private Libsodium(Path libsodiumPath) {
-        libsodiumLookup = LibraryLookup.ofPath(libsodiumPath);
+        System.load(libsodiumPath.toAbsolutePath().toString());
+        libsodiumLookup = SymbolLookup.loaderLookup();
     }
 
-    public Libsodium(LibraryLookup libsodiumLookup) {
+    private Libsodium(SymbolLookup libsodiumLookup) {
         this.libsodiumLookup = libsodiumLookup;
     }
 
@@ -47,7 +58,7 @@ public class Libsodium {
      * The given name will be mapped internally by
      * {@code java.lang.System#mapLibraryName(java.lang.String)},
      * that means it should be the name without <code>JNI_PREFIX</code>
-     * and <code>JNI_SUFFIX</code> whic are platform sensitive.
+     * and <code>JNI_SUFFIX</code> which are platform sensitive.
      *
      * @param libraryName The library name
      */
@@ -67,10 +78,10 @@ public class Libsodium {
     /**
      * Library path.
      *
-     * @param libsodiumPath The path to the library
+     * @param symbolLookup The path to the library
      */
-    public static Libsodium withLookup(LibraryLookup libsodiumPath) {
-        return new Libsodium(libsodiumPath);
+    public static Libsodium withLookup(SymbolLookup symbolLookup) {
+        return new Libsodium(symbolLookup);
     }
 
     public Libsodium ofJextract() {
@@ -132,9 +143,10 @@ public class Libsodium {
                         FunctionDescriptor.ofVoid(C_POINTER, C_POINTER)
                 );
 
-        try (var scope = NativeScope.unboundedScope()) {
-            var recipientPublicKey = scope.allocate(crypto_box_publickeybytes());
-            var recipientSecretKey = scope.allocate(crypto_box_secretkeybytes());
+        try (var scope = ResourceScope.newConfinedScope()) {
+            var segmentAllocator = SegmentAllocator.ofScope(scope);
+            var recipientPublicKey = segmentAllocator.allocate(crypto_box_publickeybytes());
+            var recipientSecretKey = segmentAllocator.allocate(crypto_box_secretkeybytes());
 
             crypto_box_keypair.invokeExact(recipientPublicKey.address(),
                                            recipientSecretKey.address());
@@ -180,20 +192,22 @@ public class Libsodium {
 
         );
 
-        try (var scope = NativeScope.unboundedScope()) {
-            var cipherText = scope.allocate(crypto_box_sealbytes() + message.length());
+        try (var scope = ResourceScope.newConfinedScope()) {
+            var segmentAllocator = SegmentAllocator.ofScope(scope);
+            var nativeMessage = CLinker.toCString(message, scope);
+            var cipherText = segmentAllocator.allocate(crypto_box_sealbytes() + nativeMessage.byteSize());
             var ret = (int) crypto_box_seal.invokeExact(
                     cipherText.address(),
-                    CLinker.toCString(message, StandardCharsets.US_ASCII, scope).address(),
-                    (long) message.length(),
-                    scope.allocateArray(C_CHAR, publicKey).address());
+                    nativeMessage.address(),
+                    (long) nativeMessage.byteSize(),
+                    segmentAllocator.allocateArray(C_CHAR, publicKey).address());
             return cipherText.toByteArray();
         }
     }
 
     public String crypto_box_seal_open(byte[] cipherText,
                                        byte[] publicKey,
-                                       byte[] secretkey
+                                       byte[] secretKey
     ) throws Throwable {
 
         var crypto_box_seal_open = getInstance().downcallHandle(
@@ -219,28 +233,29 @@ public class Libsodium {
                 )
         );
 
-        try (var scope = NativeScope.unboundedScope()) {
-            var decipheredText = scope.allocateArray(C_CHAR, cipherText.length - crypto_box_sealbytes());
+        try (var scope = ResourceScope.newConfinedScope()) {
+            var segmentAllocator = SegmentAllocator.arenaAllocator(scope);
+            var decipheredText = segmentAllocator.allocateArray(C_CHAR, cipherText.length - crypto_box_sealbytes());
             var ret = (int) crypto_box_seal_open.invokeExact(decipheredText.address(),
-                                                             scope.allocateArray(C_CHAR, cipherText).address(),
+                                                             segmentAllocator.allocateArray(C_CHAR, cipherText).address(),
                                                              (long) cipherText.length,
-                                                             scope.allocateArray(C_CHAR, publicKey).address(),
-                                                             scope.allocateArray(C_CHAR, secretkey).address());
+                                                             segmentAllocator.allocateArray(C_CHAR, publicKey).address(),
+                                                             segmentAllocator.allocateArray(C_CHAR, secretKey).address());
 
-            return new String(decipheredText.toByteArray(), StandardCharsets.US_ASCII);
+            return CLinker.toJavaString(decipheredText);
         }
     }
 
-    public long c_strelen_smokeTest(String str, Charset charset) throws Throwable {
+    public long c_strlen_smokeTest(String str, Charset charset) throws Throwable {
         MethodHandle strlen = CLinker.getInstance()
                                      .downcallHandle(
-                                             LibraryLookup.ofDefault().lookup("strlen").get(),
+                                             CLinker.systemLookup().lookup("strlen").get(),
                                              MethodType.methodType(long.class, MemoryAddress.class),
                                              FunctionDescriptor.of(C_LONG, C_POINTER)
                                      );
 
-        try (var cString = CLinker.toCString(str, charset)) {
-            return (long) strlen.invokeExact(cString.address());
+        try (var scope = ResourceScope.newConfinedScope()) {
+            return (long) strlen.invokeExact(CLinker.toCString(str, scope).address());
         }
     }
 
@@ -255,16 +270,17 @@ public class Libsodium {
             super(libsodiumPath);
         }
 
-        public JextractedLibsodium(LibraryLookup libsodiumLookup) {
+        public JextractedLibsodium(SymbolLookup libsodiumLookup) {
             super(libsodiumLookup);
         }
 
 
         @Override
         public CryptoBoxKeyPair crypto_box_keypair() {
-            try (var scope = NativeScope.unboundedScope()) {
-                var recipientPublicKey = scope.allocate(sodium_h.crypto_box_PUBLICKEYBYTES());
-                var recipientSecretKey = scope.allocate(sodium_h.crypto_box_SECRETKEYBYTES());
+            try (var scope = ResourceScope.newConfinedScope()) {
+                var segmentAllocator = SegmentAllocator.ofScope(scope);
+                var recipientPublicKey = segmentAllocator.allocate(sodium_h.crypto_box_PUBLICKEYBYTES());
+                var recipientSecretKey = segmentAllocator.allocate(sodium_h.crypto_box_SECRETKEYBYTES());
 
                 sodium_h.crypto_box_keypair(recipientPublicKey, recipientSecretKey);
 
@@ -278,28 +294,31 @@ public class Libsodium {
         @Override
         public byte[] crypto_box_seal(String message,
                                       byte[] publicKey) {
-            try (var scope = NativeScope.unboundedScope()) {
-                var cipherText = scope.allocate(sodium_h.crypto_box_SEALBYTES() + message.length());
+            try (var scope = ResourceScope.newConfinedScope()) {
+                var segmentAllocator = SegmentAllocator.ofScope(scope);
+                var nativeMessage = CLinker.toCString(message, scope);
+                var cipherText = segmentAllocator.allocate(sodium_h.crypto_box_SEALBYTES() + nativeMessage.byteSize());
                 sodium_h.crypto_box_seal(cipherText.address(),
                                          CLinker.toCString(message, scope).address(),
-                                         message.length(),
-                                         scope.allocateArray(C_CHAR, publicKey).address());
+                                         nativeMessage.byteSize(),
+                                         segmentAllocator.allocateArray(C_CHAR, publicKey).address());
                 return cipherText.toByteArray();
             }
         }
 
         public String crypto_box_seal_open(byte[] cipherText,
                                            byte[] publicKey,
-                                           byte[] secretkey) {
-            try (var scope = NativeScope.unboundedScope()) {
-                var decipheredText = scope.allocateArray(C_CHAR, cipherText.length - sodium_h.crypto_box_SEALBYTES());
+                                           byte[] secretKey) {
+            try (var scope = ResourceScope.newConfinedScope()) {
+                var segmentAllocator = SegmentAllocator.ofScope(scope);
+                var decipheredText = segmentAllocator.allocateArray(C_CHAR, cipherText.length - sodium_h.crypto_box_SEALBYTES());
                 sodium_h.crypto_box_seal_open(decipheredText.address(),
-                                              scope.allocateArray(C_CHAR, cipherText).address(),
+                                              segmentAllocator.allocateArray(C_CHAR, cipherText).address(),
                                               cipherText.length,
-                                              scope.allocateArray(C_CHAR, publicKey).address(),
-                                              scope.allocateArray(C_CHAR, secretkey).address());
+                                              segmentAllocator.allocateArray(C_CHAR, publicKey).address(),
+                                              segmentAllocator.allocateArray(C_CHAR, secretKey).address());
 
-                return new String(decipheredText.toByteArray());
+                return CLinker.toJavaString(decipheredText);
             }
         }
     }
