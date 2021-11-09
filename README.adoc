@@ -1,13 +1,66 @@
-= libsodium-ffi
+= libsodium-panama
 
-_libsodium-ffi_ is a library that wrap calls to the Linux `libsodium.23.so` library
-using the JDK 16 JEP 389 _Foreign Linker_ support in the incubating
+_libsodium-panama_ is a library that wrap calls to the `libsodium` library
+using the JDK 17 JEP 412 _Foreign Linker_ support in the incubating
 module `jdk.incubator.foreign`.
 
 This code has notably served as the base for the following blog post:
 
-https://blog.arkey.fr/2021/02/20/a-practical-look-at-jep-389-in-jdk16-with-libsodium/
+https://blog.arkey.fr/2021/09/04/a-practical-look-at-jep-412-in-jdk17-with-libsodium/
 
 
-This could should work on macOS and Linux, and probably Windows too, however
+This should work on macOS and Linux, and probably Windows too, however
 the test only provides a location for a libsodium installed via Homebrew on macOS.
+
+
+== jextract
+
+.Install the panama build with `jextract`
+[source, shell]
+----
+$ curl -sLO https://download.java.net/java/early_access/panama/3/openjdk-17-panama+3-167_macos-x64_bin.tar.gz
+$ mkdir openjdk-17-panama+3-167; tar --strip-components=4 -C openjdk-17-panama+3-167/ -xf openjdk-17-panama+3-167_macos-x64_bin.tar.gz jdk-17.jdk/Contents/Home
+$ ./openjdk-17-panama+3-167/bin/java --version
+openjdk 17-panama 2021-09-14
+OpenJDK Runtime Environment (build 17-panama+3-167)
+OpenJDK 64-Bit Server VM (build 17-panama+3-167, mixed mode, sharing)
+----
+
+.Dump `jextract` configuration
+[source, bash]
+----
+jextract \
+  -d src/main/java \
+  -l sodium \
+  --source \
+  --target-package com.github.bric3.sodium \
+  -I /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ \
+  -I $(brew --prefix)/include/sodium \
+  --dump-includes sodium.conf \
+  $(brew --prefix)/include/sodium.h
+----
+
+.Generates the class bindings
+[source, bash]
+----
+jextract \
+  -d src/main/java \
+  -l sodium \
+  --source \
+  --target-package com.github.bric3.sodium \
+  -I /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ \
+  -I $(brew --prefix)/include/sodium \
+  @sodium.conf \
+  $(brew --prefix)/include/sodium.h
+----
+
+.Generates the class bindings, using a configuration file
+[source, bash]
+----
+jextract @sodium-only.conf $(brew --prefix)/include/sodium.h
+----
+
+
+.Note about Apple includes
+* Use either XCode `/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include`
+* Or developer ones `/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/`
