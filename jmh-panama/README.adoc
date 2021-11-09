@@ -26,6 +26,14 @@ if (crypto_box_seal_open(decrypted, ciphertext, CIPHERTEXT_LEN,
 }
 ----
 
+[source, bash]
+----
+./gradlew :jmh-panama:jmhJar
+----
 
-
-
+[source, bash]
+----
+env JAVA_LIBRARY_PATH=$(grealpath jmh-panama/jni) \
+  java -jar jmh-panama/build/libs/jmh-panama-jmh.jar \
+  -jvmArgs '-Djmh.separateClasspathJAR=true --add-modules=jdk.incubator.foreign --enable-native-access=ALL-UNNAMED'
+----

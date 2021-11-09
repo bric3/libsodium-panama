@@ -34,8 +34,8 @@ import org.apache.commons.lang3.SystemUtils;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodType;
-import java.nio.charset.StandardCharsets;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static jdk.incubator.foreign.CLinker.C_CHAR;
 import static jdk.incubator.foreign.CLinker.C_INT;
 import static jdk.incubator.foreign.CLinker.C_LONG_LONG;
@@ -132,7 +132,7 @@ public class PanamaBinding {
                             C_POINTER)
 
   );
-  
+
   public static final MethodHandle crypto_box_seal_open = CLinker.getInstance().downcallHandle(
       libsodiumLookup.lookup("crypto_box_seal_open").get(),
       // "(Ljdk/incubator/foreign/MemoryAddress;
@@ -167,6 +167,37 @@ public class PanamaBinding {
 
     // Recipient decrypts the ciphertext
     return crypto_box_seal_open(cipherText, keyPair.publicKey, keyPair.secretKey);
+  }
+
+  public byte[] cryptoSealedBox_off_heap(byte[] message) throws Throwable {
+    try (var scope = ResourceScope.newConfinedScope()) {
+      // Recipient creates a long-term key pair
+      var segmentAllocator = SegmentAllocator.ofScope(scope);
+      var publicKey = segmentAllocator.allocate(crypto_box_publickeybytes());
+      var secretKey = segmentAllocator.allocate(crypto_box_secretkeybytes());
+
+      crypto_box_keypair.invokeExact(publicKey.address(),
+                                     secretKey.address());
+
+      // Anonymous sender encrypts a message using an ephemeral key pair
+      // and the recipient's public key
+      var nativeMessage = segmentAllocator.allocateArray(C_CHAR, message);
+      var cipherText = segmentAllocator.allocate(crypto_box_sealbytes() + nativeMessage.byteSize());
+      var ret_Seal = (int) crypto_box_seal.invokeExact(cipherText.address(),
+                                                       nativeMessage.address(),
+                                                       (long) nativeMessage.byteSize(),
+                                                       publicKey.address());
+
+      // Recipient decrypts the ciphertext
+      var decipheredText = segmentAllocator.allocateArray(C_CHAR, cipherText.byteSize() - crypto_box_sealbytes());
+      var ret_seal_opn = (int) crypto_box_seal_open.invokeExact(decipheredText.address(),
+                                                                cipherText.address(),
+                                                                (long) cipherText.byteSize(),
+                                                                publicKey.address(),
+                                                                secretKey.address());
+
+      return decipheredText.toByteArray();
+    }
   }
 
 
@@ -237,8 +268,9 @@ public class PanamaBinding {
   }
 
   public static void main(String[] args) throws Throwable {
-    byte[] bytes = new PanamaBinding().cryptoSealedBox("Panama JEP-412 Binding".getBytes(StandardCharsets.UTF_8));
-
-    System.out.println(new String(bytes, StandardCharsets.UTF_8));
+    PanamaBinding panamaBinding = new PanamaBinding();
+    byte[] message = "Panama JEP-412 Binding".getBytes(UTF_8);
+    System.out.println(new String(panamaBinding.cryptoSealedBox(message), UTF_8));
+    System.out.println(new String(panamaBinding.cryptoSealedBox_off_heap(message), UTF_8));
   }
 }

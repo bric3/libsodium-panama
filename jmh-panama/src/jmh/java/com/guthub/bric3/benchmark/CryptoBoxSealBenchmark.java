@@ -42,7 +42,7 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 @Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 @Measurement(iterations = 10, time = 500, timeUnit = TimeUnit.MILLISECONDS)
-@State(Scope.Thread)
+@State(Scope.Benchmark)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class CryptoBoxSealBenchmark {
 
@@ -72,6 +72,11 @@ public class CryptoBoxSealBenchmark {
 	@Benchmark
 	public void panama() throws Throwable {
 		panama.cryptoSealedBox(message);
+	}
+
+	@Benchmark
+	public void panama_off_heap() throws Throwable {
+		panama.cryptoSealedBox_off_heap(message);
 	}
 
 	@Benchmark
