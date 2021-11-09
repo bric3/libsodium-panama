@@ -35,5 +35,161 @@ if (crypto_box_seal_open(decrypted, ciphertext, CIPHERTEXT_LEN,
 ----
 env JAVA_LIBRARY_PATH=$(grealpath jmh-panama/jni) \
   java -jar jmh-panama/build/libs/jmh-panama-jmh.jar \
-  -jvmArgs '-Djmh.separateClasspathJAR=true --add-modules=jdk.incubator.foreign --enable-native-access=ALL-UNNAMED'
+  -jvmArgs '-Xms256m -Xmx256m -Djmh.separateClasspathJAR=true --add-modules=jdk.incubator.foreign --enable-native-access=ALL-UNNAMED'
 ----
+
+
+== Profile
+
+[source, shell]
+----
+$ java -jar jmh-panama/build/libs/jmh-panama-jmh.jar -lprof
+Supported profilers:
+          cl: Classloader profiling via standard MBeans
+        comp: JIT compiler profiling via standard MBeans
+          gc: GC profiling via standard MBeans
+         jfr: Java Flight Recorder profiler
+      pauses: Pauses profiler
+     perfc2c: Linux perf c2c profiler
+  safepoints: Safepoints profiler
+       stack: Simple and naive Java stack profiler
+
+Unsupported profilers:
+       async: <none>
+Unable to load async-profiler. Ensure asyncProfiler library is on LD_LIBRARY_PATH (Linux), DYLD_LIBRARY_PATH (Mac OS), or -Djava.library.path. Alternatively, point to explicit library location with -prof async:libPath=<path>.
+   dtraceasm: <none>
+[sudo: a password is required
+]
+        perf: <none>
+[Cannot run program "perf": error=2, No such file or directory]
+     perfasm: <none>
+[Cannot run program "perf": error=2, No such file or directory]
+    perfnorm: <none>
+[Cannot run program "perf": error=2, No such file or directory]
+    xperfasm: <none>
+java.lang.reflect.InvocationTargetException
+----
+
+
+== Note about tuweni benchmark
+
+The JNR benchmark uses the tuweni-crypto library. After executing the benchmark
+I noticed a very high _error score_.
+
+[source]
+----
+...
+# Run progress: 70.00% complete, ETA 00:00:51
+# Fork: 5 of 5
+WARNING: Using incubator modules: jdk.incubator.foreign
+# Warmup Iteration   1: Getting ready
+PanamaBinding using libsodium 1.0.18
+Nov 09, 2021 9:37:00 AM org.libsodium.jni.NaCl <clinit>
+INFO: librarypath=/Users/brice.dutheil/opensource/libsodium-panama/jmh-panama/jni:/Users/brice.dutheil/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+JniBinding using libsodium 1.0.18
+JnaBinding using libsodium 1.0.18
+JnrBinding using libsodium 1.0.18
+202622.362 ns/op
+# Warmup Iteration   2: 197744.073 ns/op
+# Warmup Iteration   3: 221643.659 ns/op
+# Warmup Iteration   4: 199531.696 ns/op
+# Warmup Iteration   5: 184426.461 ns/op
+Iteration   1: 185708.743 ns/op
+Iteration   2: 185799.468 ns/op
+Iteration   3: 184565.041 ns/op
+Iteration   4: 185722.476 ns/op
+Iteration   5: 212444.492 ns/op
+Iteration   6: 306632.732 ns/op
+Iteration   7: 308521.396 ns/op
+Iteration   8: 225322.359 ns/op
+Iteration   9: 183564.530 ns/op
+Iteration  10: 183914.047 ns/op
+
+
+Result "com.guthub.bric3.benchmark.CryptoBoxSealBenchmark.jnr":
+  222902.047 ±(99.9%) 28247.475 ns/op [Average]
+  (min, avg, max) = (180608.487, 222902.047, 406309.733), stdev = 57061.297
+  CI (99.9%): [194654.572, 251149.521] (assumes normal distribution) <1>
+
+...
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                      Mode  Cnt       Score       Error  Units
+CryptoBoxSealBenchmark.jna     avgt   50  168003.865 ±  7511.201  ns/op
+CryptoBoxSealBenchmark.jni     avgt   50  155338.517 ±  1686.518  ns/op
+CryptoBoxSealBenchmark.jnr     avgt   50  222902.047 ± 28247.475  ns/op  <2>
+CryptoBoxSealBenchmark.panama  avgt   50  156591.758 ±  1778.713  ns/op
+----
+<1> The confidence interval is large
+<2> The error score is 3 times higher than JNA, and even 15 times the score of JNI / Panama.
+
+
+While profiling this benchmark
+
+[source, bash]
+----
+env JAVA_LIBRARY_PATH=$(grealpath jmh-panama/jni) \
+  java -jar jmh-panama/build/libs/jmh-panama-jmh.jar \
+  jnr \
+  -jvmArgs '-Djmh.separateClasspathJAR=true --add-modules=jdk.incubator.foreign --enable-native-access=ALL-UNNAMED' \
+  -prof jfr
+----
+
+When opening the allocations I noticed there were finalizers :
+
+.allocation stack
+[source]
+----
+java.lang.ref.Finalizer
+java.lang.ref.Finalizer.register(Object)
+java.lang.Object.<init>()
+org.apache.tuweni.crypto.sodium.Allocated.<init>(Pointer, int)
+org.apache.tuweni.crypto.sodium.Box$SecretKey.<init>(Pointer, int)
+org.apache.tuweni.crypto.sodium.Box$KeyPair.random()
+com.guthub.bric3.benchmark.JnrBinding.cryptoSealedBox(byte[])
+com.guthub.bric3.benchmark.CryptoBoxSealBenchmark.jnr()
+com.guthub.bric3.benchmark.jmh_generated.CryptoBoxSealBenchmark_jnr_jmhTest.jnr_avgt_jmhStub(InfraControl, RawResults, BenchmarkParams, IterationParams, ThreadParams, Blackhole, Control, int, CryptoBoxSealBenchmark_jmhType)
+com.guthub.bric3.benchmark.jmh_generated.CryptoBoxSealBenchmark_jnr_jmhTest.jnr_AverageTime(InfraControl, ThreadParams)
+invoke0
+jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Object, Object[])
+jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Object, Object[])
+java.lang.reflect.Method.invoke(Object, Object[])
+org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call()
+org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call()
+java.util.concurrent.FutureTask.run()
+java.util.concurrent.Executors$RunnableAdapter.call()
+java.util.concurrent.FutureTask.run()
+java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor$Worker)
+java.util.concurrent.ThreadPoolExecutor$Worker.run()
+java.lang.Thread.run()
+----
+
+.Allocated object
+[source, java]
+----
+public final class Allocated implements Destroyable {
+  // ...
+  Allocated(Pointer ptr, int length) {
+    this.ptr = ptr;
+    this.length = length;
+  }
+
+  // ...
+
+  @Override
+  protected void finalize() {
+    Sodium.sodium_free(ptr);
+  }
+  // ...
+}
+----
+
+This may have prolonged GC pauses and impacted the measure, ie the benchmark
+includes more GC time.
+
+To work around the issue let's fix the heap, eg 256 MiB.

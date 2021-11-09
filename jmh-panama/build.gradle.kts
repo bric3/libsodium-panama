@@ -63,9 +63,10 @@ jmh {
   // Strategy to apply when encountering duplicate classes during creation of the fat jar (i.e. while executing jmhJar task)
   duplicateClassesStrategy.set(DuplicatesStrategy.WARN)
 
-//  environment("JAVA_LIBRARY_PATH", ".:${project.projectDir}/jni")
+//  environment("JAVA_LIBRARY_PATH", ".:${project.projectDir}/jni") // not supported in this plugin version
 
   jvmArgs.set(listOf(
+          "-Xms256m", "-Xmx256m",
           "-Djmh.separateClasspathJAR=true",
           "--add-modules=jdk.incubator.foreign",
           "--enable-native-access=ALL-UNNAMED"
