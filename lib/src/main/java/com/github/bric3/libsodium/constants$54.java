@@ -6,50 +6,44 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$54 {
 
-    static final FunctionDescriptor crypto_scalarmult_scalarbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_scalarmult_scalarbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_scalarmult_scalarbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_scalarbytes",
-        "()J",
+        "crypto_scalarmult_scalarbytes",
         constants$54.crypto_scalarmult_scalarbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_primitive$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor crypto_scalarmult_primitive$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle crypto_scalarmult_primitive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_primitive",
-        "()Ljdk/incubator/foreign/MemoryAddress;",
+        "crypto_scalarmult_primitive",
         constants$54.crypto_scalarmult_primitive$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_base$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_scalarmult_base$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_scalarmult_base$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_base",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_scalarmult_base",
         constants$54.crypto_scalarmult_base$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_scalarmult$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_scalarmult$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_scalarmult",
         constants$54.crypto_scalarmult$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_secretbox_xsalsa20poly1305_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretbox_xsalsa20poly1305_keybytes",
-        "()J",
+        "crypto_secretbox_xsalsa20poly1305_keybytes",
         constants$54.crypto_secretbox_xsalsa20poly1305_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_noncebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_noncebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_secretbox_xsalsa20poly1305_noncebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretbox_xsalsa20poly1305_noncebytes",
-        "()J",
+        "crypto_secretbox_xsalsa20poly1305_noncebytes",
         constants$54.crypto_secretbox_xsalsa20poly1305_noncebytes$FUNC, false
     );
 }

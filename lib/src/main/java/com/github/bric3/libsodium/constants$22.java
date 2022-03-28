@@ -6,76 +6,70 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$22 {
 
-    static final FunctionDescriptor crypto_box_keypair$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_keypair$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_keypair$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_keypair",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_keypair",
         constants$22.crypto_box_keypair$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_easy$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_easy$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_easy$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_easy",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_easy",
         constants$22.crypto_box_easy$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_open_easy$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_open_easy$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_open_easy$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_open_easy",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_open_easy",
         constants$22.crypto_box_open_easy$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_detached$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_detached$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_detached$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_detached",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_detached",
         constants$22.crypto_box_detached$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_open_detached$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_open_detached$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_open_detached$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_open_detached",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_open_detached",
         constants$22.crypto_box_open_detached$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_beforenmbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_box_beforenmbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_box_beforenmbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_beforenmbytes",
-        "()J",
+        "crypto_box_beforenmbytes",
         constants$22.crypto_box_beforenmbytes$FUNC, false
     );
 }

@@ -6,56 +6,50 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$82 {
 
-    static final FunctionDescriptor sodium_mprotect_readwrite$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor sodium_mprotect_readwrite$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle sodium_mprotect_readwrite$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_mprotect_readwrite",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "sodium_mprotect_readwrite",
         constants$82.sodium_mprotect_readwrite$FUNC, false
     );
-    static final FunctionDescriptor sodium_pad$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG,
-        C_LONG,
-        C_LONG
+    static final FunctionDescriptor sodium_pad$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle sodium_pad$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_pad",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JJJ)I",
+        "sodium_pad",
         constants$82.sodium_pad$FUNC, false
     );
-    static final FunctionDescriptor sodium_unpad$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG,
-        C_LONG
+    static final FunctionDescriptor sodium_unpad$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle sodium_unpad$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_unpad",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JJ)I",
+        "sodium_unpad",
         constants$82.sodium_unpad$FUNC, false
     );
-    static final FunctionDescriptor _sodium_alloc_init$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor _sodium_alloc_init$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle _sodium_alloc_init$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "_sodium_alloc_init",
-        "()I",
+        "_sodium_alloc_init",
         constants$82._sodium_alloc_init$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_xchacha20_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_xchacha20_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_xchacha20_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_xchacha20_keybytes",
-        "()J",
+        "crypto_stream_xchacha20_keybytes",
         constants$82.crypto_stream_xchacha20_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_xchacha20_noncebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_xchacha20_noncebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_xchacha20_noncebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_xchacha20_noncebytes",
-        "()J",
+        "crypto_stream_xchacha20_noncebytes",
         constants$82.crypto_stream_xchacha20_noncebytes$FUNC, false
     );
 }

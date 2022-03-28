@@ -6,66 +6,60 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$73 {
 
-    static final FunctionDescriptor crypto_stream_salsa20$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_salsa20$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_salsa20$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa20",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_salsa20",
         constants$73.crypto_stream_salsa20$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa20_xor$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_salsa20_xor$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_salsa20_xor$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa20_xor",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_salsa20_xor",
         constants$73.crypto_stream_salsa20_xor$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa20_xor_ic$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_salsa20_xor_ic$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_salsa20_xor_ic$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa20_xor_ic",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_salsa20_xor_ic",
         constants$73.crypto_stream_salsa20_xor_ic$FUNC, false
     );
     static final FunctionDescriptor crypto_stream_salsa20_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_salsa20_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa20_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_stream_salsa20_keygen",
         constants$73.crypto_stream_salsa20_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_verify_16_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_verify_16_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_verify_16_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_verify_16_bytes",
-        "()J",
+        "crypto_verify_16_bytes",
         constants$73.crypto_verify_16_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_verify_16$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_verify_16$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_verify_16$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_verify_16",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_verify_16",
         constants$73.crypto_verify_16$FUNC, false
     );
 }

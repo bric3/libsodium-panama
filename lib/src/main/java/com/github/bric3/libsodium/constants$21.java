@@ -6,47 +6,41 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$21 {
 
-    static final FunctionDescriptor crypto_box_secretkeybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_box_secretkeybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_box_secretkeybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_secretkeybytes",
-        "()J",
+        "crypto_box_secretkeybytes",
         constants$21.crypto_box_secretkeybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_noncebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_box_noncebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_box_noncebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_noncebytes",
-        "()J",
+        "crypto_box_noncebytes",
         constants$21.crypto_box_noncebytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_macbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_box_macbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_box_macbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_macbytes",
-        "()J",
+        "crypto_box_macbytes",
         constants$21.crypto_box_macbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_messagebytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_box_messagebytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_box_messagebytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_messagebytes_max",
-        "()J",
+        "crypto_box_messagebytes_max",
         constants$21.crypto_box_messagebytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_primitive$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor crypto_box_primitive$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle crypto_box_primitive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_primitive",
-        "()Ljdk/incubator/foreign/MemoryAddress;",
+        "crypto_box_primitive",
         constants$21.crypto_box_primitive$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_seed_keypair$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_seed_keypair$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_seed_keypair$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_seed_keypair",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_seed_keypair",
         constants$21.crypto_box_seed_keypair$FUNC, false
     );
 }

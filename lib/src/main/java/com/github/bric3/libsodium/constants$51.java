@@ -6,43 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$51 {
 
-    static final FunctionDescriptor crypto_pwhash_memlimit_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_memlimit_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_memlimit_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_memlimit_max",
-        "()J",
+        "crypto_pwhash_memlimit_max",
         constants$51.crypto_pwhash_memlimit_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_opslimit_interactive$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_opslimit_interactive$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_opslimit_interactive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_opslimit_interactive",
-        "()J",
+        "crypto_pwhash_opslimit_interactive",
         constants$51.crypto_pwhash_opslimit_interactive$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_memlimit_interactive$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_memlimit_interactive$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_memlimit_interactive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_memlimit_interactive",
-        "()J",
+        "crypto_pwhash_memlimit_interactive",
         constants$51.crypto_pwhash_memlimit_interactive$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_opslimit_moderate$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_opslimit_moderate$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_opslimit_moderate$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_opslimit_moderate",
-        "()J",
+        "crypto_pwhash_opslimit_moderate",
         constants$51.crypto_pwhash_opslimit_moderate$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_memlimit_moderate$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_memlimit_moderate$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_memlimit_moderate$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_memlimit_moderate",
-        "()J",
+        "crypto_pwhash_memlimit_moderate",
         constants$51.crypto_pwhash_memlimit_moderate$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_opslimit_sensitive$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_opslimit_sensitive$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_opslimit_sensitive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_opslimit_sensitive",
-        "()J",
+        "crypto_pwhash_opslimit_sensitive",
         constants$51.crypto_pwhash_opslimit_sensitive$FUNC, false
     );
 }

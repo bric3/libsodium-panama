@@ -6,54 +6,48 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$87 {
 
-    static final FunctionDescriptor crypto_box_curve25519xchacha20poly1305_seal$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_curve25519xchacha20poly1305_seal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_curve25519xchacha20poly1305_seal$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_curve25519xchacha20poly1305_seal",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_curve25519xchacha20poly1305_seal",
         constants$87.crypto_box_curve25519xchacha20poly1305_seal$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_curve25519xchacha20poly1305_seal_open$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_curve25519xchacha20poly1305_seal_open$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_curve25519xchacha20poly1305_seal_open$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_curve25519xchacha20poly1305_seal_open",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_curve25519xchacha20poly1305_seal_open",
         constants$87.crypto_box_curve25519xchacha20poly1305_seal_open$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ed25519_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_ed25519_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_ed25519_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ed25519_bytes",
-        "()J",
+        "crypto_core_ed25519_bytes",
         constants$87.crypto_core_ed25519_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ed25519_uniformbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_ed25519_uniformbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_ed25519_uniformbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ed25519_uniformbytes",
-        "()J",
+        "crypto_core_ed25519_uniformbytes",
         constants$87.crypto_core_ed25519_uniformbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ed25519_hashbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_ed25519_hashbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_ed25519_hashbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ed25519_hashbytes",
-        "()J",
+        "crypto_core_ed25519_hashbytes",
         constants$87.crypto_core_ed25519_hashbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ed25519_scalarbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_ed25519_scalarbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_ed25519_scalarbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ed25519_scalarbytes",
-        "()J",
+        "crypto_core_ed25519_scalarbytes",
         constants$87.crypto_core_ed25519_scalarbytes$FUNC, false
     );
 }

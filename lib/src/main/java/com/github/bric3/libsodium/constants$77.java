@@ -6,43 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$77 {
 
-    static final FunctionDescriptor sodium_runtime_has_sse3$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_runtime_has_sse3$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_runtime_has_sse3$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_runtime_has_sse3",
-        "()I",
+        "sodium_runtime_has_sse3",
         constants$77.sodium_runtime_has_sse3$FUNC, false
     );
-    static final FunctionDescriptor sodium_runtime_has_ssse3$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_runtime_has_ssse3$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_runtime_has_ssse3$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_runtime_has_ssse3",
-        "()I",
+        "sodium_runtime_has_ssse3",
         constants$77.sodium_runtime_has_ssse3$FUNC, false
     );
-    static final FunctionDescriptor sodium_runtime_has_sse41$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_runtime_has_sse41$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_runtime_has_sse41$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_runtime_has_sse41",
-        "()I",
+        "sodium_runtime_has_sse41",
         constants$77.sodium_runtime_has_sse41$FUNC, false
     );
-    static final FunctionDescriptor sodium_runtime_has_avx$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_runtime_has_avx$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_runtime_has_avx$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_runtime_has_avx",
-        "()I",
+        "sodium_runtime_has_avx",
         constants$77.sodium_runtime_has_avx$FUNC, false
     );
-    static final FunctionDescriptor sodium_runtime_has_avx2$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_runtime_has_avx2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_runtime_has_avx2$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_runtime_has_avx2",
-        "()I",
+        "sodium_runtime_has_avx2",
         constants$77.sodium_runtime_has_avx2$FUNC, false
     );
-    static final FunctionDescriptor sodium_runtime_has_avx512f$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_runtime_has_avx512f$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_runtime_has_avx512f$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_runtime_has_avx512f",
-        "()I",
+        "sodium_runtime_has_avx512f",
         constants$77.sodium_runtime_has_avx512f$FUNC, false
     );
 }

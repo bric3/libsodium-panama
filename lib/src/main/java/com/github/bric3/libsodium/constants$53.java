@@ -6,50 +6,44 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$53 {
 
-    static final FunctionDescriptor crypto_pwhash_primitive$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor crypto_pwhash_primitive$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle crypto_pwhash_primitive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_primitive",
-        "()Ljdk/incubator/foreign/MemoryAddress;",
+        "crypto_pwhash_primitive",
         constants$53.crypto_pwhash_primitive$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_curve25519_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_scalarmult_curve25519_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_scalarmult_curve25519_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_curve25519_bytes",
-        "()J",
+        "crypto_scalarmult_curve25519_bytes",
         constants$53.crypto_scalarmult_curve25519_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_curve25519_scalarbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_scalarmult_curve25519_scalarbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_scalarmult_curve25519_scalarbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_curve25519_scalarbytes",
-        "()J",
+        "crypto_scalarmult_curve25519_scalarbytes",
         constants$53.crypto_scalarmult_curve25519_scalarbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_curve25519$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_scalarmult_curve25519$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_scalarmult_curve25519$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_curve25519",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_scalarmult_curve25519",
         constants$53.crypto_scalarmult_curve25519$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_curve25519_base$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_scalarmult_curve25519_base$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_scalarmult_curve25519_base$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_curve25519_base",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_scalarmult_curve25519_base",
         constants$53.crypto_scalarmult_curve25519_base$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_scalarmult_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_scalarmult_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_bytes",
-        "()J",
+        "crypto_scalarmult_bytes",
         constants$53.crypto_scalarmult_bytes$FUNC, false
     );
 }

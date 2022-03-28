@@ -6,13 +6,13 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$104 {
 
-    static final MemorySegment crypto_shorthash_PRIMITIVE$SEGMENT = CLinker.toCString("siphash24", ResourceScope.newImplicitScope());
-    static final MemorySegment crypto_sign_PRIMITIVE$SEGMENT = CLinker.toCString("ed25519", ResourceScope.newImplicitScope());
-    static final MemorySegment crypto_stream_PRIMITIVE$SEGMENT = CLinker.toCString("xsalsa20", ResourceScope.newImplicitScope());
-    static final MemorySegment crypto_pwhash_scryptsalsa208sha256_STRPREFIX$SEGMENT = CLinker.toCString("$7$", ResourceScope.newImplicitScope());
+    static final MemorySegment crypto_shorthash_PRIMITIVE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("siphash24");
+    static final MemorySegment crypto_sign_PRIMITIVE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ed25519");
+    static final MemorySegment crypto_stream_PRIMITIVE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("xsalsa20");
+    static final MemorySegment crypto_pwhash_scryptsalsa208sha256_STRPREFIX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("$7$");
 }
 
 

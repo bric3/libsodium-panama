@@ -6,57 +6,51 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$96 {
 
-    static final FunctionDescriptor crypto_secretbox_xchacha20poly1305_detached$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_secretbox_xchacha20poly1305_detached$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_secretbox_xchacha20poly1305_detached$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretbox_xchacha20poly1305_detached",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_secretbox_xchacha20poly1305_detached",
         constants$96.crypto_secretbox_xchacha20poly1305_detached$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretbox_xchacha20poly1305_open_detached$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_secretbox_xchacha20poly1305_open_detached$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_secretbox_xchacha20poly1305_open_detached$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretbox_xchacha20poly1305_open_detached",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_secretbox_xchacha20poly1305_open_detached",
         constants$96.crypto_secretbox_xchacha20poly1305_open_detached$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_bytes_min$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_bytes_min$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_scryptsalsa208sha256_bytes_min$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_scryptsalsa208sha256_bytes_min",
-        "()J",
+        "crypto_pwhash_scryptsalsa208sha256_bytes_min",
         constants$96.crypto_pwhash_scryptsalsa208sha256_bytes_min$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_bytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_bytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_scryptsalsa208sha256_bytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_scryptsalsa208sha256_bytes_max",
-        "()J",
+        "crypto_pwhash_scryptsalsa208sha256_bytes_max",
         constants$96.crypto_pwhash_scryptsalsa208sha256_bytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_passwd_min$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_passwd_min$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_scryptsalsa208sha256_passwd_min$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_scryptsalsa208sha256_passwd_min",
-        "()J",
+        "crypto_pwhash_scryptsalsa208sha256_passwd_min",
         constants$96.crypto_pwhash_scryptsalsa208sha256_passwd_min$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_passwd_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_passwd_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_scryptsalsa208sha256_passwd_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_scryptsalsa208sha256_passwd_max",
-        "()J",
+        "crypto_pwhash_scryptsalsa208sha256_passwd_max",
         constants$96.crypto_pwhash_scryptsalsa208sha256_passwd_max$FUNC, false
     );
 }

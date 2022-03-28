@@ -6,52 +6,46 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$71 {
 
-    static final FunctionDescriptor crypto_sign_final_create$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_sign_final_create$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_sign_final_create$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_final_create",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_sign_final_create",
         constants$71.crypto_sign_final_create$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_final_verify$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_sign_final_verify$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_sign_final_verify$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_final_verify",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_sign_final_verify",
         constants$71.crypto_sign_final_verify$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_keybytes",
-        "()J",
+        "crypto_stream_keybytes",
         constants$71.crypto_stream_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_noncebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_noncebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_noncebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_noncebytes",
-        "()J",
+        "crypto_stream_noncebytes",
         constants$71.crypto_stream_noncebytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_messagebytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_messagebytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_messagebytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_messagebytes_max",
-        "()J",
+        "crypto_stream_messagebytes_max",
         constants$71.crypto_stream_messagebytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_primitive$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor crypto_stream_primitive$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle crypto_stream_primitive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_primitive",
-        "()Ljdk/incubator/foreign/MemoryAddress;",
+        "crypto_stream_primitive",
         constants$71.crypto_stream_primitive$FUNC, false
     );
 }

@@ -6,53 +6,47 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$13 {
 
-    static final FunctionDescriptor crypto_auth_hmacsha512256_final$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_auth_hmacsha512256_final$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_auth_hmacsha512256_final$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_hmacsha512256_final",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_auth_hmacsha512256_final",
         constants$13.crypto_auth_hmacsha512256_final$FUNC, false
     );
     static final FunctionDescriptor crypto_auth_hmacsha512256_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_auth_hmacsha512256_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_hmacsha512256_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_auth_hmacsha512256_keygen",
         constants$13.crypto_auth_hmacsha512256_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_auth_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_auth_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_auth_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_bytes",
-        "()J",
+        "crypto_auth_bytes",
         constants$13.crypto_auth_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_auth_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_auth_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_auth_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_keybytes",
-        "()J",
+        "crypto_auth_keybytes",
         constants$13.crypto_auth_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_auth_primitive$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor crypto_auth_primitive$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle crypto_auth_primitive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_primitive",
-        "()Ljdk/incubator/foreign/MemoryAddress;",
+        "crypto_auth_primitive",
         constants$13.crypto_auth_primitive$FUNC, false
     );
-    static final FunctionDescriptor crypto_auth$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_auth$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_auth$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_auth",
         constants$13.crypto_auth$FUNC, false
     );
 }

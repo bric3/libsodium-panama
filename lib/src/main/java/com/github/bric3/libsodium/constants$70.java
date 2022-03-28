@@ -6,72 +6,66 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$70 {
 
-    static final FunctionDescriptor crypto_sign$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_sign$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_sign$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_sign",
         constants$70.crypto_sign$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_open$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_sign_open$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_sign_open$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_open",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_sign_open",
         constants$70.crypto_sign_open$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_detached$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_sign_detached$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_sign_detached$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_detached",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_sign_detached",
         constants$70.crypto_sign_detached$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_verify_detached$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_sign_verify_detached$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_sign_verify_detached$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_verify_detached",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_sign_verify_detached",
         constants$70.crypto_sign_verify_detached$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_init$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor crypto_sign_init$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_sign_init$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_init",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_sign_init",
         constants$70.crypto_sign_init$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_update$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG
+    static final FunctionDescriptor crypto_sign_update$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_sign_update$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_update",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "crypto_sign_update",
         constants$70.crypto_sign_update$FUNC, false
     );
 }

@@ -18,7 +18,7 @@ java {
     // ./gradlew -q javaToolchains
     // https://docs.gradle.org/current/userguide/toolchains.html
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(18))
     }
     modularity.inferModulePath.set(true)
 
@@ -32,7 +32,7 @@ tasks {
         options.compilerArgs = listOf(
                 "--add-modules", "jdk.incubator.foreign"
         )
-        options.release.set(17)
+        options.release.set(18)
     }
 
     withType<JavaExec>().configureEach {

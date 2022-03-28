@@ -6,62 +6,56 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$62 {
 
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_tag_final$FUNC = FunctionDescriptor.of(C_CHAR);
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_tag_final$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT);
     static final MethodHandle crypto_secretstream_xchacha20poly1305_tag_final$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_tag_final",
-        "()B",
+        "crypto_secretstream_xchacha20poly1305_tag_final",
         constants$62.crypto_secretstream_xchacha20poly1305_tag_final$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_statebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_statebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_secretstream_xchacha20poly1305_statebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_statebytes",
-        "()J",
+        "crypto_secretstream_xchacha20poly1305_statebytes",
         constants$62.crypto_secretstream_xchacha20poly1305_statebytes$FUNC, false
     );
     static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_secretstream_xchacha20poly1305_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_secretstream_xchacha20poly1305_keygen",
         constants$62.crypto_secretstream_xchacha20poly1305_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_init_push$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_init_push$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_secretstream_xchacha20poly1305_init_push$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_init_push",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_secretstream_xchacha20poly1305_init_push",
         constants$62.crypto_secretstream_xchacha20poly1305_init_push$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_push$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_LONG_LONG,
-        C_CHAR
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_push$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
     );
     static final MethodHandle crypto_secretstream_xchacha20poly1305_push$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_push",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JB)I",
+        "crypto_secretstream_xchacha20poly1305_push",
         constants$62.crypto_secretstream_xchacha20poly1305_push$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_init_pull$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_init_pull$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_secretstream_xchacha20poly1305_init_pull$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_init_pull",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_secretstream_xchacha20poly1305_init_pull",
         constants$62.crypto_secretstream_xchacha20poly1305_init_pull$FUNC, false
     );
 }

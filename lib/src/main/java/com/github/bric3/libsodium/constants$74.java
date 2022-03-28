@@ -6,52 +6,46 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$74 {
 
-    static final FunctionDescriptor crypto_verify_32_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_verify_32_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_verify_32_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_verify_32_bytes",
-        "()J",
+        "crypto_verify_32_bytes",
         constants$74.crypto_verify_32_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_verify_32$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_verify_32$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_verify_32$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_verify_32",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_verify_32",
         constants$74.crypto_verify_32$FUNC, false
     );
-    static final FunctionDescriptor crypto_verify_64_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_verify_64_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_verify_64_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_verify_64_bytes",
-        "()J",
+        "crypto_verify_64_bytes",
         constants$74.crypto_verify_64_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_verify_64$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_verify_64$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_verify_64$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_verify_64",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_verify_64",
         constants$74.crypto_verify_64$FUNC, false
     );
-    static final FunctionDescriptor randombytes_seedbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor randombytes_seedbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle randombytes_seedbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "randombytes_seedbytes",
-        "()J",
+        "randombytes_seedbytes",
         constants$74.randombytes_seedbytes$FUNC, false
     );
     static final FunctionDescriptor randombytes_buf$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_LONG
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle randombytes_buf$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "randombytes_buf",
-        "(Ljdk/incubator/foreign/MemoryAddress;J)V",
+        "randombytes_buf",
         constants$74.randombytes_buf$FUNC, false
     );
 }

@@ -6,59 +6,53 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$33 {
 
-    static final FunctionDescriptor crypto_generichash_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_generichash_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_generichash_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_keybytes",
-        "()J",
+        "crypto_generichash_keybytes",
         constants$33.crypto_generichash_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_generichash_primitive$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor crypto_generichash_primitive$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle crypto_generichash_primitive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_primitive",
-        "()Ljdk/incubator/foreign/MemoryAddress;",
+        "crypto_generichash_primitive",
         constants$33.crypto_generichash_primitive$FUNC, false
     );
-    static final FunctionDescriptor crypto_generichash_statebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_generichash_statebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_generichash_statebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_statebytes",
-        "()J",
+        "crypto_generichash_statebytes",
         constants$33.crypto_generichash_statebytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_generichash$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_LONG
+    static final FunctionDescriptor crypto_generichash$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_generichash$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;J)I",
+        "crypto_generichash",
         constants$33.crypto_generichash$FUNC, false
     );
-    static final FunctionDescriptor crypto_generichash_init$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG,
-        C_LONG
+    static final FunctionDescriptor crypto_generichash_init$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_generichash_init$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_init",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JJ)I",
+        "crypto_generichash_init",
         constants$33.crypto_generichash_init$FUNC, false
     );
-    static final FunctionDescriptor crypto_generichash_update$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG
+    static final FunctionDescriptor crypto_generichash_update$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_generichash_update$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_update",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "crypto_generichash_update",
         constants$33.crypto_generichash_update$FUNC, false
     );
 }

@@ -6,56 +6,50 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$100 {
 
-    static final FunctionDescriptor crypto_stream_salsa2012_messagebytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_salsa2012_messagebytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_salsa2012_messagebytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa2012_messagebytes_max",
-        "()J",
+        "crypto_stream_salsa2012_messagebytes_max",
         constants$100.crypto_stream_salsa2012_messagebytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa2012$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_salsa2012$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_salsa2012$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa2012",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_salsa2012",
         constants$100.crypto_stream_salsa2012$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa2012_xor$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_salsa2012_xor$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_salsa2012_xor$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa2012_xor",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_salsa2012_xor",
         constants$100.crypto_stream_salsa2012_xor$FUNC, false
     );
     static final FunctionDescriptor crypto_stream_salsa2012_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_salsa2012_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa2012_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_stream_salsa2012_keygen",
         constants$100.crypto_stream_salsa2012_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa208_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_salsa208_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_salsa208_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa208_keybytes",
-        "()J",
+        "crypto_stream_salsa208_keybytes",
         constants$100.crypto_stream_salsa208_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa208_noncebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_salsa208_noncebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_salsa208_noncebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa208_noncebytes",
-        "()J",
+        "crypto_stream_salsa208_noncebytes",
         constants$100.crypto_stream_salsa208_noncebytes$FUNC, false
     );
 }

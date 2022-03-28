@@ -6,53 +6,47 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$64 {
 
-    static final FunctionDescriptor crypto_shorthash_siphashx24_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_shorthash_siphashx24_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_shorthash_siphashx24_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_shorthash_siphashx24_keybytes",
-        "()J",
+        "crypto_shorthash_siphashx24_keybytes",
         constants$64.crypto_shorthash_siphashx24_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_shorthash_siphashx24$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_shorthash_siphashx24$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_shorthash_siphashx24$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_shorthash_siphashx24",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_shorthash_siphashx24",
         constants$64.crypto_shorthash_siphashx24$FUNC, false
     );
-    static final FunctionDescriptor crypto_shorthash_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_shorthash_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_shorthash_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_shorthash_bytes",
-        "()J",
+        "crypto_shorthash_bytes",
         constants$64.crypto_shorthash_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_shorthash_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_shorthash_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_shorthash_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_shorthash_keybytes",
-        "()J",
+        "crypto_shorthash_keybytes",
         constants$64.crypto_shorthash_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_shorthash_primitive$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor crypto_shorthash_primitive$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle crypto_shorthash_primitive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_shorthash_primitive",
-        "()Ljdk/incubator/foreign/MemoryAddress;",
+        "crypto_shorthash_primitive",
         constants$64.crypto_shorthash_primitive$FUNC, false
     );
-    static final FunctionDescriptor crypto_shorthash$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_shorthash$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_shorthash$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_shorthash",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_shorthash",
         constants$64.crypto_shorthash$FUNC, false
     );
 }

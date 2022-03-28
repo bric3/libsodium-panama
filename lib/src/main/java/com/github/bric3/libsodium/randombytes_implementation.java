@@ -6,38 +6,35 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public class randombytes_implementation {
 
-    static final MemoryLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        C_POINTER.withName("implementation_name"),
-        C_POINTER.withName("random"),
-        C_POINTER.withName("stir"),
-        C_POINTER.withName("uniform"),
-        C_POINTER.withName("buf"),
-        C_POINTER.withName("close")
+    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+        Constants$root.C_POINTER$LAYOUT.withName("implementation_name"),
+        Constants$root.C_POINTER$LAYOUT.withName("random"),
+        Constants$root.C_POINTER$LAYOUT.withName("stir"),
+        Constants$root.C_POINTER$LAYOUT.withName("uniform"),
+        Constants$root.C_POINTER$LAYOUT.withName("buf"),
+        Constants$root.C_POINTER$LAYOUT.withName("close")
     ).withName("randombytes_implementation");
     public static MemoryLayout $LAYOUT() {
         return randombytes_implementation.$struct$LAYOUT;
     }
-    static final FunctionDescriptor implementation_name$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor implementation_name$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle implementation_name$MH = RuntimeHelper.downcallHandle(
-        "()Ljdk/incubator/foreign/MemoryAddress;",
         randombytes_implementation.implementation_name$FUNC, false
     );
     public interface implementation_name {
 
-        jdk.incubator.foreign.MemoryAddress apply();
-        static MemoryAddress allocate(implementation_name fi) {
-            return RuntimeHelper.upcallStub(implementation_name.class, fi, randombytes_implementation.implementation_name$FUNC, "()Ljdk/incubator/foreign/MemoryAddress;");
+        jdk.incubator.foreign.Addressable apply();
+        static NativeSymbol allocate(implementation_name fi, ResourceScope scope) {
+            return RuntimeHelper.upcallStub(implementation_name.class, fi, randombytes_implementation.implementation_name$FUNC, "()Ljdk/incubator/foreign/Addressable;", scope);
         }
-        static MemoryAddress allocate(implementation_name fi, ResourceScope scope) {
-            return RuntimeHelper.upcallStub(implementation_name.class, fi, randombytes_implementation.implementation_name$FUNC, "()Ljdk/incubator/foreign/MemoryAddress;", scope);
-        }
-        static implementation_name ofAddress(MemoryAddress addr) {
-            return () -> {
+        static implementation_name ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("implementation_name::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
                 try {
-                    return (jdk.incubator.foreign.MemoryAddress)randombytes_implementation.implementation_name$MH.invokeExact((Addressable)addr);
+                    return (jdk.incubator.foreign.Addressable)(jdk.incubator.foreign.MemoryAddress)randombytes_implementation.implementation_name$MH.invokeExact(symbol);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -45,7 +42,7 @@ public class randombytes_implementation {
         }
     }
 
-    static final VarHandle implementation_name$VH = MemoryHandles.asAddressVarHandle($struct$LAYOUT.varHandle(long.class, MemoryLayout.PathElement.groupElement("implementation_name")));
+    static final VarHandle implementation_name$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("implementation_name"));
     public static VarHandle implementation_name$VH() {
         return randombytes_implementation.implementation_name$VH;
     }
@@ -61,27 +58,24 @@ public class randombytes_implementation {
     public static void implementation_name$set(MemorySegment seg, long index, MemoryAddress x) {
         randombytes_implementation.implementation_name$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static implementation_name implementation_name (MemorySegment segment) {
-        return implementation_name.ofAddress(implementation_name$get(segment));
+    public static implementation_name implementation_name (MemorySegment segment, ResourceScope scope) {
+        return implementation_name.ofAddress(implementation_name$get(segment), scope);
     }
-    static final FunctionDescriptor random$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor random$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle random$MH = RuntimeHelper.downcallHandle(
-        "()I",
         randombytes_implementation.random$FUNC, false
     );
     public interface random {
 
         int apply();
-        static MemoryAddress allocate(random fi) {
-            return RuntimeHelper.upcallStub(random.class, fi, randombytes_implementation.random$FUNC, "()I");
-        }
-        static MemoryAddress allocate(random fi, ResourceScope scope) {
+        static NativeSymbol allocate(random fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(random.class, fi, randombytes_implementation.random$FUNC, "()I", scope);
         }
-        static random ofAddress(MemoryAddress addr) {
-            return () -> {
+        static random ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("random::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
                 try {
-                    return (int)randombytes_implementation.random$MH.invokeExact((Addressable)addr);
+                    return (int)randombytes_implementation.random$MH.invokeExact(symbol);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -89,7 +83,7 @@ public class randombytes_implementation {
         }
     }
 
-    static final VarHandle random$VH = MemoryHandles.asAddressVarHandle($struct$LAYOUT.varHandle(long.class, MemoryLayout.PathElement.groupElement("random")));
+    static final VarHandle random$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("random"));
     public static VarHandle random$VH() {
         return randombytes_implementation.random$VH;
     }
@@ -105,27 +99,24 @@ public class randombytes_implementation {
     public static void random$set(MemorySegment seg, long index, MemoryAddress x) {
         randombytes_implementation.random$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static random random (MemorySegment segment) {
-        return random.ofAddress(random$get(segment));
+    public static random random (MemorySegment segment, ResourceScope scope) {
+        return random.ofAddress(random$get(segment), scope);
     }
     static final FunctionDescriptor stir$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle stir$MH = RuntimeHelper.downcallHandle(
-        "()V",
         randombytes_implementation.stir$FUNC, false
     );
     public interface stir {
 
         void apply();
-        static MemoryAddress allocate(stir fi) {
-            return RuntimeHelper.upcallStub(stir.class, fi, randombytes_implementation.stir$FUNC, "()V");
-        }
-        static MemoryAddress allocate(stir fi, ResourceScope scope) {
+        static NativeSymbol allocate(stir fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(stir.class, fi, randombytes_implementation.stir$FUNC, "()V", scope);
         }
-        static stir ofAddress(MemoryAddress addr) {
-            return () -> {
+        static stir ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("stir::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
                 try {
-                    randombytes_implementation.stir$MH.invokeExact((Addressable)addr);
+                    randombytes_implementation.stir$MH.invokeExact(symbol);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -133,7 +124,7 @@ public class randombytes_implementation {
         }
     }
 
-    static final VarHandle stir$VH = MemoryHandles.asAddressVarHandle($struct$LAYOUT.varHandle(long.class, MemoryLayout.PathElement.groupElement("stir")));
+    static final VarHandle stir$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("stir"));
     public static VarHandle stir$VH() {
         return randombytes_implementation.stir$VH;
     }
@@ -149,29 +140,26 @@ public class randombytes_implementation {
     public static void stir$set(MemorySegment seg, long index, MemoryAddress x) {
         randombytes_implementation.stir$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static stir stir (MemorySegment segment) {
-        return stir.ofAddress(stir$get(segment));
+    public static stir stir (MemorySegment segment, ResourceScope scope) {
+        return stir.ofAddress(stir$get(segment), scope);
     }
-    static final FunctionDescriptor uniform$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor uniform$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle uniform$MH = RuntimeHelper.downcallHandle(
-        "(I)I",
         randombytes_implementation.uniform$FUNC, false
     );
     public interface uniform {
 
-        int apply(int x0);
-        static MemoryAddress allocate(uniform fi) {
-            return RuntimeHelper.upcallStub(uniform.class, fi, randombytes_implementation.uniform$FUNC, "(I)I");
-        }
-        static MemoryAddress allocate(uniform fi, ResourceScope scope) {
+        int apply(int _x0);
+        static NativeSymbol allocate(uniform fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(uniform.class, fi, randombytes_implementation.uniform$FUNC, "(I)I", scope);
         }
-        static uniform ofAddress(MemoryAddress addr) {
-            return (int x0) -> {
+        static uniform ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("uniform::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (int _x0) -> {
                 try {
-                    return (int)randombytes_implementation.uniform$MH.invokeExact((Addressable)addr, x0);
+                    return (int)randombytes_implementation.uniform$MH.invokeExact(symbol, _x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -179,7 +167,7 @@ public class randombytes_implementation {
         }
     }
 
-    static final VarHandle uniform$VH = MemoryHandles.asAddressVarHandle($struct$LAYOUT.varHandle(long.class, MemoryLayout.PathElement.groupElement("uniform")));
+    static final VarHandle uniform$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("uniform"));
     public static VarHandle uniform$VH() {
         return randombytes_implementation.uniform$VH;
     }
@@ -195,30 +183,27 @@ public class randombytes_implementation {
     public static void uniform$set(MemorySegment seg, long index, MemoryAddress x) {
         randombytes_implementation.uniform$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static uniform uniform (MemorySegment segment) {
-        return uniform.ofAddress(uniform$get(segment));
+    public static uniform uniform (MemorySegment segment, ResourceScope scope) {
+        return uniform.ofAddress(uniform$get(segment), scope);
     }
     static final FunctionDescriptor buf$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_LONG
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle buf$MH = RuntimeHelper.downcallHandle(
-        "(Ljdk/incubator/foreign/MemoryAddress;J)V",
         randombytes_implementation.buf$FUNC, false
     );
     public interface buf {
 
-        void apply(jdk.incubator.foreign.MemoryAddress x0, long x1);
-        static MemoryAddress allocate(buf fi) {
-            return RuntimeHelper.upcallStub(buf.class, fi, randombytes_implementation.buf$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;J)V");
-        }
-        static MemoryAddress allocate(buf fi, ResourceScope scope) {
+        void apply(jdk.incubator.foreign.MemoryAddress _x0, long _x1);
+        static NativeSymbol allocate(buf fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(buf.class, fi, randombytes_implementation.buf$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;J)V", scope);
         }
-        static buf ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, long x1) -> {
+        static buf ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("buf::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress _x0, long _x1) -> {
                 try {
-                    randombytes_implementation.buf$MH.invokeExact((Addressable)addr, x0, x1);
+                    randombytes_implementation.buf$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)_x0, _x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -226,7 +211,7 @@ public class randombytes_implementation {
         }
     }
 
-    static final VarHandle buf$VH = MemoryHandles.asAddressVarHandle($struct$LAYOUT.varHandle(long.class, MemoryLayout.PathElement.groupElement("buf")));
+    static final VarHandle buf$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("buf"));
     public static VarHandle buf$VH() {
         return randombytes_implementation.buf$VH;
     }
@@ -242,27 +227,24 @@ public class randombytes_implementation {
     public static void buf$set(MemorySegment seg, long index, MemoryAddress x) {
         randombytes_implementation.buf$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static buf buf (MemorySegment segment) {
-        return buf.ofAddress(buf$get(segment));
+    public static buf buf (MemorySegment segment, ResourceScope scope) {
+        return buf.ofAddress(buf$get(segment), scope);
     }
-    static final FunctionDescriptor close$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor close$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle close$MH = RuntimeHelper.downcallHandle(
-        "()I",
         randombytes_implementation.close$FUNC, false
     );
     public interface close {
 
         int apply();
-        static MemoryAddress allocate(close fi) {
-            return RuntimeHelper.upcallStub(close.class, fi, randombytes_implementation.close$FUNC, "()I");
-        }
-        static MemoryAddress allocate(close fi, ResourceScope scope) {
+        static NativeSymbol allocate(close fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(close.class, fi, randombytes_implementation.close$FUNC, "()I", scope);
         }
-        static close ofAddress(MemoryAddress addr) {
-            return () -> {
+        static close ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("close::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return () -> {
                 try {
-                    return (int)randombytes_implementation.close$MH.invokeExact((Addressable)addr);
+                    return (int)randombytes_implementation.close$MH.invokeExact(symbol);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -270,7 +252,7 @@ public class randombytes_implementation {
         }
     }
 
-    static final VarHandle close$VH = MemoryHandles.asAddressVarHandle($struct$LAYOUT.varHandle(long.class, MemoryLayout.PathElement.groupElement("close")));
+    static final VarHandle close$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("close"));
     public static VarHandle close$VH() {
         return randombytes_implementation.close$VH;
     }
@@ -286,17 +268,17 @@ public class randombytes_implementation {
     public static void close$set(MemorySegment seg, long index, MemoryAddress x) {
         randombytes_implementation.close$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static close close (MemorySegment segment) {
-        return close.ofAddress(close$get(segment));
+    public static close close (MemorySegment segment, ResourceScope scope) {
+        return close.ofAddress(close$get(segment), scope);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.ofScope(scope)); }
     public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
+    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.nativeAllocator(scope)); }
     public static MemorySegment allocateArray(int len, ResourceScope scope) {
-        return allocateArray(len, SegmentAllocator.ofScope(scope));
+        return allocateArray(len, SegmentAllocator.nativeAllocator(scope));
     }
     public static MemorySegment ofAddress(MemoryAddress addr, ResourceScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }

@@ -6,37 +6,32 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$0 {
 
-    static final FunctionDescriptor sodium_version_string$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor sodium_version_string$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle sodium_version_string$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_version_string",
-        "()Ljdk/incubator/foreign/MemoryAddress;",
+        "sodium_version_string",
         constants$0.sodium_version_string$FUNC, false
     );
-    static final FunctionDescriptor sodium_library_version_major$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_library_version_major$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_library_version_major$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_library_version_major",
-        "()I",
+        "sodium_library_version_major",
         constants$0.sodium_library_version_major$FUNC, false
     );
-    static final FunctionDescriptor sodium_library_version_minor$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_library_version_minor$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_library_version_minor$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_library_version_minor",
-        "()I",
+        "sodium_library_version_minor",
         constants$0.sodium_library_version_minor$FUNC, false
     );
-    static final FunctionDescriptor sodium_library_minimal$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_library_minimal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_library_minimal$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_library_minimal",
-        "()I",
+        "sodium_library_minimal",
         constants$0.sodium_library_minimal$FUNC, false
     );
-    static final FunctionDescriptor sodium_init$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_init$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_init$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_init",
-        "()I",
+        "sodium_init",
         constants$0.sodium_init$FUNC, false
     );
     static final FunctionDescriptor sodium_set_misuse_handler$handler$FUNC = FunctionDescriptor.ofVoid();

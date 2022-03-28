@@ -6,44 +6,38 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1 {
 
     static final FunctionDescriptor sodium_set_misuse_handler$handler$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle sodium_set_misuse_handler$handler$MH = RuntimeHelper.downcallHandle(
-        "()V",
         constants$1.sodium_set_misuse_handler$handler$FUNC, false
     );
-    static final FunctionDescriptor sodium_set_misuse_handler$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor sodium_set_misuse_handler$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle sodium_set_misuse_handler$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_set_misuse_handler",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "sodium_set_misuse_handler",
         constants$1.sodium_set_misuse_handler$FUNC, false
     );
     static final FunctionDescriptor sodium_misuse$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle sodium_misuse$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_misuse",
-        "()V",
+        "sodium_misuse",
         constants$1.sodium_misuse$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_aes256gcm_is_available$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor crypto_aead_aes256gcm_is_available$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle crypto_aead_aes256gcm_is_available$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_aes256gcm_is_available",
-        "()I",
+        "crypto_aead_aes256gcm_is_available",
         constants$1.crypto_aead_aes256gcm_is_available$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_aes256gcm_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_aead_aes256gcm_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_aead_aes256gcm_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_aes256gcm_keybytes",
-        "()J",
+        "crypto_aead_aes256gcm_keybytes",
         constants$1.crypto_aead_aes256gcm_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_aes256gcm_nsecbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_aead_aes256gcm_nsecbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_aead_aes256gcm_nsecbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_aes256gcm_nsecbytes",
-        "()J",
+        "crypto_aead_aes256gcm_nsecbytes",
         constants$1.crypto_aead_aes256gcm_nsecbytes$FUNC, false
     );
 }

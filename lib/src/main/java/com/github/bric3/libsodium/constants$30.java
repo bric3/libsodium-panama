@@ -6,43 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$30 {
 
-    static final FunctionDescriptor crypto_generichash_blake2b_keybytes_min$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_generichash_blake2b_keybytes_min$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_generichash_blake2b_keybytes_min$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_blake2b_keybytes_min",
-        "()J",
+        "crypto_generichash_blake2b_keybytes_min",
         constants$30.crypto_generichash_blake2b_keybytes_min$FUNC, false
     );
-    static final FunctionDescriptor crypto_generichash_blake2b_keybytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_generichash_blake2b_keybytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_generichash_blake2b_keybytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_blake2b_keybytes_max",
-        "()J",
+        "crypto_generichash_blake2b_keybytes_max",
         constants$30.crypto_generichash_blake2b_keybytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_generichash_blake2b_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_generichash_blake2b_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_generichash_blake2b_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_blake2b_keybytes",
-        "()J",
+        "crypto_generichash_blake2b_keybytes",
         constants$30.crypto_generichash_blake2b_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_generichash_blake2b_saltbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_generichash_blake2b_saltbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_generichash_blake2b_saltbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_blake2b_saltbytes",
-        "()J",
+        "crypto_generichash_blake2b_saltbytes",
         constants$30.crypto_generichash_blake2b_saltbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_generichash_blake2b_personalbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_generichash_blake2b_personalbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_generichash_blake2b_personalbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_blake2b_personalbytes",
-        "()J",
+        "crypto_generichash_blake2b_personalbytes",
         constants$30.crypto_generichash_blake2b_personalbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_generichash_blake2b_statebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_generichash_blake2b_statebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_generichash_blake2b_statebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_generichash_blake2b_statebytes",
-        "()J",
+        "crypto_generichash_blake2b_statebytes",
         constants$30.crypto_generichash_blake2b_statebytes$FUNC, false
     );
 }

@@ -6,57 +6,51 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$55 {
 
-    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_macbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_macbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_secretbox_xsalsa20poly1305_macbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretbox_xsalsa20poly1305_macbytes",
-        "()J",
+        "crypto_secretbox_xsalsa20poly1305_macbytes",
         constants$55.crypto_secretbox_xsalsa20poly1305_macbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_messagebytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_messagebytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_secretbox_xsalsa20poly1305_messagebytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretbox_xsalsa20poly1305_messagebytes_max",
-        "()J",
+        "crypto_secretbox_xsalsa20poly1305_messagebytes_max",
         constants$55.crypto_secretbox_xsalsa20poly1305_messagebytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_secretbox_xsalsa20poly1305$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretbox_xsalsa20poly1305",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_secretbox_xsalsa20poly1305",
         constants$55.crypto_secretbox_xsalsa20poly1305$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_open$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_open$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_secretbox_xsalsa20poly1305_open$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretbox_xsalsa20poly1305_open",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_secretbox_xsalsa20poly1305_open",
         constants$55.crypto_secretbox_xsalsa20poly1305_open$FUNC, false
     );
     static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_secretbox_xsalsa20poly1305_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretbox_xsalsa20poly1305_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_secretbox_xsalsa20poly1305_keygen",
         constants$55.crypto_secretbox_xsalsa20poly1305_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_boxzerobytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_secretbox_xsalsa20poly1305_boxzerobytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_secretbox_xsalsa20poly1305_boxzerobytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretbox_xsalsa20poly1305_boxzerobytes",
-        "()J",
+        "crypto_secretbox_xsalsa20poly1305_boxzerobytes",
         constants$55.crypto_secretbox_xsalsa20poly1305_boxzerobytes$FUNC, false
     );
 }

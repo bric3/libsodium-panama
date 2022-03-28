@@ -6,69 +6,63 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$20 {
 
-    static final FunctionDescriptor crypto_box_curve25519xsalsa20poly1305$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_curve25519xsalsa20poly1305$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_curve25519xsalsa20poly1305$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_curve25519xsalsa20poly1305",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_curve25519xsalsa20poly1305",
         constants$20.crypto_box_curve25519xsalsa20poly1305$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_curve25519xsalsa20poly1305_open$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_curve25519xsalsa20poly1305_open$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_curve25519xsalsa20poly1305_open$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_curve25519xsalsa20poly1305_open",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_curve25519xsalsa20poly1305_open",
         constants$20.crypto_box_curve25519xsalsa20poly1305_open$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_curve25519xsalsa20poly1305_afternm$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_curve25519xsalsa20poly1305_afternm$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_curve25519xsalsa20poly1305_afternm$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_curve25519xsalsa20poly1305_afternm",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_curve25519xsalsa20poly1305_afternm",
         constants$20.crypto_box_curve25519xsalsa20poly1305_afternm$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_curve25519xsalsa20poly1305_open_afternm$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_curve25519xsalsa20poly1305_open_afternm$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_curve25519xsalsa20poly1305_open_afternm$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_curve25519xsalsa20poly1305_open_afternm",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_curve25519xsalsa20poly1305_open_afternm",
         constants$20.crypto_box_curve25519xsalsa20poly1305_open_afternm$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_seedbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_box_seedbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_box_seedbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_seedbytes",
-        "()J",
+        "crypto_box_seedbytes",
         constants$20.crypto_box_seedbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_publickeybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_box_publickeybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_box_publickeybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_publickeybytes",
-        "()J",
+        "crypto_box_publickeybytes",
         constants$20.crypto_box_publickeybytes$FUNC, false
     );
 }

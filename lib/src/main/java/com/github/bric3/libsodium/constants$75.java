@@ -6,51 +6,45 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$75 {
 
     static final FunctionDescriptor randombytes_buf_deterministic$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_LONG,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle randombytes_buf_deterministic$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "randombytes_buf_deterministic",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)V",
+        "randombytes_buf_deterministic",
         constants$75.randombytes_buf_deterministic$FUNC, false
     );
-    static final FunctionDescriptor randombytes_random$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor randombytes_random$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle randombytes_random$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "randombytes_random",
-        "()I",
+        "randombytes_random",
         constants$75.randombytes_random$FUNC, false
     );
-    static final FunctionDescriptor randombytes_uniform$FUNC = FunctionDescriptor.of(C_INT,
-        C_INT
+    static final FunctionDescriptor randombytes_uniform$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle randombytes_uniform$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "randombytes_uniform",
-        "(I)I",
+        "randombytes_uniform",
         constants$75.randombytes_uniform$FUNC, false
     );
     static final FunctionDescriptor randombytes_stir$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle randombytes_stir$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "randombytes_stir",
-        "()V",
+        "randombytes_stir",
         constants$75.randombytes_stir$FUNC, false
     );
-    static final FunctionDescriptor randombytes_close$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor randombytes_close$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle randombytes_close$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "randombytes_close",
-        "()I",
+        "randombytes_close",
         constants$75.randombytes_close$FUNC, false
     );
-    static final FunctionDescriptor randombytes_set_implementation$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor randombytes_set_implementation$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle randombytes_set_implementation$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "randombytes_set_implementation",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "randombytes_set_implementation",
         constants$75.randombytes_set_implementation$FUNC, false
     );
 }

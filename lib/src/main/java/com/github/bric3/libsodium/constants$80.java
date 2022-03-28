@@ -6,77 +6,71 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$80 {
 
-    static final FunctionDescriptor sodium_bin2hex$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_POINTER,
-        C_LONG,
-        C_POINTER,
-        C_LONG
+    static final FunctionDescriptor sodium_bin2hex$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle sodium_bin2hex$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_bin2hex",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;J)Ljdk/incubator/foreign/MemoryAddress;",
+        "sodium_bin2hex",
         constants$80.sodium_bin2hex$FUNC, false
     );
-    static final FunctionDescriptor sodium_hex2bin$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG,
-        C_POINTER,
-        C_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor sodium_hex2bin$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle sodium_hex2bin$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_hex2bin",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "sodium_hex2bin",
         constants$80.sodium_hex2bin$FUNC, false
     );
-    static final FunctionDescriptor sodium_base64_encoded_len$FUNC = FunctionDescriptor.of(C_LONG,
-        C_LONG,
-        C_INT
+    static final FunctionDescriptor sodium_base64_encoded_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle sodium_base64_encoded_len$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_base64_encoded_len",
-        "(JI)J",
+        "sodium_base64_encoded_len",
         constants$80.sodium_base64_encoded_len$FUNC, false
     );
-    static final FunctionDescriptor sodium_bin2base64$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_POINTER,
-        C_LONG,
-        C_POINTER,
-        C_LONG,
-        C_INT
+    static final FunctionDescriptor sodium_bin2base64$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle sodium_bin2base64$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_bin2base64",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JI)Ljdk/incubator/foreign/MemoryAddress;",
+        "sodium_bin2base64",
         constants$80.sodium_bin2base64$FUNC, false
     );
-    static final FunctionDescriptor sodium_base642bin$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG,
-        C_POINTER,
-        C_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_INT
+    static final FunctionDescriptor sodium_base642bin$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
     );
     static final MethodHandle sodium_base642bin$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_base642bin",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I",
+        "sodium_base642bin",
         constants$80.sodium_base642bin$FUNC, false
     );
-    static final FunctionDescriptor sodium_mlock$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG
+    static final FunctionDescriptor sodium_mlock$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle sodium_mlock$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_mlock",
-        "(Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "sodium_mlock",
         constants$80.sodium_mlock$FUNC, false
     );
 }

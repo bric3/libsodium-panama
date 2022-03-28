@@ -6,57 +6,51 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$81 {
 
-    static final FunctionDescriptor sodium_munlock$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG
+    static final FunctionDescriptor sodium_munlock$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle sodium_munlock$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_munlock",
-        "(Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "sodium_munlock",
         constants$81.sodium_munlock$FUNC, false
     );
-    static final FunctionDescriptor sodium_malloc$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_LONG
+    static final FunctionDescriptor sodium_malloc$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle sodium_malloc$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_malloc",
-        "(J)Ljdk/incubator/foreign/MemoryAddress;",
+        "sodium_malloc",
         constants$81.sodium_malloc$FUNC, false
     );
-    static final FunctionDescriptor sodium_allocarray$FUNC = FunctionDescriptor.of(C_POINTER,
-        C_LONG,
-        C_LONG
+    static final FunctionDescriptor sodium_allocarray$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle sodium_allocarray$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_allocarray",
-        "(JJ)Ljdk/incubator/foreign/MemoryAddress;",
+        "sodium_allocarray",
         constants$81.sodium_allocarray$FUNC, false
     );
     static final FunctionDescriptor sodium_free$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle sodium_free$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_free",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "sodium_free",
         constants$81.sodium_free$FUNC, false
     );
-    static final FunctionDescriptor sodium_mprotect_noaccess$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor sodium_mprotect_noaccess$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle sodium_mprotect_noaccess$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_mprotect_noaccess",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "sodium_mprotect_noaccess",
         constants$81.sodium_mprotect_noaccess$FUNC, false
     );
-    static final FunctionDescriptor sodium_mprotect_readonly$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor sodium_mprotect_readonly$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle sodium_mprotect_readonly$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_mprotect_readonly",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "sodium_mprotect_readonly",
         constants$81.sodium_mprotect_readonly$FUNC, false
     );
 }

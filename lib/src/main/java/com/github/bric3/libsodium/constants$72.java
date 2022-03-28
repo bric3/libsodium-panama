@@ -6,56 +6,50 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$72 {
 
-    static final FunctionDescriptor crypto_stream$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream",
         constants$72.crypto_stream$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_xor$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_xor$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_xor$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_xor",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_xor",
         constants$72.crypto_stream_xor$FUNC, false
     );
     static final FunctionDescriptor crypto_stream_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_stream_keygen",
         constants$72.crypto_stream_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa20_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_salsa20_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_salsa20_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa20_keybytes",
-        "()J",
+        "crypto_stream_salsa20_keybytes",
         constants$72.crypto_stream_salsa20_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa20_noncebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_salsa20_noncebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_salsa20_noncebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa20_noncebytes",
-        "()J",
+        "crypto_stream_salsa20_noncebytes",
         constants$72.crypto_stream_salsa20_noncebytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa20_messagebytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_salsa20_messagebytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_salsa20_messagebytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa20_messagebytes_max",
-        "()J",
+        "crypto_stream_salsa20_messagebytes_max",
         constants$72.crypto_stream_salsa20_messagebytes_max$FUNC, false
     );
 }

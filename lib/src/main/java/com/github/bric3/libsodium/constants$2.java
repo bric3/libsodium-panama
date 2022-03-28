@@ -6,63 +6,57 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$2 {
 
-    static final FunctionDescriptor crypto_aead_aes256gcm_npubbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_aead_aes256gcm_npubbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_aead_aes256gcm_npubbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_aes256gcm_npubbytes",
-        "()J",
+        "crypto_aead_aes256gcm_npubbytes",
         constants$2.crypto_aead_aes256gcm_npubbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_aes256gcm_abytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_aead_aes256gcm_abytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_aead_aes256gcm_abytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_aes256gcm_abytes",
-        "()J",
+        "crypto_aead_aes256gcm_abytes",
         constants$2.crypto_aead_aes256gcm_abytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_aes256gcm_messagebytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_aead_aes256gcm_messagebytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_aead_aes256gcm_messagebytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_aes256gcm_messagebytes_max",
-        "()J",
+        "crypto_aead_aes256gcm_messagebytes_max",
         constants$2.crypto_aead_aes256gcm_messagebytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_aes256gcm_statebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_aead_aes256gcm_statebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_aead_aes256gcm_statebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_aes256gcm_statebytes",
-        "()J",
+        "crypto_aead_aes256gcm_statebytes",
         constants$2.crypto_aead_aes256gcm_statebytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_aes256gcm_encrypt$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_aead_aes256gcm_encrypt$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_aead_aes256gcm_encrypt$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_aes256gcm_encrypt",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_aead_aes256gcm_encrypt",
         constants$2.crypto_aead_aes256gcm_encrypt$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_aes256gcm_decrypt$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_aead_aes256gcm_decrypt$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_aead_aes256gcm_decrypt$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_aes256gcm_decrypt",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_aead_aes256gcm_decrypt",
         constants$2.crypto_aead_aes256gcm_decrypt$FUNC, false
     );
 }

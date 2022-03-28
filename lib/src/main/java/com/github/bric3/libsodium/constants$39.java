@@ -6,60 +6,54 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$39 {
 
-    static final FunctionDescriptor crypto_onetimeauth_poly1305_verify$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_onetimeauth_poly1305_verify$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_onetimeauth_poly1305_verify$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_poly1305_verify",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_onetimeauth_poly1305_verify",
         constants$39.crypto_onetimeauth_poly1305_verify$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_poly1305_init$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_onetimeauth_poly1305_init$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_onetimeauth_poly1305_init$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_poly1305_init",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_onetimeauth_poly1305_init",
         constants$39.crypto_onetimeauth_poly1305_init$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_poly1305_update$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG
+    static final FunctionDescriptor crypto_onetimeauth_poly1305_update$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_onetimeauth_poly1305_update$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_poly1305_update",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "crypto_onetimeauth_poly1305_update",
         constants$39.crypto_onetimeauth_poly1305_update$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_poly1305_final$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_onetimeauth_poly1305_final$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_onetimeauth_poly1305_final$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_poly1305_final",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_onetimeauth_poly1305_final",
         constants$39.crypto_onetimeauth_poly1305_final$FUNC, false
     );
     static final FunctionDescriptor crypto_onetimeauth_poly1305_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_onetimeauth_poly1305_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_poly1305_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_onetimeauth_poly1305_keygen",
         constants$39.crypto_onetimeauth_poly1305_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_statebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_onetimeauth_statebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_onetimeauth_statebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_statebytes",
-        "()J",
+        "crypto_onetimeauth_statebytes",
         constants$39.crypto_onetimeauth_statebytes$FUNC, false
     );
 }

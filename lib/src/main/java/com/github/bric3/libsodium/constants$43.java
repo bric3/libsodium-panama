@@ -6,43 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$43 {
 
-    static final FunctionDescriptor crypto_pwhash_argon2i_opslimit_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_argon2i_opslimit_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_argon2i_opslimit_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_argon2i_opslimit_max",
-        "()J",
+        "crypto_pwhash_argon2i_opslimit_max",
         constants$43.crypto_pwhash_argon2i_opslimit_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_argon2i_memlimit_min$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_argon2i_memlimit_min$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_argon2i_memlimit_min$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_argon2i_memlimit_min",
-        "()J",
+        "crypto_pwhash_argon2i_memlimit_min",
         constants$43.crypto_pwhash_argon2i_memlimit_min$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_argon2i_memlimit_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_argon2i_memlimit_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_argon2i_memlimit_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_argon2i_memlimit_max",
-        "()J",
+        "crypto_pwhash_argon2i_memlimit_max",
         constants$43.crypto_pwhash_argon2i_memlimit_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_argon2i_opslimit_interactive$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_argon2i_opslimit_interactive$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_argon2i_opslimit_interactive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_argon2i_opslimit_interactive",
-        "()J",
+        "crypto_pwhash_argon2i_opslimit_interactive",
         constants$43.crypto_pwhash_argon2i_opslimit_interactive$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_argon2i_memlimit_interactive$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_argon2i_memlimit_interactive$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_argon2i_memlimit_interactive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_argon2i_memlimit_interactive",
-        "()J",
+        "crypto_pwhash_argon2i_memlimit_interactive",
         constants$43.crypto_pwhash_argon2i_memlimit_interactive$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_argon2i_opslimit_moderate$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_argon2i_opslimit_moderate$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_argon2i_opslimit_moderate$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_argon2i_opslimit_moderate",
-        "()J",
+        "crypto_pwhash_argon2i_opslimit_moderate",
         constants$43.crypto_pwhash_argon2i_opslimit_moderate$FUNC, false
     );
 }

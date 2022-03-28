@@ -6,55 +6,49 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$25 {
 
-    static final FunctionDescriptor crypto_box_afternm$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_afternm$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_afternm$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_afternm",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_afternm",
         constants$25.crypto_box_afternm$FUNC, false
     );
-    static final FunctionDescriptor crypto_box_open_afternm$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_box_open_afternm$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_box_open_afternm$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_box_open_afternm",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_box_open_afternm",
         constants$25.crypto_box_open_afternm$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_hsalsa20_outputbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_hsalsa20_outputbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_hsalsa20_outputbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_hsalsa20_outputbytes",
-        "()J",
+        "crypto_core_hsalsa20_outputbytes",
         constants$25.crypto_core_hsalsa20_outputbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_hsalsa20_inputbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_hsalsa20_inputbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_hsalsa20_inputbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_hsalsa20_inputbytes",
-        "()J",
+        "crypto_core_hsalsa20_inputbytes",
         constants$25.crypto_core_hsalsa20_inputbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_hsalsa20_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_hsalsa20_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_hsalsa20_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_hsalsa20_keybytes",
-        "()J",
+        "crypto_core_hsalsa20_keybytes",
         constants$25.crypto_core_hsalsa20_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_hsalsa20_constbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_hsalsa20_constbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_hsalsa20_constbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_hsalsa20_constbytes",
-        "()J",
+        "crypto_core_hsalsa20_constbytes",
         constants$25.crypto_core_hsalsa20_constbytes$FUNC, false
     );
 }

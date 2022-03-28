@@ -6,61 +6,55 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$9 {
 
-    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_decrypt_detached$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_decrypt_detached$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_aead_xchacha20poly1305_ietf_decrypt_detached$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_xchacha20poly1305_ietf_decrypt_detached",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_aead_xchacha20poly1305_ietf_decrypt_detached",
         constants$9.crypto_aead_xchacha20poly1305_ietf_decrypt_detached$FUNC, false
     );
     static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_aead_xchacha20poly1305_ietf_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_xchacha20poly1305_ietf_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_aead_xchacha20poly1305_ietf_keygen",
         constants$9.crypto_aead_xchacha20poly1305_ietf_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_hash_sha512_statebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_hash_sha512_statebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_hash_sha512_statebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_hash_sha512_statebytes",
-        "()J",
+        "crypto_hash_sha512_statebytes",
         constants$9.crypto_hash_sha512_statebytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_hash_sha512_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_hash_sha512_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_hash_sha512_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_hash_sha512_bytes",
-        "()J",
+        "crypto_hash_sha512_bytes",
         constants$9.crypto_hash_sha512_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_hash_sha512$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG
+    static final FunctionDescriptor crypto_hash_sha512$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_hash_sha512$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_hash_sha512",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "crypto_hash_sha512",
         constants$9.crypto_hash_sha512$FUNC, false
     );
-    static final FunctionDescriptor crypto_hash_sha512_init$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor crypto_hash_sha512_init$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_hash_sha512_init$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_hash_sha512_init",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_hash_sha512_init",
         constants$9.crypto_hash_sha512_init$FUNC, false
     );
 }

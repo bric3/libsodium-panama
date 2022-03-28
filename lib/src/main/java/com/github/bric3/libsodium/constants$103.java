@@ -6,15 +6,15 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$103 {
 
-    static final MemorySegment crypto_pwhash_argon2i_STRPREFIX$SEGMENT = CLinker.toCString("$argon2i$", ResourceScope.newImplicitScope());
-    static final MemorySegment crypto_pwhash_argon2id_STRPREFIX$SEGMENT = CLinker.toCString("$argon2id$", ResourceScope.newImplicitScope());
-    static final MemorySegment crypto_pwhash_STRPREFIX$SEGMENT = CLinker.toCString("$argon2id$", ResourceScope.newImplicitScope());
-    static final MemorySegment crypto_pwhash_PRIMITIVE$SEGMENT = CLinker.toCString("argon2i", ResourceScope.newImplicitScope());
-    static final MemorySegment crypto_scalarmult_PRIMITIVE$SEGMENT = CLinker.toCString("curve25519", ResourceScope.newImplicitScope());
-    static final MemorySegment crypto_secretbox_PRIMITIVE$SEGMENT = CLinker.toCString("xsalsa20poly1305", ResourceScope.newImplicitScope());
+    static final MemorySegment crypto_pwhash_argon2i_STRPREFIX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("$argon2i$");
+    static final MemorySegment crypto_pwhash_argon2id_STRPREFIX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("$argon2id$");
+    static final MemorySegment crypto_pwhash_STRPREFIX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("$argon2id$");
+    static final MemorySegment crypto_pwhash_PRIMITIVE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("argon2i");
+    static final MemorySegment crypto_scalarmult_PRIMITIVE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("curve25519");
+    static final MemorySegment crypto_secretbox_PRIMITIVE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("xsalsa20poly1305");
 }
 
 

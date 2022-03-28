@@ -6,43 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$49 {
 
-    static final FunctionDescriptor crypto_pwhash_alg_argon2id13$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor crypto_pwhash_alg_argon2id13$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle crypto_pwhash_alg_argon2id13$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_alg_argon2id13",
-        "()I",
+        "crypto_pwhash_alg_argon2id13",
         constants$49.crypto_pwhash_alg_argon2id13$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_alg_default$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor crypto_pwhash_alg_default$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle crypto_pwhash_alg_default$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_alg_default",
-        "()I",
+        "crypto_pwhash_alg_default",
         constants$49.crypto_pwhash_alg_default$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_bytes_min$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_bytes_min$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_bytes_min$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_bytes_min",
-        "()J",
+        "crypto_pwhash_bytes_min",
         constants$49.crypto_pwhash_bytes_min$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_bytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_bytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_bytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_bytes_max",
-        "()J",
+        "crypto_pwhash_bytes_max",
         constants$49.crypto_pwhash_bytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_passwd_min$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_passwd_min$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_passwd_min$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_passwd_min",
-        "()J",
+        "crypto_pwhash_passwd_min",
         constants$49.crypto_pwhash_passwd_min$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_passwd_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_pwhash_passwd_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_pwhash_passwd_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_passwd_max",
-        "()J",
+        "crypto_pwhash_passwd_max",
         constants$49.crypto_pwhash_passwd_max$FUNC, false
     );
 }

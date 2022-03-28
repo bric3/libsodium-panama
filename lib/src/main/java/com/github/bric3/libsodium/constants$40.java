@@ -6,56 +6,50 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$40 {
 
-    static final FunctionDescriptor crypto_onetimeauth_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_onetimeauth_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_onetimeauth_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_bytes",
-        "()J",
+        "crypto_onetimeauth_bytes",
         constants$40.crypto_onetimeauth_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_onetimeauth_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_onetimeauth_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_keybytes",
-        "()J",
+        "crypto_onetimeauth_keybytes",
         constants$40.crypto_onetimeauth_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_primitive$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor crypto_onetimeauth_primitive$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle crypto_onetimeauth_primitive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_primitive",
-        "()Ljdk/incubator/foreign/MemoryAddress;",
+        "crypto_onetimeauth_primitive",
         constants$40.crypto_onetimeauth_primitive$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_onetimeauth$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_onetimeauth$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_onetimeauth",
         constants$40.crypto_onetimeauth$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_verify$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_onetimeauth_verify$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_onetimeauth_verify$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_verify",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_onetimeauth_verify",
         constants$40.crypto_onetimeauth_verify$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_init$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_onetimeauth_init$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_onetimeauth_init$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_init",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_onetimeauth_init",
         constants$40.crypto_onetimeauth_init$FUNC, false
     );
 }

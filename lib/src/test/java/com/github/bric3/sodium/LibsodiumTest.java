@@ -23,6 +23,7 @@ public class LibsodiumTest {
 
 //        libsodium = Libsodium.withName("sodium");
         libsodium = Libsodium.withPath(Path.of("/usr/local/lib/libsodium.dylib")).ofJextract();
+        // libsodium = Libsodium.withPath(Path.of("/usr/local/lib/libsodium.dylib"));
     }
 
     @Test

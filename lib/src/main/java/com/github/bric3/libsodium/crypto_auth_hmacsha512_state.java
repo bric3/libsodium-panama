@@ -6,19 +6,19 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public class crypto_auth_hmacsha512_state {
 
-    static final MemoryLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(8, C_LONG_LONG).withName("state"),
-            MemoryLayout.sequenceLayout(2, C_LONG_LONG).withName("count"),
-            MemoryLayout.sequenceLayout(128, C_CHAR).withName("buf")
+            MemoryLayout.sequenceLayout(8, Constants$root.C_LONG_LONG$LAYOUT).withName("state"),
+            MemoryLayout.sequenceLayout(2, Constants$root.C_LONG_LONG$LAYOUT).withName("count"),
+            MemoryLayout.sequenceLayout(128, Constants$root.C_CHAR$LAYOUT).withName("buf")
         ).withName("ictx"),
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(8, C_LONG_LONG).withName("state"),
-            MemoryLayout.sequenceLayout(2, C_LONG_LONG).withName("count"),
-            MemoryLayout.sequenceLayout(128, C_CHAR).withName("buf")
+            MemoryLayout.sequenceLayout(8, Constants$root.C_LONG_LONG$LAYOUT).withName("state"),
+            MemoryLayout.sequenceLayout(2, Constants$root.C_LONG_LONG$LAYOUT).withName("count"),
+            MemoryLayout.sequenceLayout(128, Constants$root.C_CHAR$LAYOUT).withName("buf")
         ).withName("octx")
     ).withName("crypto_auth_hmacsha512_state");
     public static MemoryLayout $LAYOUT() {
@@ -32,12 +32,12 @@ public class crypto_auth_hmacsha512_state {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.ofScope(scope)); }
     public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
+    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.nativeAllocator(scope)); }
     public static MemorySegment allocateArray(int len, ResourceScope scope) {
-        return allocateArray(len, SegmentAllocator.ofScope(scope));
+        return allocateArray(len, SegmentAllocator.nativeAllocator(scope));
     }
     public static MemorySegment ofAddress(MemoryAddress addr, ResourceScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }

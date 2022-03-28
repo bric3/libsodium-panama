@@ -6,60 +6,54 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$10 {
 
-    static final FunctionDescriptor crypto_hash_sha512_update$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG
+    static final FunctionDescriptor crypto_hash_sha512_update$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_hash_sha512_update$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_hash_sha512_update",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "crypto_hash_sha512_update",
         constants$10.crypto_hash_sha512_update$FUNC, false
     );
-    static final FunctionDescriptor crypto_hash_sha512_final$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_hash_sha512_final$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_hash_sha512_final$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_hash_sha512_final",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_hash_sha512_final",
         constants$10.crypto_hash_sha512_final$FUNC, false
     );
-    static final FunctionDescriptor crypto_auth_hmacsha512_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_auth_hmacsha512_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_auth_hmacsha512_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_hmacsha512_bytes",
-        "()J",
+        "crypto_auth_hmacsha512_bytes",
         constants$10.crypto_auth_hmacsha512_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_auth_hmacsha512_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_auth_hmacsha512_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_auth_hmacsha512_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_hmacsha512_keybytes",
-        "()J",
+        "crypto_auth_hmacsha512_keybytes",
         constants$10.crypto_auth_hmacsha512_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_auth_hmacsha512$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_auth_hmacsha512$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_auth_hmacsha512$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_hmacsha512",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_auth_hmacsha512",
         constants$10.crypto_auth_hmacsha512$FUNC, false
     );
-    static final FunctionDescriptor crypto_auth_hmacsha512_verify$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_auth_hmacsha512_verify$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_auth_hmacsha512_verify$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_hmacsha512_verify",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_auth_hmacsha512_verify",
         constants$10.crypto_auth_hmacsha512_verify$FUNC, false
     );
 }

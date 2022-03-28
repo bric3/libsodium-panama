@@ -6,56 +6,50 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$68 {
 
-    static final FunctionDescriptor crypto_sign_ed25519ph_update$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG
+    static final FunctionDescriptor crypto_sign_ed25519ph_update$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_sign_ed25519ph_update$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_ed25519ph_update",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "crypto_sign_ed25519ph_update",
         constants$68.crypto_sign_ed25519ph_update$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_ed25519ph_final_create$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_sign_ed25519ph_final_create$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_sign_ed25519ph_final_create$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_ed25519ph_final_create",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_sign_ed25519ph_final_create",
         constants$68.crypto_sign_ed25519ph_final_create$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_ed25519ph_final_verify$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_sign_ed25519ph_final_verify$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_sign_ed25519ph_final_verify$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_ed25519ph_final_verify",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_sign_ed25519ph_final_verify",
         constants$68.crypto_sign_ed25519ph_final_verify$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_statebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_sign_statebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_sign_statebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_statebytes",
-        "()J",
+        "crypto_sign_statebytes",
         constants$68.crypto_sign_statebytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_sign_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_sign_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_bytes",
-        "()J",
+        "crypto_sign_bytes",
         constants$68.crypto_sign_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_seedbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_sign_seedbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_sign_seedbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_seedbytes",
-        "()J",
+        "crypto_sign_seedbytes",
         constants$68.crypto_sign_seedbytes$FUNC, false
     );
 }

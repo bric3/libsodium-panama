@@ -6,58 +6,52 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$91 {
 
-    static final FunctionDescriptor crypto_core_ristretto255_nonreducedscalarbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_ristretto255_nonreducedscalarbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_ristretto255_nonreducedscalarbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_nonreducedscalarbytes",
-        "()J",
+        "crypto_core_ristretto255_nonreducedscalarbytes",
         constants$91.crypto_core_ristretto255_nonreducedscalarbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ristretto255_is_valid_point$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor crypto_core_ristretto255_is_valid_point$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_ristretto255_is_valid_point$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_is_valid_point",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_core_ristretto255_is_valid_point",
         constants$91.crypto_core_ristretto255_is_valid_point$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ristretto255_add$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_core_ristretto255_add$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_ristretto255_add$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_add",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_core_ristretto255_add",
         constants$91.crypto_core_ristretto255_add$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ristretto255_sub$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_core_ristretto255_sub$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_ristretto255_sub$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_sub",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_core_ristretto255_sub",
         constants$91.crypto_core_ristretto255_sub$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ristretto255_from_hash$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_core_ristretto255_from_hash$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_ristretto255_from_hash$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_from_hash",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_core_ristretto255_from_hash",
         constants$91.crypto_core_ristretto255_from_hash$FUNC, false
     );
     static final FunctionDescriptor crypto_core_ristretto255_random$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_ristretto255_random$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_random",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_core_ristretto255_random",
         constants$91.crypto_core_ristretto255_random$FUNC, false
     );
 }

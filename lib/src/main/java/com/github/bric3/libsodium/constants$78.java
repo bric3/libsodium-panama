@@ -6,48 +6,42 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$78 {
 
-    static final FunctionDescriptor sodium_runtime_has_pclmul$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_runtime_has_pclmul$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_runtime_has_pclmul$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_runtime_has_pclmul",
-        "()I",
+        "sodium_runtime_has_pclmul",
         constants$78.sodium_runtime_has_pclmul$FUNC, false
     );
-    static final FunctionDescriptor sodium_runtime_has_aesni$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_runtime_has_aesni$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_runtime_has_aesni$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_runtime_has_aesni",
-        "()I",
+        "sodium_runtime_has_aesni",
         constants$78.sodium_runtime_has_aesni$FUNC, false
     );
-    static final FunctionDescriptor sodium_runtime_has_rdrand$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor sodium_runtime_has_rdrand$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle sodium_runtime_has_rdrand$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_runtime_has_rdrand",
-        "()I",
+        "sodium_runtime_has_rdrand",
         constants$78.sodium_runtime_has_rdrand$FUNC, false
     );
-    static final FunctionDescriptor _sodium_runtime_get_cpu_features$FUNC = FunctionDescriptor.of(C_INT);
+    static final FunctionDescriptor _sodium_runtime_get_cpu_features$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
     static final MethodHandle _sodium_runtime_get_cpu_features$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "_sodium_runtime_get_cpu_features",
-        "()I",
+        "_sodium_runtime_get_cpu_features",
         constants$78._sodium_runtime_get_cpu_features$FUNC, false
     );
     static final FunctionDescriptor sodium_memzero$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_LONG
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle sodium_memzero$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_memzero",
-        "(Ljdk/incubator/foreign/MemoryAddress;J)V",
+        "sodium_memzero",
         constants$78.sodium_memzero$FUNC, false
     );
     static final FunctionDescriptor sodium_stackzero$FUNC = FunctionDescriptor.ofVoid(
-        C_LONG
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle sodium_stackzero$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "sodium_stackzero",
-        "(J)V",
+        "sodium_stackzero",
         constants$78.sodium_stackzero$FUNC, false
     );
 }

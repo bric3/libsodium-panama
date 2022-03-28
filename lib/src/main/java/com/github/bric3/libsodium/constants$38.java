@@ -6,60 +6,54 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$38 {
 
-    static final FunctionDescriptor crypto_kx_client_session_keys$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_kx_client_session_keys$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_kx_client_session_keys$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kx_client_session_keys",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_kx_client_session_keys",
         constants$38.crypto_kx_client_session_keys$FUNC, false
     );
-    static final FunctionDescriptor crypto_kx_server_session_keys$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_kx_server_session_keys$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_kx_server_session_keys$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kx_server_session_keys",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_kx_server_session_keys",
         constants$38.crypto_kx_server_session_keys$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_poly1305_statebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_onetimeauth_poly1305_statebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_onetimeauth_poly1305_statebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_poly1305_statebytes",
-        "()J",
+        "crypto_onetimeauth_poly1305_statebytes",
         constants$38.crypto_onetimeauth_poly1305_statebytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_poly1305_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_onetimeauth_poly1305_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_onetimeauth_poly1305_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_poly1305_bytes",
-        "()J",
+        "crypto_onetimeauth_poly1305_bytes",
         constants$38.crypto_onetimeauth_poly1305_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_poly1305_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_onetimeauth_poly1305_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_onetimeauth_poly1305_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_poly1305_keybytes",
-        "()J",
+        "crypto_onetimeauth_poly1305_keybytes",
         constants$38.crypto_onetimeauth_poly1305_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_onetimeauth_poly1305$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_onetimeauth_poly1305$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_onetimeauth_poly1305$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_onetimeauth_poly1305",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_onetimeauth_poly1305",
         constants$38.crypto_onetimeauth_poly1305$FUNC, false
     );
 }

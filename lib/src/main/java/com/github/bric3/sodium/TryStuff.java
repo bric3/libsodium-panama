@@ -3,36 +3,52 @@ package com.github.bric3.sodium;
 import jdk.incubator.foreign.*;
 
 import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodType;
+import java.nio.charset.StandardCharsets;
 
 public class TryStuff {
     public static void main(String[] args) throws Throwable {
         var tryStuff = new TryStuff();
         System.out.println("pid: " + tryStuff.c_getpid_smokeTest());
         tryStuff.c_printf_smokeTest("Hello C");
+        tryStuff.c_strlen("Hello C");
 
         tryStuff.thread_dump();
     }
 
+    private void c_strlen(String str) throws Throwable {
+        var linker = CLinker.systemCLinker();
+        MethodHandle strlen = linker.downcallHandle(
+                linker.lookup("strlen").get(),
+                FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+        );
+
+        try (var scope = ResourceScope.newConfinedScope()) {
+            var cString = MemorySegment.allocateNative(str.length() + 1, scope);
+            cString.setUtf8String(0, str);
+            long len = (long)strlen.invoke(cString);
+
+            assert len == str.getBytes(StandardCharsets.UTF_8).length : "strlen returned wrong length";
+        }
+    }
+
     public long c_printf_smokeTest(String str) throws Throwable {
-        MethodHandle printf = CLinker.getInstance()
+        MethodHandle printf = CLinker.systemCLinker()
                                      .downcallHandle(
-                                             CLinker.systemLookup().lookup("printf").get(),
-                                             MethodType.methodType(long.class, MemoryAddress.class),
-                                             FunctionDescriptor.of(CLinker.C_LONG, CLinker.C_POINTER)
+                                             CLinker.systemCLinker().lookup("printf").get(),
+                                             FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
                                      );
 
         try (var scope = ResourceScope.newConfinedScope()) {
-            return (long) printf.invokeExact(CLinker.toCString(str, scope).address());
+            var allocator = SegmentAllocator.nativeAllocator(scope);
+            return (long) printf.invoke(allocator.allocateUtf8String(str).address());
         }
     }
 
     public long c_getpid_smokeTest() throws Throwable {
-        var getpid = CLinker.getInstance()
+        var getpid = CLinker.systemCLinker()
                             .downcallHandle(
-                                    CLinker.systemLookup().lookup("getpid").get(),
-                                    MethodType.methodType(long.class),
-                                    FunctionDescriptor.of(CLinker.C_LONG)
+                                    CLinker.systemCLinker().lookup("getpid").get(),
+                                    FunctionDescriptor.of(ValueLayout.JAVA_LONG)
                             );
 
         return (long) getpid.invokeExact();
@@ -70,22 +86,20 @@ public class TryStuff {
         //    printf("!! signal caught !!\n");
         // }
 
-        MethodHandle raise = CLinker.getInstance()
+        MethodHandle raise = CLinker.systemCLinker()
                                     .downcallHandle(
-                                            CLinker.systemLookup().lookup("raise").get(),
-                                            MethodType.methodType(int.class, int.class),
-                                            FunctionDescriptor.of(CLinker.C_INT, CLinker.C_INT)
+                                            CLinker.systemCLinker().lookup("raise").get(),
+                                            FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
                                     );
 
-        MethodHandle kill = CLinker.getInstance()
+        MethodHandle kill = CLinker.systemCLinker()
                                    .downcallHandle(
-                                           CLinker.systemLookup().lookup("kill").get(),
-                                           MethodType.methodType(int.class, long.class, int.class),
-                                           FunctionDescriptor.of(CLinker.C_INT, CLinker.C_LONG, CLinker.C_INT)
+                                           CLinker.systemCLinker().lookup("kill").get(),
+                                           FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
                                    );
 
-        var resultKill = (int) kill.invokeExact(ProcessHandle.current().pid(), 3);
-        var resultRaise = (int) raise.invokeExact(3);
+        var resultKill = (int) kill.invoke(ProcessHandle.current().pid(), 3);
+        var resultRaise = (int) raise.invoke(3);
 //        var ignored = (long) raise.invokeExact(ProcessHandle.current().pid());
     }
 

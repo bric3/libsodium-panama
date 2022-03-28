@@ -6,50 +6,44 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$37 {
 
-    static final FunctionDescriptor crypto_kx_secretkeybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_kx_secretkeybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_kx_secretkeybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kx_secretkeybytes",
-        "()J",
+        "crypto_kx_secretkeybytes",
         constants$37.crypto_kx_secretkeybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_kx_seedbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_kx_seedbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_kx_seedbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kx_seedbytes",
-        "()J",
+        "crypto_kx_seedbytes",
         constants$37.crypto_kx_seedbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_kx_sessionkeybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_kx_sessionkeybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_kx_sessionkeybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kx_sessionkeybytes",
-        "()J",
+        "crypto_kx_sessionkeybytes",
         constants$37.crypto_kx_sessionkeybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_kx_primitive$FUNC = FunctionDescriptor.of(C_POINTER);
+    static final FunctionDescriptor crypto_kx_primitive$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle crypto_kx_primitive$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kx_primitive",
-        "()Ljdk/incubator/foreign/MemoryAddress;",
+        "crypto_kx_primitive",
         constants$37.crypto_kx_primitive$FUNC, false
     );
-    static final FunctionDescriptor crypto_kx_seed_keypair$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_kx_seed_keypair$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_kx_seed_keypair$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kx_seed_keypair",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_kx_seed_keypair",
         constants$37.crypto_kx_seed_keypair$FUNC, false
     );
-    static final FunctionDescriptor crypto_kx_keypair$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_kx_keypair$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_kx_keypair$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kx_keypair",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_kx_keypair",
         constants$37.crypto_kx_keypair$FUNC, false
     );
 }

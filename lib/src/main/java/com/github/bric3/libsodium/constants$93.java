@@ -6,58 +6,52 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$93 {
 
     static final FunctionDescriptor crypto_core_ristretto255_scalar_mul$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_ristretto255_scalar_mul$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_scalar_mul",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_core_ristretto255_scalar_mul",
         constants$93.crypto_core_ristretto255_scalar_mul$FUNC, false
     );
     static final FunctionDescriptor crypto_core_ristretto255_scalar_reduce$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_ristretto255_scalar_reduce$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_scalar_reduce",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_core_ristretto255_scalar_reduce",
         constants$93.crypto_core_ristretto255_scalar_reduce$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_ed25519_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_scalarmult_ed25519_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_scalarmult_ed25519_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_ed25519_bytes",
-        "()J",
+        "crypto_scalarmult_ed25519_bytes",
         constants$93.crypto_scalarmult_ed25519_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_ed25519_scalarbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_scalarmult_ed25519_scalarbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_scalarmult_ed25519_scalarbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_ed25519_scalarbytes",
-        "()J",
+        "crypto_scalarmult_ed25519_scalarbytes",
         constants$93.crypto_scalarmult_ed25519_scalarbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_ed25519$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_scalarmult_ed25519$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_scalarmult_ed25519$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_ed25519",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_scalarmult_ed25519",
         constants$93.crypto_scalarmult_ed25519$FUNC, false
     );
-    static final FunctionDescriptor crypto_scalarmult_ed25519_noclamp$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_scalarmult_ed25519_noclamp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_scalarmult_ed25519_noclamp$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_scalarmult_ed25519_noclamp",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_scalarmult_ed25519_noclamp",
         constants$93.crypto_scalarmult_ed25519_noclamp$FUNC, false
     );
 }

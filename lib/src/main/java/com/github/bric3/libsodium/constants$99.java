@@ -6,67 +6,61 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$99 {
 
-    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_str$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_LONG_LONG,
-        C_LONG
+    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_str$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_pwhash_scryptsalsa208sha256_str$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_scryptsalsa208sha256_str",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JJJ)I",
+        "crypto_pwhash_scryptsalsa208sha256_str",
         constants$99.crypto_pwhash_scryptsalsa208sha256_str$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_str_verify$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG
+    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_str_verify$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_pwhash_scryptsalsa208sha256_str_verify$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_scryptsalsa208sha256_str_verify",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "crypto_pwhash_scryptsalsa208sha256_str_verify",
         constants$99.crypto_pwhash_scryptsalsa208sha256_str_verify$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_ll$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG,
-        C_POINTER,
-        C_LONG,
-        C_LONG_LONG,
-        C_INT,
-        C_INT,
-        C_POINTER,
-        C_LONG
+    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_ll$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_pwhash_scryptsalsa208sha256_ll$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_scryptsalsa208sha256_ll",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JJIILjdk/incubator/foreign/MemoryAddress;J)I",
+        "crypto_pwhash_scryptsalsa208sha256_ll",
         constants$99.crypto_pwhash_scryptsalsa208sha256_ll$FUNC, false
     );
-    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_str_needs_rehash$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG_LONG,
-        C_LONG
+    static final FunctionDescriptor crypto_pwhash_scryptsalsa208sha256_str_needs_rehash$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_pwhash_scryptsalsa208sha256_str_needs_rehash$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_pwhash_scryptsalsa208sha256_str_needs_rehash",
-        "(Ljdk/incubator/foreign/MemoryAddress;JJ)I",
+        "crypto_pwhash_scryptsalsa208sha256_str_needs_rehash",
         constants$99.crypto_pwhash_scryptsalsa208sha256_str_needs_rehash$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa2012_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_salsa2012_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_salsa2012_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa2012_keybytes",
-        "()J",
+        "crypto_stream_salsa2012_keybytes",
         constants$99.crypto_stream_salsa2012_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa2012_noncebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_salsa2012_noncebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_salsa2012_noncebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa2012_noncebytes",
-        "()J",
+        "crypto_stream_salsa2012_noncebytes",
         constants$99.crypto_stream_salsa2012_noncebytes$FUNC, false
     );
 }

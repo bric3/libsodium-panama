@@ -6,74 +6,68 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$8 {
 
-    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_npubbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_npubbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_aead_xchacha20poly1305_ietf_npubbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_xchacha20poly1305_ietf_npubbytes",
-        "()J",
+        "crypto_aead_xchacha20poly1305_ietf_npubbytes",
         constants$8.crypto_aead_xchacha20poly1305_ietf_npubbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_abytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_abytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_aead_xchacha20poly1305_ietf_abytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_xchacha20poly1305_ietf_abytes",
-        "()J",
+        "crypto_aead_xchacha20poly1305_ietf_abytes",
         constants$8.crypto_aead_xchacha20poly1305_ietf_abytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_messagebytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_messagebytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_aead_xchacha20poly1305_ietf_messagebytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_xchacha20poly1305_ietf_messagebytes_max",
-        "()J",
+        "crypto_aead_xchacha20poly1305_ietf_messagebytes_max",
         constants$8.crypto_aead_xchacha20poly1305_ietf_messagebytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_encrypt$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_encrypt$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_aead_xchacha20poly1305_ietf_encrypt$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_xchacha20poly1305_ietf_encrypt",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_aead_xchacha20poly1305_ietf_encrypt",
         constants$8.crypto_aead_xchacha20poly1305_ietf_encrypt$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_decrypt$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_decrypt$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_aead_xchacha20poly1305_ietf_decrypt$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_xchacha20poly1305_ietf_decrypt",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_aead_xchacha20poly1305_ietf_decrypt",
         constants$8.crypto_aead_xchacha20poly1305_ietf_decrypt$FUNC, false
     );
-    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_encrypt_detached$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_aead_xchacha20poly1305_ietf_encrypt_detached$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_aead_xchacha20poly1305_ietf_encrypt_detached$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_aead_xchacha20poly1305_ietf_encrypt_detached",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_aead_xchacha20poly1305_ietf_encrypt_detached",
         constants$8.crypto_aead_xchacha20poly1305_ietf_encrypt_detached$FUNC, false
     );
 }

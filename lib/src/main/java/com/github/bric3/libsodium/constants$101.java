@@ -6,48 +6,44 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$101 {
 
-    static final FunctionDescriptor crypto_stream_salsa208_messagebytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_salsa208_messagebytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_salsa208_messagebytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa208_messagebytes_max",
-        "()J",
+        "crypto_stream_salsa208_messagebytes_max",
         constants$101.crypto_stream_salsa208_messagebytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa208$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_salsa208$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_salsa208$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa208",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_salsa208",
         constants$101.crypto_stream_salsa208$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_salsa208_xor$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_salsa208_xor$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_salsa208_xor$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa208_xor",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_salsa208_xor",
         constants$101.crypto_stream_salsa208_xor$FUNC, false
     );
     static final FunctionDescriptor crypto_stream_salsa208_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_salsa208_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_salsa208_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_stream_salsa208_keygen",
         constants$101.crypto_stream_salsa208_keygen$FUNC, false
     );
-    static final MemorySegment SODIUM_VERSION_STRING$SEGMENT = CLinker.toCString("1.0.18", ResourceScope.newImplicitScope());
-    static final MemorySegment crypto_auth_PRIMITIVE$SEGMENT = CLinker.toCString("hmacsha512256", ResourceScope.newImplicitScope());
+    static final MemorySegment SODIUM_VERSION_STRING$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("1.0.18");
+    static final MemorySegment crypto_auth_PRIMITIVE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hmacsha512256");
 }
 
 

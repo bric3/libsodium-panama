@@ -6,56 +6,50 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$14 {
 
-    static final FunctionDescriptor crypto_auth_verify$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER
+    static final FunctionDescriptor crypto_auth_verify$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_auth_verify$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_verify",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_auth_verify",
         constants$14.crypto_auth_verify$FUNC, false
     );
     static final FunctionDescriptor crypto_auth_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_auth_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_auth_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_auth_keygen",
         constants$14.crypto_auth_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_hash_sha256_statebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_hash_sha256_statebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_hash_sha256_statebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_hash_sha256_statebytes",
-        "()J",
+        "crypto_hash_sha256_statebytes",
         constants$14.crypto_hash_sha256_statebytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_hash_sha256_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_hash_sha256_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_hash_sha256_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_hash_sha256_bytes",
-        "()J",
+        "crypto_hash_sha256_bytes",
         constants$14.crypto_hash_sha256_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_hash_sha256$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG
+    static final FunctionDescriptor crypto_hash_sha256$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
     static final MethodHandle crypto_hash_sha256$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_hash_sha256",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I",
+        "crypto_hash_sha256",
         constants$14.crypto_hash_sha256$FUNC, false
     );
-    static final FunctionDescriptor crypto_hash_sha256_init$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER
+    static final FunctionDescriptor crypto_hash_sha256_init$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_hash_sha256_init$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_hash_sha256_init",
-        "(Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_hash_sha256_init",
         constants$14.crypto_hash_sha256_init$FUNC, false
     );
 }

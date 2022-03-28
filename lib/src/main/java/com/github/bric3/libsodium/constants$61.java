@@ -6,43 +6,37 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$61 {
 
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_headerbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_headerbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_secretstream_xchacha20poly1305_headerbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_headerbytes",
-        "()J",
+        "crypto_secretstream_xchacha20poly1305_headerbytes",
         constants$61.crypto_secretstream_xchacha20poly1305_headerbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_secretstream_xchacha20poly1305_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_keybytes",
-        "()J",
+        "crypto_secretstream_xchacha20poly1305_keybytes",
         constants$61.crypto_secretstream_xchacha20poly1305_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_messagebytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_messagebytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_secretstream_xchacha20poly1305_messagebytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_messagebytes_max",
-        "()J",
+        "crypto_secretstream_xchacha20poly1305_messagebytes_max",
         constants$61.crypto_secretstream_xchacha20poly1305_messagebytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_tag_message$FUNC = FunctionDescriptor.of(C_CHAR);
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_tag_message$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT);
     static final MethodHandle crypto_secretstream_xchacha20poly1305_tag_message$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_tag_message",
-        "()B",
+        "crypto_secretstream_xchacha20poly1305_tag_message",
         constants$61.crypto_secretstream_xchacha20poly1305_tag_message$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_tag_push$FUNC = FunctionDescriptor.of(C_CHAR);
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_tag_push$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT);
     static final MethodHandle crypto_secretstream_xchacha20poly1305_tag_push$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_tag_push",
-        "()B",
+        "crypto_secretstream_xchacha20poly1305_tag_push",
         constants$61.crypto_secretstream_xchacha20poly1305_tag_push$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_tag_rekey$FUNC = FunctionDescriptor.of(C_CHAR);
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_tag_rekey$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT);
     static final MethodHandle crypto_secretstream_xchacha20poly1305_tag_rekey$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_tag_rekey",
-        "()B",
+        "crypto_secretstream_xchacha20poly1305_tag_rekey",
         constants$61.crypto_secretstream_xchacha20poly1305_tag_rekey$FUNC, false
     );
 }

@@ -6,14 +6,18 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public class sodium_h  {
 
-    static {
-        System.loadLibrary("sodium");
-    }
-
-    static final SymbolLookup LIBRARIES = RuntimeHelper.lookup();    /* package-private */ sodium_h() {}
+    /* package-private */ sodium_h() {}
+    public static OfByte C_CHAR = Constants$root.C_CHAR$LAYOUT;
+    public static OfShort C_SHORT = Constants$root.C_SHORT$LAYOUT;
+    public static OfInt C_INT = Constants$root.C_INT$LAYOUT;
+    public static OfLong C_LONG = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong C_LONG_LONG = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfFloat C_FLOAT = Constants$root.C_FLOAT$LAYOUT;
+    public static OfDouble C_DOUBLE = Constants$root.C_DOUBLE$LAYOUT;
+    public static OfAddress C_POINTER = Constants$root.C_POINTER$LAYOUT;
     public static int SODIUM_LIBRARY_VERSION_MAJOR() {
         return (int)10L;
     }
@@ -159,7 +163,7 @@ public class sodium_h  {
     public static int sodium_set_misuse_handler ( Addressable handler) {
         var mh$ = RuntimeHelper.requireNonNull(constants$1.sodium_set_misuse_handler$MH, "sodium_set_misuse_handler");
         try {
-            return (int)mh$.invokeExact(handler.address());
+            return (int)mh$.invokeExact(handler);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -258,7 +262,7 @@ public class sodium_h  {
     public static int crypto_aead_aes256gcm_encrypt ( Addressable c,  Addressable clen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  Addressable nsec,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.crypto_aead_aes256gcm_encrypt$MH, "crypto_aead_aes256gcm_encrypt");
         try {
-            return (int)mh$.invokeExact(c.address(), clen_p.address(), m.address(), mlen, ad.address(), adlen, nsec.address(), npub.address(), k.address());
+            return (int)mh$.invokeExact(c, clen_p, m, mlen, ad, adlen, nsec, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -269,7 +273,7 @@ public class sodium_h  {
     public static int crypto_aead_aes256gcm_decrypt ( Addressable m,  Addressable mlen_p,  Addressable nsec,  Addressable c,  long clen,  Addressable ad,  long adlen,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.crypto_aead_aes256gcm_decrypt$MH, "crypto_aead_aes256gcm_decrypt");
         try {
-            return (int)mh$.invokeExact(m.address(), mlen_p.address(), nsec.address(), c.address(), clen, ad.address(), adlen, npub.address(), k.address());
+            return (int)mh$.invokeExact(m, mlen_p, nsec, c, clen, ad, adlen, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -280,7 +284,7 @@ public class sodium_h  {
     public static int crypto_aead_aes256gcm_encrypt_detached ( Addressable c,  Addressable mac,  Addressable maclen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  Addressable nsec,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.crypto_aead_aes256gcm_encrypt_detached$MH, "crypto_aead_aes256gcm_encrypt_detached");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), maclen_p.address(), m.address(), mlen, ad.address(), adlen, nsec.address(), npub.address(), k.address());
+            return (int)mh$.invokeExact(c, mac, maclen_p, m, mlen, ad, adlen, nsec, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -291,7 +295,7 @@ public class sodium_h  {
     public static int crypto_aead_aes256gcm_decrypt_detached ( Addressable m,  Addressable nsec,  Addressable c,  long clen,  Addressable mac,  Addressable ad,  long adlen,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.crypto_aead_aes256gcm_decrypt_detached$MH, "crypto_aead_aes256gcm_decrypt_detached");
         try {
-            return (int)mh$.invokeExact(m.address(), nsec.address(), c.address(), clen, mac.address(), ad.address(), adlen, npub.address(), k.address());
+            return (int)mh$.invokeExact(m, nsec, c, clen, mac, ad, adlen, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -302,7 +306,7 @@ public class sodium_h  {
     public static int crypto_aead_aes256gcm_beforenm ( Addressable ctx_,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.crypto_aead_aes256gcm_beforenm$MH, "crypto_aead_aes256gcm_beforenm");
         try {
-            return (int)mh$.invokeExact(ctx_.address(), k.address());
+            return (int)mh$.invokeExact(ctx_, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -313,7 +317,7 @@ public class sodium_h  {
     public static int crypto_aead_aes256gcm_encrypt_afternm ( Addressable c,  Addressable clen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  Addressable nsec,  Addressable npub,  Addressable ctx_) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.crypto_aead_aes256gcm_encrypt_afternm$MH, "crypto_aead_aes256gcm_encrypt_afternm");
         try {
-            return (int)mh$.invokeExact(c.address(), clen_p.address(), m.address(), mlen, ad.address(), adlen, nsec.address(), npub.address(), ctx_.address());
+            return (int)mh$.invokeExact(c, clen_p, m, mlen, ad, adlen, nsec, npub, ctx_);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -324,7 +328,7 @@ public class sodium_h  {
     public static int crypto_aead_aes256gcm_decrypt_afternm ( Addressable m,  Addressable mlen_p,  Addressable nsec,  Addressable c,  long clen,  Addressable ad,  long adlen,  Addressable npub,  Addressable ctx_) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.crypto_aead_aes256gcm_decrypt_afternm$MH, "crypto_aead_aes256gcm_decrypt_afternm");
         try {
-            return (int)mh$.invokeExact(m.address(), mlen_p.address(), nsec.address(), c.address(), clen, ad.address(), adlen, npub.address(), ctx_.address());
+            return (int)mh$.invokeExact(m, mlen_p, nsec, c, clen, ad, adlen, npub, ctx_);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -335,7 +339,7 @@ public class sodium_h  {
     public static int crypto_aead_aes256gcm_encrypt_detached_afternm ( Addressable c,  Addressable mac,  Addressable maclen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  Addressable nsec,  Addressable npub,  Addressable ctx_) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.crypto_aead_aes256gcm_encrypt_detached_afternm$MH, "crypto_aead_aes256gcm_encrypt_detached_afternm");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), maclen_p.address(), m.address(), mlen, ad.address(), adlen, nsec.address(), npub.address(), ctx_.address());
+            return (int)mh$.invokeExact(c, mac, maclen_p, m, mlen, ad, adlen, nsec, npub, ctx_);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -346,7 +350,7 @@ public class sodium_h  {
     public static int crypto_aead_aes256gcm_decrypt_detached_afternm ( Addressable m,  Addressable nsec,  Addressable c,  long clen,  Addressable mac,  Addressable ad,  long adlen,  Addressable npub,  Addressable ctx_) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.crypto_aead_aes256gcm_decrypt_detached_afternm$MH, "crypto_aead_aes256gcm_decrypt_detached_afternm");
         try {
-            return (int)mh$.invokeExact(m.address(), nsec.address(), c.address(), clen, mac.address(), ad.address(), adlen, npub.address(), ctx_.address());
+            return (int)mh$.invokeExact(m, nsec, c, clen, mac, ad, adlen, npub, ctx_);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -357,7 +361,7 @@ public class sodium_h  {
     public static void crypto_aead_aes256gcm_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.crypto_aead_aes256gcm_keygen$MH, "crypto_aead_aes256gcm_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -423,7 +427,7 @@ public class sodium_h  {
     public static int crypto_aead_chacha20poly1305_ietf_encrypt ( Addressable c,  Addressable clen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  Addressable nsec,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.crypto_aead_chacha20poly1305_ietf_encrypt$MH, "crypto_aead_chacha20poly1305_ietf_encrypt");
         try {
-            return (int)mh$.invokeExact(c.address(), clen_p.address(), m.address(), mlen, ad.address(), adlen, nsec.address(), npub.address(), k.address());
+            return (int)mh$.invokeExact(c, clen_p, m, mlen, ad, adlen, nsec, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -434,7 +438,7 @@ public class sodium_h  {
     public static int crypto_aead_chacha20poly1305_ietf_decrypt ( Addressable m,  Addressable mlen_p,  Addressable nsec,  Addressable c,  long clen,  Addressable ad,  long adlen,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.crypto_aead_chacha20poly1305_ietf_decrypt$MH, "crypto_aead_chacha20poly1305_ietf_decrypt");
         try {
-            return (int)mh$.invokeExact(m.address(), mlen_p.address(), nsec.address(), c.address(), clen, ad.address(), adlen, npub.address(), k.address());
+            return (int)mh$.invokeExact(m, mlen_p, nsec, c, clen, ad, adlen, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -445,7 +449,7 @@ public class sodium_h  {
     public static int crypto_aead_chacha20poly1305_ietf_encrypt_detached ( Addressable c,  Addressable mac,  Addressable maclen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  Addressable nsec,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.crypto_aead_chacha20poly1305_ietf_encrypt_detached$MH, "crypto_aead_chacha20poly1305_ietf_encrypt_detached");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), maclen_p.address(), m.address(), mlen, ad.address(), adlen, nsec.address(), npub.address(), k.address());
+            return (int)mh$.invokeExact(c, mac, maclen_p, m, mlen, ad, adlen, nsec, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -456,7 +460,7 @@ public class sodium_h  {
     public static int crypto_aead_chacha20poly1305_ietf_decrypt_detached ( Addressable m,  Addressable nsec,  Addressable c,  long clen,  Addressable mac,  Addressable ad,  long adlen,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.crypto_aead_chacha20poly1305_ietf_decrypt_detached$MH, "crypto_aead_chacha20poly1305_ietf_decrypt_detached");
         try {
-            return (int)mh$.invokeExact(m.address(), nsec.address(), c.address(), clen, mac.address(), ad.address(), adlen, npub.address(), k.address());
+            return (int)mh$.invokeExact(m, nsec, c, clen, mac, ad, adlen, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -467,7 +471,7 @@ public class sodium_h  {
     public static void crypto_aead_chacha20poly1305_ietf_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.crypto_aead_chacha20poly1305_ietf_keygen$MH, "crypto_aead_chacha20poly1305_ietf_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -533,7 +537,7 @@ public class sodium_h  {
     public static int crypto_aead_chacha20poly1305_encrypt ( Addressable c,  Addressable clen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  Addressable nsec,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$6.crypto_aead_chacha20poly1305_encrypt$MH, "crypto_aead_chacha20poly1305_encrypt");
         try {
-            return (int)mh$.invokeExact(c.address(), clen_p.address(), m.address(), mlen, ad.address(), adlen, nsec.address(), npub.address(), k.address());
+            return (int)mh$.invokeExact(c, clen_p, m, mlen, ad, adlen, nsec, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -544,7 +548,7 @@ public class sodium_h  {
     public static int crypto_aead_chacha20poly1305_decrypt ( Addressable m,  Addressable mlen_p,  Addressable nsec,  Addressable c,  long clen,  Addressable ad,  long adlen,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.crypto_aead_chacha20poly1305_decrypt$MH, "crypto_aead_chacha20poly1305_decrypt");
         try {
-            return (int)mh$.invokeExact(m.address(), mlen_p.address(), nsec.address(), c.address(), clen, ad.address(), adlen, npub.address(), k.address());
+            return (int)mh$.invokeExact(m, mlen_p, nsec, c, clen, ad, adlen, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -555,7 +559,7 @@ public class sodium_h  {
     public static int crypto_aead_chacha20poly1305_encrypt_detached ( Addressable c,  Addressable mac,  Addressable maclen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  Addressable nsec,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.crypto_aead_chacha20poly1305_encrypt_detached$MH, "crypto_aead_chacha20poly1305_encrypt_detached");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), maclen_p.address(), m.address(), mlen, ad.address(), adlen, nsec.address(), npub.address(), k.address());
+            return (int)mh$.invokeExact(c, mac, maclen_p, m, mlen, ad, adlen, nsec, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -566,7 +570,7 @@ public class sodium_h  {
     public static int crypto_aead_chacha20poly1305_decrypt_detached ( Addressable m,  Addressable nsec,  Addressable c,  long clen,  Addressable mac,  Addressable ad,  long adlen,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.crypto_aead_chacha20poly1305_decrypt_detached$MH, "crypto_aead_chacha20poly1305_decrypt_detached");
         try {
-            return (int)mh$.invokeExact(m.address(), nsec.address(), c.address(), clen, mac.address(), ad.address(), adlen, npub.address(), k.address());
+            return (int)mh$.invokeExact(m, nsec, c, clen, mac, ad, adlen, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -577,7 +581,7 @@ public class sodium_h  {
     public static void crypto_aead_chacha20poly1305_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.crypto_aead_chacha20poly1305_keygen$MH, "crypto_aead_chacha20poly1305_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -643,7 +647,7 @@ public class sodium_h  {
     public static int crypto_aead_xchacha20poly1305_ietf_encrypt ( Addressable c,  Addressable clen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  Addressable nsec,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.crypto_aead_xchacha20poly1305_ietf_encrypt$MH, "crypto_aead_xchacha20poly1305_ietf_encrypt");
         try {
-            return (int)mh$.invokeExact(c.address(), clen_p.address(), m.address(), mlen, ad.address(), adlen, nsec.address(), npub.address(), k.address());
+            return (int)mh$.invokeExact(c, clen_p, m, mlen, ad, adlen, nsec, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -654,7 +658,7 @@ public class sodium_h  {
     public static int crypto_aead_xchacha20poly1305_ietf_decrypt ( Addressable m,  Addressable mlen_p,  Addressable nsec,  Addressable c,  long clen,  Addressable ad,  long adlen,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.crypto_aead_xchacha20poly1305_ietf_decrypt$MH, "crypto_aead_xchacha20poly1305_ietf_decrypt");
         try {
-            return (int)mh$.invokeExact(m.address(), mlen_p.address(), nsec.address(), c.address(), clen, ad.address(), adlen, npub.address(), k.address());
+            return (int)mh$.invokeExact(m, mlen_p, nsec, c, clen, ad, adlen, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -665,7 +669,7 @@ public class sodium_h  {
     public static int crypto_aead_xchacha20poly1305_ietf_encrypt_detached ( Addressable c,  Addressable mac,  Addressable maclen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  Addressable nsec,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.crypto_aead_xchacha20poly1305_ietf_encrypt_detached$MH, "crypto_aead_xchacha20poly1305_ietf_encrypt_detached");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), maclen_p.address(), m.address(), mlen, ad.address(), adlen, nsec.address(), npub.address(), k.address());
+            return (int)mh$.invokeExact(c, mac, maclen_p, m, mlen, ad, adlen, nsec, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -676,7 +680,7 @@ public class sodium_h  {
     public static int crypto_aead_xchacha20poly1305_ietf_decrypt_detached ( Addressable m,  Addressable nsec,  Addressable c,  long clen,  Addressable mac,  Addressable ad,  long adlen,  Addressable npub,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.crypto_aead_xchacha20poly1305_ietf_decrypt_detached$MH, "crypto_aead_xchacha20poly1305_ietf_decrypt_detached");
         try {
-            return (int)mh$.invokeExact(m.address(), nsec.address(), c.address(), clen, mac.address(), ad.address(), adlen, npub.address(), k.address());
+            return (int)mh$.invokeExact(m, nsec, c, clen, mac, ad, adlen, npub, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -687,7 +691,7 @@ public class sodium_h  {
     public static void crypto_aead_xchacha20poly1305_ietf_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.crypto_aead_xchacha20poly1305_ietf_keygen$MH, "crypto_aead_xchacha20poly1305_ietf_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -720,7 +724,7 @@ public class sodium_h  {
     public static int crypto_hash_sha512 ( Addressable out,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.crypto_hash_sha512$MH, "crypto_hash_sha512");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(out, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -731,7 +735,7 @@ public class sodium_h  {
     public static int crypto_hash_sha512_init ( Addressable state) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.crypto_hash_sha512_init$MH, "crypto_hash_sha512_init");
         try {
-            return (int)mh$.invokeExact(state.address());
+            return (int)mh$.invokeExact(state);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -742,7 +746,7 @@ public class sodium_h  {
     public static int crypto_hash_sha512_update ( Addressable state,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.crypto_hash_sha512_update$MH, "crypto_hash_sha512_update");
         try {
-            return (int)mh$.invokeExact(state.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(state, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -753,7 +757,7 @@ public class sodium_h  {
     public static int crypto_hash_sha512_final ( Addressable state,  Addressable out) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.crypto_hash_sha512_final$MH, "crypto_hash_sha512_final");
         try {
-            return (int)mh$.invokeExact(state.address(), out.address());
+            return (int)mh$.invokeExact(state, out);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -786,7 +790,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha512 ( Addressable out,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.crypto_auth_hmacsha512$MH, "crypto_auth_hmacsha512");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(out, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -797,7 +801,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha512_verify ( Addressable h,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.crypto_auth_hmacsha512_verify$MH, "crypto_auth_hmacsha512_verify");
         try {
-            return (int)mh$.invokeExact(h.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(h, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -819,7 +823,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha512_init ( Addressable state,  Addressable key,  long keylen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.crypto_auth_hmacsha512_init$MH, "crypto_auth_hmacsha512_init");
         try {
-            return (int)mh$.invokeExact(state.address(), key.address(), keylen);
+            return (int)mh$.invokeExact(state, key, keylen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -830,7 +834,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha512_update ( Addressable state,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.crypto_auth_hmacsha512_update$MH, "crypto_auth_hmacsha512_update");
         try {
-            return (int)mh$.invokeExact(state.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(state, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -841,7 +845,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha512_final ( Addressable state,  Addressable out) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.crypto_auth_hmacsha512_final$MH, "crypto_auth_hmacsha512_final");
         try {
-            return (int)mh$.invokeExact(state.address(), out.address());
+            return (int)mh$.invokeExact(state, out);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -852,7 +856,7 @@ public class sodium_h  {
     public static void crypto_auth_hmacsha512_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.crypto_auth_hmacsha512_keygen$MH, "crypto_auth_hmacsha512_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -885,7 +889,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha512256 ( Addressable out,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.crypto_auth_hmacsha512256$MH, "crypto_auth_hmacsha512256");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(out, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -896,7 +900,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha512256_verify ( Addressable h,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.crypto_auth_hmacsha512256_verify$MH, "crypto_auth_hmacsha512256_verify");
         try {
-            return (int)mh$.invokeExact(h.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(h, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -918,7 +922,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha512256_init ( Addressable state,  Addressable key,  long keylen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.crypto_auth_hmacsha512256_init$MH, "crypto_auth_hmacsha512256_init");
         try {
-            return (int)mh$.invokeExact(state.address(), key.address(), keylen);
+            return (int)mh$.invokeExact(state, key, keylen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -929,7 +933,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha512256_update ( Addressable state,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.crypto_auth_hmacsha512256_update$MH, "crypto_auth_hmacsha512256_update");
         try {
-            return (int)mh$.invokeExact(state.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(state, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -940,7 +944,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha512256_final ( Addressable state,  Addressable out) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.crypto_auth_hmacsha512256_final$MH, "crypto_auth_hmacsha512256_final");
         try {
-            return (int)mh$.invokeExact(state.address(), out.address());
+            return (int)mh$.invokeExact(state, out);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -951,7 +955,7 @@ public class sodium_h  {
     public static void crypto_auth_hmacsha512256_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.crypto_auth_hmacsha512256_keygen$MH, "crypto_auth_hmacsha512256_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -995,7 +999,7 @@ public class sodium_h  {
     public static int crypto_auth ( Addressable out,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.crypto_auth$MH, "crypto_auth");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(out, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1006,7 +1010,7 @@ public class sodium_h  {
     public static int crypto_auth_verify ( Addressable h,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.crypto_auth_verify$MH, "crypto_auth_verify");
         try {
-            return (int)mh$.invokeExact(h.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(h, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1017,7 +1021,7 @@ public class sodium_h  {
     public static void crypto_auth_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.crypto_auth_keygen$MH, "crypto_auth_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1050,7 +1054,7 @@ public class sodium_h  {
     public static int crypto_hash_sha256 ( Addressable out,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.crypto_hash_sha256$MH, "crypto_hash_sha256");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(out, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1061,7 +1065,7 @@ public class sodium_h  {
     public static int crypto_hash_sha256_init ( Addressable state) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.crypto_hash_sha256_init$MH, "crypto_hash_sha256_init");
         try {
-            return (int)mh$.invokeExact(state.address());
+            return (int)mh$.invokeExact(state);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1072,7 +1076,7 @@ public class sodium_h  {
     public static int crypto_hash_sha256_update ( Addressable state,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.crypto_hash_sha256_update$MH, "crypto_hash_sha256_update");
         try {
-            return (int)mh$.invokeExact(state.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(state, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1083,7 +1087,7 @@ public class sodium_h  {
     public static int crypto_hash_sha256_final ( Addressable state,  Addressable out) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.crypto_hash_sha256_final$MH, "crypto_hash_sha256_final");
         try {
-            return (int)mh$.invokeExact(state.address(), out.address());
+            return (int)mh$.invokeExact(state, out);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1116,7 +1120,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha256 ( Addressable out,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.crypto_auth_hmacsha256$MH, "crypto_auth_hmacsha256");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(out, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1127,7 +1131,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha256_verify ( Addressable h,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.crypto_auth_hmacsha256_verify$MH, "crypto_auth_hmacsha256_verify");
         try {
-            return (int)mh$.invokeExact(h.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(h, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1149,7 +1153,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha256_init ( Addressable state,  Addressable key,  long keylen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.crypto_auth_hmacsha256_init$MH, "crypto_auth_hmacsha256_init");
         try {
-            return (int)mh$.invokeExact(state.address(), key.address(), keylen);
+            return (int)mh$.invokeExact(state, key, keylen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1160,7 +1164,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha256_update ( Addressable state,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.crypto_auth_hmacsha256_update$MH, "crypto_auth_hmacsha256_update");
         try {
-            return (int)mh$.invokeExact(state.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(state, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1171,7 +1175,7 @@ public class sodium_h  {
     public static int crypto_auth_hmacsha256_final ( Addressable state,  Addressable out) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.crypto_auth_hmacsha256_final$MH, "crypto_auth_hmacsha256_final");
         try {
-            return (int)mh$.invokeExact(state.address(), out.address());
+            return (int)mh$.invokeExact(state, out);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1182,7 +1186,7 @@ public class sodium_h  {
     public static void crypto_auth_hmacsha256_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.crypto_auth_hmacsha256_keygen$MH, "crypto_auth_hmacsha256_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1226,7 +1230,7 @@ public class sodium_h  {
     public static int crypto_stream_xsalsa20 ( Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$17.crypto_stream_xsalsa20$MH, "crypto_stream_xsalsa20");
         try {
-            return (int)mh$.invokeExact(c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1237,7 +1241,7 @@ public class sodium_h  {
     public static int crypto_stream_xsalsa20_xor ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$17.crypto_stream_xsalsa20_xor$MH, "crypto_stream_xsalsa20_xor");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1248,7 +1252,7 @@ public class sodium_h  {
     public static int crypto_stream_xsalsa20_xor_ic ( Addressable c,  Addressable m,  long mlen,  Addressable n,  long ic,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$17.crypto_stream_xsalsa20_xor_ic$MH, "crypto_stream_xsalsa20_xor_ic");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), ic, k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, ic, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1259,7 +1263,7 @@ public class sodium_h  {
     public static void crypto_stream_xsalsa20_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$17.crypto_stream_xsalsa20_keygen$MH, "crypto_stream_xsalsa20_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1347,7 +1351,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xsalsa20poly1305_seed_keypair ( Addressable pk,  Addressable sk,  Addressable seed) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.crypto_box_curve25519xsalsa20poly1305_seed_keypair$MH, "crypto_box_curve25519xsalsa20poly1305_seed_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address(), seed.address());
+            return (int)mh$.invokeExact(pk, sk, seed);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1358,7 +1362,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xsalsa20poly1305_keypair ( Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.crypto_box_curve25519xsalsa20poly1305_keypair$MH, "crypto_box_curve25519xsalsa20poly1305_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address());
+            return (int)mh$.invokeExact(pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1369,7 +1373,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xsalsa20poly1305_beforenm ( Addressable k,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.crypto_box_curve25519xsalsa20poly1305_beforenm$MH, "crypto_box_curve25519xsalsa20poly1305_beforenm");
         try {
-            return (int)mh$.invokeExact(k.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(k, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1402,7 +1406,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xsalsa20poly1305 ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.crypto_box_curve25519xsalsa20poly1305$MH, "crypto_box_curve25519xsalsa20poly1305");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1413,7 +1417,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xsalsa20poly1305_open ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.crypto_box_curve25519xsalsa20poly1305_open$MH, "crypto_box_curve25519xsalsa20poly1305_open");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(m, c, clen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1424,7 +1428,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xsalsa20poly1305_afternm ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.crypto_box_curve25519xsalsa20poly1305_afternm$MH, "crypto_box_curve25519xsalsa20poly1305_afternm");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1435,7 +1439,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xsalsa20poly1305_open_afternm ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.crypto_box_curve25519xsalsa20poly1305_open_afternm$MH, "crypto_box_curve25519xsalsa20poly1305_open_afternm");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1523,7 +1527,7 @@ public class sodium_h  {
     public static int crypto_box_seed_keypair ( Addressable pk,  Addressable sk,  Addressable seed) {
         var mh$ = RuntimeHelper.requireNonNull(constants$21.crypto_box_seed_keypair$MH, "crypto_box_seed_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address(), seed.address());
+            return (int)mh$.invokeExact(pk, sk, seed);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1534,7 +1538,7 @@ public class sodium_h  {
     public static int crypto_box_keypair ( Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.crypto_box_keypair$MH, "crypto_box_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address());
+            return (int)mh$.invokeExact(pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1545,7 +1549,7 @@ public class sodium_h  {
     public static int crypto_box_easy ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.crypto_box_easy$MH, "crypto_box_easy");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1556,7 +1560,7 @@ public class sodium_h  {
     public static int crypto_box_open_easy ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.crypto_box_open_easy$MH, "crypto_box_open_easy");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(m, c, clen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1567,7 +1571,7 @@ public class sodium_h  {
     public static int crypto_box_detached ( Addressable c,  Addressable mac,  Addressable m,  long mlen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.crypto_box_detached$MH, "crypto_box_detached");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), m.address(), mlen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(c, mac, m, mlen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1578,7 +1582,7 @@ public class sodium_h  {
     public static int crypto_box_open_detached ( Addressable m,  Addressable c,  Addressable mac,  long clen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.crypto_box_open_detached$MH, "crypto_box_open_detached");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), mac.address(), clen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(m, c, mac, clen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1600,7 +1604,7 @@ public class sodium_h  {
     public static int crypto_box_beforenm ( Addressable k,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.crypto_box_beforenm$MH, "crypto_box_beforenm");
         try {
-            return (int)mh$.invokeExact(k.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(k, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1611,7 +1615,7 @@ public class sodium_h  {
     public static int crypto_box_easy_afternm ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.crypto_box_easy_afternm$MH, "crypto_box_easy_afternm");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1622,7 +1626,7 @@ public class sodium_h  {
     public static int crypto_box_open_easy_afternm ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.crypto_box_open_easy_afternm$MH, "crypto_box_open_easy_afternm");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1633,7 +1637,7 @@ public class sodium_h  {
     public static int crypto_box_detached_afternm ( Addressable c,  Addressable mac,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.crypto_box_detached_afternm$MH, "crypto_box_detached_afternm");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, mac, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1644,7 +1648,7 @@ public class sodium_h  {
     public static int crypto_box_open_detached_afternm ( Addressable m,  Addressable c,  Addressable mac,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.crypto_box_open_detached_afternm$MH, "crypto_box_open_detached_afternm");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), mac.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, mac, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1666,7 +1670,7 @@ public class sodium_h  {
     public static int crypto_box_seal ( Addressable c,  Addressable m,  long mlen,  Addressable pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$24.crypto_box_seal$MH, "crypto_box_seal");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, pk.address());
+            return (int)mh$.invokeExact(c, m, mlen, pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1677,7 +1681,7 @@ public class sodium_h  {
     public static int crypto_box_seal_open ( Addressable m,  Addressable c,  long clen,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$24.crypto_box_seal_open$MH, "crypto_box_seal_open");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, pk.address(), sk.address());
+            return (int)mh$.invokeExact(m, c, clen, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1710,7 +1714,7 @@ public class sodium_h  {
     public static int crypto_box ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$24.crypto_box$MH, "crypto_box");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1721,7 +1725,7 @@ public class sodium_h  {
     public static int crypto_box_open ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$24.crypto_box_open$MH, "crypto_box_open");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(m, c, clen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1732,7 +1736,7 @@ public class sodium_h  {
     public static int crypto_box_afternm ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$25.crypto_box_afternm$MH, "crypto_box_afternm");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1743,7 +1747,7 @@ public class sodium_h  {
     public static int crypto_box_open_afternm ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$25.crypto_box_open_afternm$MH, "crypto_box_open_afternm");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1798,7 +1802,7 @@ public class sodium_h  {
     public static int crypto_core_hsalsa20 ( Addressable out,  Addressable in,  Addressable k,  Addressable c) {
         var mh$ = RuntimeHelper.requireNonNull(constants$26.crypto_core_hsalsa20$MH, "crypto_core_hsalsa20");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), k.address(), c.address());
+            return (int)mh$.invokeExact(out, in, k, c);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1853,7 +1857,7 @@ public class sodium_h  {
     public static int crypto_core_hchacha20 ( Addressable out,  Addressable in,  Addressable k,  Addressable c) {
         var mh$ = RuntimeHelper.requireNonNull(constants$26.crypto_core_hchacha20$MH, "crypto_core_hchacha20");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), k.address(), c.address());
+            return (int)mh$.invokeExact(out, in, k, c);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1908,7 +1912,7 @@ public class sodium_h  {
     public static int crypto_core_salsa20 ( Addressable out,  Addressable in,  Addressable k,  Addressable c) {
         var mh$ = RuntimeHelper.requireNonNull(constants$27.crypto_core_salsa20$MH, "crypto_core_salsa20");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), k.address(), c.address());
+            return (int)mh$.invokeExact(out, in, k, c);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1963,7 +1967,7 @@ public class sodium_h  {
     public static int crypto_core_salsa2012 ( Addressable out,  Addressable in,  Addressable k,  Addressable c) {
         var mh$ = RuntimeHelper.requireNonNull(constants$28.crypto_core_salsa2012$MH, "crypto_core_salsa2012");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), k.address(), c.address());
+            return (int)mh$.invokeExact(out, in, k, c);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2018,7 +2022,7 @@ public class sodium_h  {
     public static int crypto_core_salsa208 ( Addressable out,  Addressable in,  Addressable k,  Addressable c) {
         var mh$ = RuntimeHelper.requireNonNull(constants$29.crypto_core_salsa208$MH, "crypto_core_salsa208");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), k.address(), c.address());
+            return (int)mh$.invokeExact(out, in, k, c);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2128,7 +2132,7 @@ public class sodium_h  {
     public static int crypto_generichash_blake2b ( Addressable out,  long outlen,  Addressable in,  long inlen,  Addressable key,  long keylen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$31.crypto_generichash_blake2b$MH, "crypto_generichash_blake2b");
         try {
-            return (int)mh$.invokeExact(out.address(), outlen, in.address(), inlen, key.address(), keylen);
+            return (int)mh$.invokeExact(out, outlen, in, inlen, key, keylen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2139,7 +2143,7 @@ public class sodium_h  {
     public static int crypto_generichash_blake2b_salt_personal ( Addressable out,  long outlen,  Addressable in,  long inlen,  Addressable key,  long keylen,  Addressable salt,  Addressable personal) {
         var mh$ = RuntimeHelper.requireNonNull(constants$31.crypto_generichash_blake2b_salt_personal$MH, "crypto_generichash_blake2b_salt_personal");
         try {
-            return (int)mh$.invokeExact(out.address(), outlen, in.address(), inlen, key.address(), keylen, salt.address(), personal.address());
+            return (int)mh$.invokeExact(out, outlen, in, inlen, key, keylen, salt, personal);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2150,7 +2154,7 @@ public class sodium_h  {
     public static int crypto_generichash_blake2b_init ( Addressable state,  Addressable key,  long keylen,  long outlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$31.crypto_generichash_blake2b_init$MH, "crypto_generichash_blake2b_init");
         try {
-            return (int)mh$.invokeExact(state.address(), key.address(), keylen, outlen);
+            return (int)mh$.invokeExact(state, key, keylen, outlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2161,7 +2165,7 @@ public class sodium_h  {
     public static int crypto_generichash_blake2b_init_salt_personal ( Addressable state,  Addressable key,  long keylen,  long outlen,  Addressable salt,  Addressable personal) {
         var mh$ = RuntimeHelper.requireNonNull(constants$31.crypto_generichash_blake2b_init_salt_personal$MH, "crypto_generichash_blake2b_init_salt_personal");
         try {
-            return (int)mh$.invokeExact(state.address(), key.address(), keylen, outlen, salt.address(), personal.address());
+            return (int)mh$.invokeExact(state, key, keylen, outlen, salt, personal);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2172,7 +2176,7 @@ public class sodium_h  {
     public static int crypto_generichash_blake2b_update ( Addressable state,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$31.crypto_generichash_blake2b_update$MH, "crypto_generichash_blake2b_update");
         try {
-            return (int)mh$.invokeExact(state.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(state, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2183,7 +2187,7 @@ public class sodium_h  {
     public static int crypto_generichash_blake2b_final ( Addressable state,  Addressable out,  long outlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$31.crypto_generichash_blake2b_final$MH, "crypto_generichash_blake2b_final");
         try {
-            return (int)mh$.invokeExact(state.address(), out.address(), outlen);
+            return (int)mh$.invokeExact(state, out, outlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2194,7 +2198,7 @@ public class sodium_h  {
     public static void crypto_generichash_blake2b_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$32.crypto_generichash_blake2b_keygen$MH, "crypto_generichash_blake2b_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2293,7 +2297,7 @@ public class sodium_h  {
     public static int crypto_generichash ( Addressable out,  long outlen,  Addressable in,  long inlen,  Addressable key,  long keylen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$33.crypto_generichash$MH, "crypto_generichash");
         try {
-            return (int)mh$.invokeExact(out.address(), outlen, in.address(), inlen, key.address(), keylen);
+            return (int)mh$.invokeExact(out, outlen, in, inlen, key, keylen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2304,7 +2308,7 @@ public class sodium_h  {
     public static int crypto_generichash_init ( Addressable state,  Addressable key,  long keylen,  long outlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$33.crypto_generichash_init$MH, "crypto_generichash_init");
         try {
-            return (int)mh$.invokeExact(state.address(), key.address(), keylen, outlen);
+            return (int)mh$.invokeExact(state, key, keylen, outlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2315,7 +2319,7 @@ public class sodium_h  {
     public static int crypto_generichash_update ( Addressable state,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$33.crypto_generichash_update$MH, "crypto_generichash_update");
         try {
-            return (int)mh$.invokeExact(state.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(state, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2326,7 +2330,7 @@ public class sodium_h  {
     public static int crypto_generichash_final ( Addressable state,  Addressable out,  long outlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$34.crypto_generichash_final$MH, "crypto_generichash_final");
         try {
-            return (int)mh$.invokeExact(state.address(), out.address(), outlen);
+            return (int)mh$.invokeExact(state, out, outlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2337,7 +2341,7 @@ public class sodium_h  {
     public static void crypto_generichash_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$34.crypto_generichash_keygen$MH, "crypto_generichash_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2359,7 +2363,7 @@ public class sodium_h  {
     public static int crypto_hash ( Addressable out,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$34.crypto_hash$MH, "crypto_hash");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(out, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2425,7 +2429,7 @@ public class sodium_h  {
     public static int crypto_kdf_blake2b_derive_from_key ( Addressable subkey,  long subkey_len,  long subkey_id,  Addressable ctx,  Addressable key) {
         var mh$ = RuntimeHelper.requireNonNull(constants$35.crypto_kdf_blake2b_derive_from_key$MH, "crypto_kdf_blake2b_derive_from_key");
         try {
-            return (int)mh$.invokeExact(subkey.address(), subkey_len, subkey_id, ctx.address(), key.address());
+            return (int)mh$.invokeExact(subkey, subkey_len, subkey_id, ctx, key);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2491,7 +2495,7 @@ public class sodium_h  {
     public static int crypto_kdf_derive_from_key ( Addressable subkey,  long subkey_len,  long subkey_id,  Addressable ctx,  Addressable key) {
         var mh$ = RuntimeHelper.requireNonNull(constants$36.crypto_kdf_derive_from_key$MH, "crypto_kdf_derive_from_key");
         try {
-            return (int)mh$.invokeExact(subkey.address(), subkey_len, subkey_id, ctx.address(), key.address());
+            return (int)mh$.invokeExact(subkey, subkey_len, subkey_id, ctx, key);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2502,7 +2506,7 @@ public class sodium_h  {
     public static void crypto_kdf_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$36.crypto_kdf_keygen$MH, "crypto_kdf_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2568,7 +2572,7 @@ public class sodium_h  {
     public static int crypto_kx_seed_keypair ( Addressable pk,  Addressable sk,  Addressable seed) {
         var mh$ = RuntimeHelper.requireNonNull(constants$37.crypto_kx_seed_keypair$MH, "crypto_kx_seed_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address(), seed.address());
+            return (int)mh$.invokeExact(pk, sk, seed);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2579,7 +2583,7 @@ public class sodium_h  {
     public static int crypto_kx_keypair ( Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$37.crypto_kx_keypair$MH, "crypto_kx_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address());
+            return (int)mh$.invokeExact(pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2590,7 +2594,7 @@ public class sodium_h  {
     public static int crypto_kx_client_session_keys ( Addressable rx,  Addressable tx,  Addressable client_pk,  Addressable client_sk,  Addressable server_pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$38.crypto_kx_client_session_keys$MH, "crypto_kx_client_session_keys");
         try {
-            return (int)mh$.invokeExact(rx.address(), tx.address(), client_pk.address(), client_sk.address(), server_pk.address());
+            return (int)mh$.invokeExact(rx, tx, client_pk, client_sk, server_pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2601,7 +2605,7 @@ public class sodium_h  {
     public static int crypto_kx_server_session_keys ( Addressable rx,  Addressable tx,  Addressable server_pk,  Addressable server_sk,  Addressable client_pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$38.crypto_kx_server_session_keys$MH, "crypto_kx_server_session_keys");
         try {
-            return (int)mh$.invokeExact(rx.address(), tx.address(), server_pk.address(), server_sk.address(), client_pk.address());
+            return (int)mh$.invokeExact(rx, tx, server_pk, server_sk, client_pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2645,7 +2649,7 @@ public class sodium_h  {
     public static int crypto_onetimeauth_poly1305 ( Addressable out,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$38.crypto_onetimeauth_poly1305$MH, "crypto_onetimeauth_poly1305");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(out, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2656,7 +2660,7 @@ public class sodium_h  {
     public static int crypto_onetimeauth_poly1305_verify ( Addressable h,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$39.crypto_onetimeauth_poly1305_verify$MH, "crypto_onetimeauth_poly1305_verify");
         try {
-            return (int)mh$.invokeExact(h.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(h, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2667,7 +2671,7 @@ public class sodium_h  {
     public static int crypto_onetimeauth_poly1305_init ( Addressable state,  Addressable key) {
         var mh$ = RuntimeHelper.requireNonNull(constants$39.crypto_onetimeauth_poly1305_init$MH, "crypto_onetimeauth_poly1305_init");
         try {
-            return (int)mh$.invokeExact(state.address(), key.address());
+            return (int)mh$.invokeExact(state, key);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2678,7 +2682,7 @@ public class sodium_h  {
     public static int crypto_onetimeauth_poly1305_update ( Addressable state,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$39.crypto_onetimeauth_poly1305_update$MH, "crypto_onetimeauth_poly1305_update");
         try {
-            return (int)mh$.invokeExact(state.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(state, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2689,7 +2693,7 @@ public class sodium_h  {
     public static int crypto_onetimeauth_poly1305_final ( Addressable state,  Addressable out) {
         var mh$ = RuntimeHelper.requireNonNull(constants$39.crypto_onetimeauth_poly1305_final$MH, "crypto_onetimeauth_poly1305_final");
         try {
-            return (int)mh$.invokeExact(state.address(), out.address());
+            return (int)mh$.invokeExact(state, out);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2700,7 +2704,7 @@ public class sodium_h  {
     public static void crypto_onetimeauth_poly1305_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$39.crypto_onetimeauth_poly1305_keygen$MH, "crypto_onetimeauth_poly1305_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2755,7 +2759,7 @@ public class sodium_h  {
     public static int crypto_onetimeauth ( Addressable out,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$40.crypto_onetimeauth$MH, "crypto_onetimeauth");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(out, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2766,7 +2770,7 @@ public class sodium_h  {
     public static int crypto_onetimeauth_verify ( Addressable h,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$40.crypto_onetimeauth_verify$MH, "crypto_onetimeauth_verify");
         try {
-            return (int)mh$.invokeExact(h.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(h, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2777,7 +2781,7 @@ public class sodium_h  {
     public static int crypto_onetimeauth_init ( Addressable state,  Addressable key) {
         var mh$ = RuntimeHelper.requireNonNull(constants$40.crypto_onetimeauth_init$MH, "crypto_onetimeauth_init");
         try {
-            return (int)mh$.invokeExact(state.address(), key.address());
+            return (int)mh$.invokeExact(state, key);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2788,7 +2792,7 @@ public class sodium_h  {
     public static int crypto_onetimeauth_update ( Addressable state,  Addressable in,  long inlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$41.crypto_onetimeauth_update$MH, "crypto_onetimeauth_update");
         try {
-            return (int)mh$.invokeExact(state.address(), in.address(), inlen);
+            return (int)mh$.invokeExact(state, in, inlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2799,7 +2803,7 @@ public class sodium_h  {
     public static int crypto_onetimeauth_final ( Addressable state,  Addressable out) {
         var mh$ = RuntimeHelper.requireNonNull(constants$41.crypto_onetimeauth_final$MH, "crypto_onetimeauth_final");
         try {
-            return (int)mh$.invokeExact(state.address(), out.address());
+            return (int)mh$.invokeExact(state, out);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2810,7 +2814,7 @@ public class sodium_h  {
     public static void crypto_onetimeauth_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$41.crypto_onetimeauth_keygen$MH, "crypto_onetimeauth_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3019,7 +3023,7 @@ public class sodium_h  {
     public static int crypto_pwhash_argon2i ( Addressable out,  long outlen,  Addressable passwd,  long passwdlen,  Addressable salt,  long opslimit,  long memlimit,  int alg) {
         var mh$ = RuntimeHelper.requireNonNull(constants$44.crypto_pwhash_argon2i$MH, "crypto_pwhash_argon2i");
         try {
-            return (int)mh$.invokeExact(out.address(), outlen, passwd.address(), passwdlen, salt.address(), opslimit, memlimit, alg);
+            return (int)mh$.invokeExact(out, outlen, passwd, passwdlen, salt, opslimit, memlimit, alg);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3030,7 +3034,7 @@ public class sodium_h  {
     public static int crypto_pwhash_argon2i_str ( Addressable out,  Addressable passwd,  long passwdlen,  long opslimit,  long memlimit) {
         var mh$ = RuntimeHelper.requireNonNull(constants$44.crypto_pwhash_argon2i_str$MH, "crypto_pwhash_argon2i_str");
         try {
-            return (int)mh$.invokeExact(out.address(), passwd.address(), passwdlen, opslimit, memlimit);
+            return (int)mh$.invokeExact(out, passwd, passwdlen, opslimit, memlimit);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3041,7 +3045,7 @@ public class sodium_h  {
     public static int crypto_pwhash_argon2i_str_verify ( Addressable str,  Addressable passwd,  long passwdlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$44.crypto_pwhash_argon2i_str_verify$MH, "crypto_pwhash_argon2i_str_verify");
         try {
-            return (int)mh$.invokeExact(str.address(), passwd.address(), passwdlen);
+            return (int)mh$.invokeExact(str, passwd, passwdlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3052,7 +3056,7 @@ public class sodium_h  {
     public static int crypto_pwhash_argon2i_str_needs_rehash ( Addressable str,  long opslimit,  long memlimit) {
         var mh$ = RuntimeHelper.requireNonNull(constants$45.crypto_pwhash_argon2i_str_needs_rehash$MH, "crypto_pwhash_argon2i_str_needs_rehash");
         try {
-            return (int)mh$.invokeExact(str.address(), opslimit, memlimit);
+            return (int)mh$.invokeExact(str, opslimit, memlimit);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3261,7 +3265,7 @@ public class sodium_h  {
     public static int crypto_pwhash_argon2id ( Addressable out,  long outlen,  Addressable passwd,  long passwdlen,  Addressable salt,  long opslimit,  long memlimit,  int alg) {
         var mh$ = RuntimeHelper.requireNonNull(constants$48.crypto_pwhash_argon2id$MH, "crypto_pwhash_argon2id");
         try {
-            return (int)mh$.invokeExact(out.address(), outlen, passwd.address(), passwdlen, salt.address(), opslimit, memlimit, alg);
+            return (int)mh$.invokeExact(out, outlen, passwd, passwdlen, salt, opslimit, memlimit, alg);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3272,7 +3276,7 @@ public class sodium_h  {
     public static int crypto_pwhash_argon2id_str ( Addressable out,  Addressable passwd,  long passwdlen,  long opslimit,  long memlimit) {
         var mh$ = RuntimeHelper.requireNonNull(constants$48.crypto_pwhash_argon2id_str$MH, "crypto_pwhash_argon2id_str");
         try {
-            return (int)mh$.invokeExact(out.address(), passwd.address(), passwdlen, opslimit, memlimit);
+            return (int)mh$.invokeExact(out, passwd, passwdlen, opslimit, memlimit);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3283,7 +3287,7 @@ public class sodium_h  {
     public static int crypto_pwhash_argon2id_str_verify ( Addressable str,  Addressable passwd,  long passwdlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$48.crypto_pwhash_argon2id_str_verify$MH, "crypto_pwhash_argon2id_str_verify");
         try {
-            return (int)mh$.invokeExact(str.address(), passwd.address(), passwdlen);
+            return (int)mh$.invokeExact(str, passwd, passwdlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3294,7 +3298,7 @@ public class sodium_h  {
     public static int crypto_pwhash_argon2id_str_needs_rehash ( Addressable str,  long opslimit,  long memlimit) {
         var mh$ = RuntimeHelper.requireNonNull(constants$48.crypto_pwhash_argon2id_str_needs_rehash$MH, "crypto_pwhash_argon2id_str_needs_rehash");
         try {
-            return (int)mh$.invokeExact(str.address(), opslimit, memlimit);
+            return (int)mh$.invokeExact(str, opslimit, memlimit);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3525,7 +3529,7 @@ public class sodium_h  {
     public static int crypto_pwhash ( Addressable out,  long outlen,  Addressable passwd,  long passwdlen,  Addressable salt,  long opslimit,  long memlimit,  int alg) {
         var mh$ = RuntimeHelper.requireNonNull(constants$52.crypto_pwhash$MH, "crypto_pwhash");
         try {
-            return (int)mh$.invokeExact(out.address(), outlen, passwd.address(), passwdlen, salt.address(), opslimit, memlimit, alg);
+            return (int)mh$.invokeExact(out, outlen, passwd, passwdlen, salt, opslimit, memlimit, alg);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3536,7 +3540,7 @@ public class sodium_h  {
     public static int crypto_pwhash_str ( Addressable out,  Addressable passwd,  long passwdlen,  long opslimit,  long memlimit) {
         var mh$ = RuntimeHelper.requireNonNull(constants$52.crypto_pwhash_str$MH, "crypto_pwhash_str");
         try {
-            return (int)mh$.invokeExact(out.address(), passwd.address(), passwdlen, opslimit, memlimit);
+            return (int)mh$.invokeExact(out, passwd, passwdlen, opslimit, memlimit);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3547,7 +3551,7 @@ public class sodium_h  {
     public static int crypto_pwhash_str_alg ( Addressable out,  Addressable passwd,  long passwdlen,  long opslimit,  long memlimit,  int alg) {
         var mh$ = RuntimeHelper.requireNonNull(constants$52.crypto_pwhash_str_alg$MH, "crypto_pwhash_str_alg");
         try {
-            return (int)mh$.invokeExact(out.address(), passwd.address(), passwdlen, opslimit, memlimit, alg);
+            return (int)mh$.invokeExact(out, passwd, passwdlen, opslimit, memlimit, alg);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3558,7 +3562,7 @@ public class sodium_h  {
     public static int crypto_pwhash_str_verify ( Addressable str,  Addressable passwd,  long passwdlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$52.crypto_pwhash_str_verify$MH, "crypto_pwhash_str_verify");
         try {
-            return (int)mh$.invokeExact(str.address(), passwd.address(), passwdlen);
+            return (int)mh$.invokeExact(str, passwd, passwdlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3569,7 +3573,7 @@ public class sodium_h  {
     public static int crypto_pwhash_str_needs_rehash ( Addressable str,  long opslimit,  long memlimit) {
         var mh$ = RuntimeHelper.requireNonNull(constants$52.crypto_pwhash_str_needs_rehash$MH, "crypto_pwhash_str_needs_rehash");
         try {
-            return (int)mh$.invokeExact(str.address(), opslimit, memlimit);
+            return (int)mh$.invokeExact(str, opslimit, memlimit);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3613,7 +3617,7 @@ public class sodium_h  {
     public static int crypto_scalarmult_curve25519 ( Addressable q,  Addressable n,  Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$53.crypto_scalarmult_curve25519$MH, "crypto_scalarmult_curve25519");
         try {
-            return (int)mh$.invokeExact(q.address(), n.address(), p.address());
+            return (int)mh$.invokeExact(q, n, p);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3624,7 +3628,7 @@ public class sodium_h  {
     public static int crypto_scalarmult_curve25519_base ( Addressable q,  Addressable n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$53.crypto_scalarmult_curve25519_base$MH, "crypto_scalarmult_curve25519_base");
         try {
-            return (int)mh$.invokeExact(q.address(), n.address());
+            return (int)mh$.invokeExact(q, n);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3668,7 +3672,7 @@ public class sodium_h  {
     public static int crypto_scalarmult_base ( Addressable q,  Addressable n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$54.crypto_scalarmult_base$MH, "crypto_scalarmult_base");
         try {
-            return (int)mh$.invokeExact(q.address(), n.address());
+            return (int)mh$.invokeExact(q, n);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3679,7 +3683,7 @@ public class sodium_h  {
     public static int crypto_scalarmult ( Addressable q,  Addressable n,  Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$54.crypto_scalarmult$MH, "crypto_scalarmult");
         try {
-            return (int)mh$.invokeExact(q.address(), n.address(), p.address());
+            return (int)mh$.invokeExact(q, n, p);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3734,7 +3738,7 @@ public class sodium_h  {
     public static int crypto_secretbox_xsalsa20poly1305 ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$55.crypto_secretbox_xsalsa20poly1305$MH, "crypto_secretbox_xsalsa20poly1305");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3745,7 +3749,7 @@ public class sodium_h  {
     public static int crypto_secretbox_xsalsa20poly1305_open ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$55.crypto_secretbox_xsalsa20poly1305_open$MH, "crypto_secretbox_xsalsa20poly1305_open");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3756,7 +3760,7 @@ public class sodium_h  {
     public static void crypto_secretbox_xsalsa20poly1305_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$55.crypto_secretbox_xsalsa20poly1305_keygen$MH, "crypto_secretbox_xsalsa20poly1305_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3844,7 +3848,7 @@ public class sodium_h  {
     public static int crypto_secretbox_easy ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$57.crypto_secretbox_easy$MH, "crypto_secretbox_easy");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3855,7 +3859,7 @@ public class sodium_h  {
     public static int crypto_secretbox_open_easy ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$57.crypto_secretbox_open_easy$MH, "crypto_secretbox_open_easy");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3866,7 +3870,7 @@ public class sodium_h  {
     public static int crypto_secretbox_detached ( Addressable c,  Addressable mac,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$57.crypto_secretbox_detached$MH, "crypto_secretbox_detached");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, mac, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3877,7 +3881,7 @@ public class sodium_h  {
     public static int crypto_secretbox_open_detached ( Addressable m,  Addressable c,  Addressable mac,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$57.crypto_secretbox_open_detached$MH, "crypto_secretbox_open_detached");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), mac.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, mac, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3888,7 +3892,7 @@ public class sodium_h  {
     public static void crypto_secretbox_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$57.crypto_secretbox_keygen$MH, "crypto_secretbox_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3921,7 +3925,7 @@ public class sodium_h  {
     public static int crypto_secretbox ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$58.crypto_secretbox$MH, "crypto_secretbox");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3932,7 +3936,7 @@ public class sodium_h  {
     public static int crypto_secretbox_open ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$58.crypto_secretbox_open$MH, "crypto_secretbox_open");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3976,7 +3980,7 @@ public class sodium_h  {
     public static int crypto_stream_chacha20 ( Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$59.crypto_stream_chacha20$MH, "crypto_stream_chacha20");
         try {
-            return (int)mh$.invokeExact(c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3987,7 +3991,7 @@ public class sodium_h  {
     public static int crypto_stream_chacha20_xor ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$59.crypto_stream_chacha20_xor$MH, "crypto_stream_chacha20_xor");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3998,7 +4002,7 @@ public class sodium_h  {
     public static int crypto_stream_chacha20_xor_ic ( Addressable c,  Addressable m,  long mlen,  Addressable n,  long ic,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$59.crypto_stream_chacha20_xor_ic$MH, "crypto_stream_chacha20_xor_ic");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), ic, k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, ic, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4009,7 +4013,7 @@ public class sodium_h  {
     public static void crypto_stream_chacha20_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$59.crypto_stream_chacha20_keygen$MH, "crypto_stream_chacha20_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4053,7 +4057,7 @@ public class sodium_h  {
     public static int crypto_stream_chacha20_ietf ( Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$60.crypto_stream_chacha20_ietf$MH, "crypto_stream_chacha20_ietf");
         try {
-            return (int)mh$.invokeExact(c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4064,7 +4068,7 @@ public class sodium_h  {
     public static int crypto_stream_chacha20_ietf_xor ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$60.crypto_stream_chacha20_ietf_xor$MH, "crypto_stream_chacha20_ietf_xor");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4075,7 +4079,7 @@ public class sodium_h  {
     public static int crypto_stream_chacha20_ietf_xor_ic ( Addressable c,  Addressable m,  long mlen,  Addressable n,  int ic,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$60.crypto_stream_chacha20_ietf_xor_ic$MH, "crypto_stream_chacha20_ietf_xor_ic");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), ic, k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, ic, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4086,7 +4090,7 @@ public class sodium_h  {
     public static void crypto_stream_chacha20_ietf_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$60.crypto_stream_chacha20_ietf_keygen$MH, "crypto_stream_chacha20_ietf_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4196,7 +4200,7 @@ public class sodium_h  {
     public static void crypto_secretstream_xchacha20poly1305_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$62.crypto_secretstream_xchacha20poly1305_keygen$MH, "crypto_secretstream_xchacha20poly1305_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4207,7 +4211,7 @@ public class sodium_h  {
     public static int crypto_secretstream_xchacha20poly1305_init_push ( Addressable state,  Addressable header,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$62.crypto_secretstream_xchacha20poly1305_init_push$MH, "crypto_secretstream_xchacha20poly1305_init_push");
         try {
-            return (int)mh$.invokeExact(state.address(), header.address(), k.address());
+            return (int)mh$.invokeExact(state, header, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4218,7 +4222,7 @@ public class sodium_h  {
     public static int crypto_secretstream_xchacha20poly1305_push ( Addressable state,  Addressable c,  Addressable clen_p,  Addressable m,  long mlen,  Addressable ad,  long adlen,  byte tag) {
         var mh$ = RuntimeHelper.requireNonNull(constants$62.crypto_secretstream_xchacha20poly1305_push$MH, "crypto_secretstream_xchacha20poly1305_push");
         try {
-            return (int)mh$.invokeExact(state.address(), c.address(), clen_p.address(), m.address(), mlen, ad.address(), adlen, tag);
+            return (int)mh$.invokeExact(state, c, clen_p, m, mlen, ad, adlen, tag);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4229,7 +4233,7 @@ public class sodium_h  {
     public static int crypto_secretstream_xchacha20poly1305_init_pull ( Addressable state,  Addressable header,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$62.crypto_secretstream_xchacha20poly1305_init_pull$MH, "crypto_secretstream_xchacha20poly1305_init_pull");
         try {
-            return (int)mh$.invokeExact(state.address(), header.address(), k.address());
+            return (int)mh$.invokeExact(state, header, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4240,7 +4244,7 @@ public class sodium_h  {
     public static int crypto_secretstream_xchacha20poly1305_pull ( Addressable state,  Addressable m,  Addressable mlen_p,  Addressable tag_p,  Addressable c,  long clen,  Addressable ad,  long adlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$63.crypto_secretstream_xchacha20poly1305_pull$MH, "crypto_secretstream_xchacha20poly1305_pull");
         try {
-            return (int)mh$.invokeExact(state.address(), m.address(), mlen_p.address(), tag_p.address(), c.address(), clen, ad.address(), adlen);
+            return (int)mh$.invokeExact(state, m, mlen_p, tag_p, c, clen, ad, adlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4251,7 +4255,7 @@ public class sodium_h  {
     public static void crypto_secretstream_xchacha20poly1305_rekey ( Addressable state) {
         var mh$ = RuntimeHelper.requireNonNull(constants$63.crypto_secretstream_xchacha20poly1305_rekey$MH, "crypto_secretstream_xchacha20poly1305_rekey");
         try {
-            mh$.invokeExact(state.address());
+            mh$.invokeExact(state);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4284,7 +4288,7 @@ public class sodium_h  {
     public static int crypto_shorthash_siphash24 ( Addressable out,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$63.crypto_shorthash_siphash24$MH, "crypto_shorthash_siphash24");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(out, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4317,7 +4321,7 @@ public class sodium_h  {
     public static int crypto_shorthash_siphashx24 ( Addressable out,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$64.crypto_shorthash_siphashx24$MH, "crypto_shorthash_siphashx24");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(out, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4361,7 +4365,7 @@ public class sodium_h  {
     public static int crypto_shorthash ( Addressable out,  Addressable in,  long inlen,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$64.crypto_shorthash$MH, "crypto_shorthash");
         try {
-            return (int)mh$.invokeExact(out.address(), in.address(), inlen, k.address());
+            return (int)mh$.invokeExact(out, in, inlen, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4372,7 +4376,7 @@ public class sodium_h  {
     public static void crypto_shorthash_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$65.crypto_shorthash_keygen$MH, "crypto_shorthash_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4449,7 +4453,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519 ( Addressable sm,  Addressable smlen_p,  Addressable m,  long mlen,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$66.crypto_sign_ed25519$MH, "crypto_sign_ed25519");
         try {
-            return (int)mh$.invokeExact(sm.address(), smlen_p.address(), m.address(), mlen, sk.address());
+            return (int)mh$.invokeExact(sm, smlen_p, m, mlen, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4460,7 +4464,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519_open ( Addressable m,  Addressable mlen_p,  Addressable sm,  long smlen,  Addressable pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$66.crypto_sign_ed25519_open$MH, "crypto_sign_ed25519_open");
         try {
-            return (int)mh$.invokeExact(m.address(), mlen_p.address(), sm.address(), smlen, pk.address());
+            return (int)mh$.invokeExact(m, mlen_p, sm, smlen, pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4471,7 +4475,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519_detached ( Addressable sig,  Addressable siglen_p,  Addressable m,  long mlen,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$66.crypto_sign_ed25519_detached$MH, "crypto_sign_ed25519_detached");
         try {
-            return (int)mh$.invokeExact(sig.address(), siglen_p.address(), m.address(), mlen, sk.address());
+            return (int)mh$.invokeExact(sig, siglen_p, m, mlen, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4482,7 +4486,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519_verify_detached ( Addressable sig,  Addressable m,  long mlen,  Addressable pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$66.crypto_sign_ed25519_verify_detached$MH, "crypto_sign_ed25519_verify_detached");
         try {
-            return (int)mh$.invokeExact(sig.address(), m.address(), mlen, pk.address());
+            return (int)mh$.invokeExact(sig, m, mlen, pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4493,7 +4497,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519_keypair ( Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$66.crypto_sign_ed25519_keypair$MH, "crypto_sign_ed25519_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address());
+            return (int)mh$.invokeExact(pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4504,7 +4508,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519_seed_keypair ( Addressable pk,  Addressable sk,  Addressable seed) {
         var mh$ = RuntimeHelper.requireNonNull(constants$67.crypto_sign_ed25519_seed_keypair$MH, "crypto_sign_ed25519_seed_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address(), seed.address());
+            return (int)mh$.invokeExact(pk, sk, seed);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4515,7 +4519,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519_pk_to_curve25519 ( Addressable curve25519_pk,  Addressable ed25519_pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$67.crypto_sign_ed25519_pk_to_curve25519$MH, "crypto_sign_ed25519_pk_to_curve25519");
         try {
-            return (int)mh$.invokeExact(curve25519_pk.address(), ed25519_pk.address());
+            return (int)mh$.invokeExact(curve25519_pk, ed25519_pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4526,7 +4530,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519_sk_to_curve25519 ( Addressable curve25519_sk,  Addressable ed25519_sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$67.crypto_sign_ed25519_sk_to_curve25519$MH, "crypto_sign_ed25519_sk_to_curve25519");
         try {
-            return (int)mh$.invokeExact(curve25519_sk.address(), ed25519_sk.address());
+            return (int)mh$.invokeExact(curve25519_sk, ed25519_sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4537,7 +4541,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519_sk_to_seed ( Addressable seed,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$67.crypto_sign_ed25519_sk_to_seed$MH, "crypto_sign_ed25519_sk_to_seed");
         try {
-            return (int)mh$.invokeExact(seed.address(), sk.address());
+            return (int)mh$.invokeExact(seed, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4548,7 +4552,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519_sk_to_pk ( Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$67.crypto_sign_ed25519_sk_to_pk$MH, "crypto_sign_ed25519_sk_to_pk");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address());
+            return (int)mh$.invokeExact(pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4559,7 +4563,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519ph_init ( Addressable state) {
         var mh$ = RuntimeHelper.requireNonNull(constants$67.crypto_sign_ed25519ph_init$MH, "crypto_sign_ed25519ph_init");
         try {
-            return (int)mh$.invokeExact(state.address());
+            return (int)mh$.invokeExact(state);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4570,7 +4574,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519ph_update ( Addressable state,  Addressable m,  long mlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$68.crypto_sign_ed25519ph_update$MH, "crypto_sign_ed25519ph_update");
         try {
-            return (int)mh$.invokeExact(state.address(), m.address(), mlen);
+            return (int)mh$.invokeExact(state, m, mlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4581,7 +4585,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519ph_final_create ( Addressable state,  Addressable sig,  Addressable siglen_p,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$68.crypto_sign_ed25519ph_final_create$MH, "crypto_sign_ed25519ph_final_create");
         try {
-            return (int)mh$.invokeExact(state.address(), sig.address(), siglen_p.address(), sk.address());
+            return (int)mh$.invokeExact(state, sig, siglen_p, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4592,7 +4596,7 @@ public class sodium_h  {
     public static int crypto_sign_ed25519ph_final_verify ( Addressable state,  Addressable sig,  Addressable pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$68.crypto_sign_ed25519ph_final_verify$MH, "crypto_sign_ed25519ph_final_verify");
         try {
-            return (int)mh$.invokeExact(state.address(), sig.address(), pk.address());
+            return (int)mh$.invokeExact(state, sig, pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4680,7 +4684,7 @@ public class sodium_h  {
     public static int crypto_sign_seed_keypair ( Addressable pk,  Addressable sk,  Addressable seed) {
         var mh$ = RuntimeHelper.requireNonNull(constants$69.crypto_sign_seed_keypair$MH, "crypto_sign_seed_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address(), seed.address());
+            return (int)mh$.invokeExact(pk, sk, seed);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4691,7 +4695,7 @@ public class sodium_h  {
     public static int crypto_sign_keypair ( Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$69.crypto_sign_keypair$MH, "crypto_sign_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address());
+            return (int)mh$.invokeExact(pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4702,7 +4706,7 @@ public class sodium_h  {
     public static int crypto_sign ( Addressable sm,  Addressable smlen_p,  Addressable m,  long mlen,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$70.crypto_sign$MH, "crypto_sign");
         try {
-            return (int)mh$.invokeExact(sm.address(), smlen_p.address(), m.address(), mlen, sk.address());
+            return (int)mh$.invokeExact(sm, smlen_p, m, mlen, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4713,7 +4717,7 @@ public class sodium_h  {
     public static int crypto_sign_open ( Addressable m,  Addressable mlen_p,  Addressable sm,  long smlen,  Addressable pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$70.crypto_sign_open$MH, "crypto_sign_open");
         try {
-            return (int)mh$.invokeExact(m.address(), mlen_p.address(), sm.address(), smlen, pk.address());
+            return (int)mh$.invokeExact(m, mlen_p, sm, smlen, pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4724,7 +4728,7 @@ public class sodium_h  {
     public static int crypto_sign_detached ( Addressable sig,  Addressable siglen_p,  Addressable m,  long mlen,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$70.crypto_sign_detached$MH, "crypto_sign_detached");
         try {
-            return (int)mh$.invokeExact(sig.address(), siglen_p.address(), m.address(), mlen, sk.address());
+            return (int)mh$.invokeExact(sig, siglen_p, m, mlen, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4735,7 +4739,7 @@ public class sodium_h  {
     public static int crypto_sign_verify_detached ( Addressable sig,  Addressable m,  long mlen,  Addressable pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$70.crypto_sign_verify_detached$MH, "crypto_sign_verify_detached");
         try {
-            return (int)mh$.invokeExact(sig.address(), m.address(), mlen, pk.address());
+            return (int)mh$.invokeExact(sig, m, mlen, pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4746,7 +4750,7 @@ public class sodium_h  {
     public static int crypto_sign_init ( Addressable state) {
         var mh$ = RuntimeHelper.requireNonNull(constants$70.crypto_sign_init$MH, "crypto_sign_init");
         try {
-            return (int)mh$.invokeExact(state.address());
+            return (int)mh$.invokeExact(state);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4757,7 +4761,7 @@ public class sodium_h  {
     public static int crypto_sign_update ( Addressable state,  Addressable m,  long mlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$70.crypto_sign_update$MH, "crypto_sign_update");
         try {
-            return (int)mh$.invokeExact(state.address(), m.address(), mlen);
+            return (int)mh$.invokeExact(state, m, mlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4768,7 +4772,7 @@ public class sodium_h  {
     public static int crypto_sign_final_create ( Addressable state,  Addressable sig,  Addressable siglen_p,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$71.crypto_sign_final_create$MH, "crypto_sign_final_create");
         try {
-            return (int)mh$.invokeExact(state.address(), sig.address(), siglen_p.address(), sk.address());
+            return (int)mh$.invokeExact(state, sig, siglen_p, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4779,7 +4783,7 @@ public class sodium_h  {
     public static int crypto_sign_final_verify ( Addressable state,  Addressable sig,  Addressable pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$71.crypto_sign_final_verify$MH, "crypto_sign_final_verify");
         try {
-            return (int)mh$.invokeExact(state.address(), sig.address(), pk.address());
+            return (int)mh$.invokeExact(state, sig, pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4834,7 +4838,7 @@ public class sodium_h  {
     public static int crypto_stream ( Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$72.crypto_stream$MH, "crypto_stream");
         try {
-            return (int)mh$.invokeExact(c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4845,7 +4849,7 @@ public class sodium_h  {
     public static int crypto_stream_xor ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$72.crypto_stream_xor$MH, "crypto_stream_xor");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4856,7 +4860,7 @@ public class sodium_h  {
     public static void crypto_stream_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$72.crypto_stream_keygen$MH, "crypto_stream_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4900,7 +4904,7 @@ public class sodium_h  {
     public static int crypto_stream_salsa20 ( Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$73.crypto_stream_salsa20$MH, "crypto_stream_salsa20");
         try {
-            return (int)mh$.invokeExact(c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4911,7 +4915,7 @@ public class sodium_h  {
     public static int crypto_stream_salsa20_xor ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$73.crypto_stream_salsa20_xor$MH, "crypto_stream_salsa20_xor");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4922,7 +4926,7 @@ public class sodium_h  {
     public static int crypto_stream_salsa20_xor_ic ( Addressable c,  Addressable m,  long mlen,  Addressable n,  long ic,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$73.crypto_stream_salsa20_xor_ic$MH, "crypto_stream_salsa20_xor_ic");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), ic, k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, ic, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4933,7 +4937,7 @@ public class sodium_h  {
     public static void crypto_stream_salsa20_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$73.crypto_stream_salsa20_keygen$MH, "crypto_stream_salsa20_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4955,7 +4959,7 @@ public class sodium_h  {
     public static int crypto_verify_16 ( Addressable x,  Addressable y) {
         var mh$ = RuntimeHelper.requireNonNull(constants$73.crypto_verify_16$MH, "crypto_verify_16");
         try {
-            return (int)mh$.invokeExact(x.address(), y.address());
+            return (int)mh$.invokeExact(x, y);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4977,7 +4981,7 @@ public class sodium_h  {
     public static int crypto_verify_32 ( Addressable x,  Addressable y) {
         var mh$ = RuntimeHelper.requireNonNull(constants$74.crypto_verify_32$MH, "crypto_verify_32");
         try {
-            return (int)mh$.invokeExact(x.address(), y.address());
+            return (int)mh$.invokeExact(x, y);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4999,7 +5003,7 @@ public class sodium_h  {
     public static int crypto_verify_64 ( Addressable x,  Addressable y) {
         var mh$ = RuntimeHelper.requireNonNull(constants$74.crypto_verify_64$MH, "crypto_verify_64");
         try {
-            return (int)mh$.invokeExact(x.address(), y.address());
+            return (int)mh$.invokeExact(x, y);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5021,7 +5025,7 @@ public class sodium_h  {
     public static void randombytes_buf ( Addressable buf,  long size) {
         var mh$ = RuntimeHelper.requireNonNull(constants$74.randombytes_buf$MH, "randombytes_buf");
         try {
-            mh$.invokeExact(buf.address(), size);
+            mh$.invokeExact(buf, size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5032,7 +5036,7 @@ public class sodium_h  {
     public static void randombytes_buf_deterministic ( Addressable buf,  long size,  Addressable seed) {
         var mh$ = RuntimeHelper.requireNonNull(constants$75.randombytes_buf_deterministic$MH, "randombytes_buf_deterministic");
         try {
-            mh$.invokeExact(buf.address(), size, seed.address());
+            mh$.invokeExact(buf, size, seed);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5087,7 +5091,7 @@ public class sodium_h  {
     public static int randombytes_set_implementation ( Addressable impl) {
         var mh$ = RuntimeHelper.requireNonNull(constants$75.randombytes_set_implementation$MH, "randombytes_set_implementation");
         try {
-            return (int)mh$.invokeExact(impl.address());
+            return (int)mh$.invokeExact(impl);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5109,7 +5113,7 @@ public class sodium_h  {
     public static void randombytes ( Addressable buf,  long buf_len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$76.randombytes$MH, "randombytes");
         try {
-            mh$.invokeExact(buf.address(), buf_len);
+            mh$.invokeExact(buf, buf_len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5258,7 +5262,7 @@ public class sodium_h  {
     public static void sodium_memzero ( Addressable pnt,  long len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$78.sodium_memzero$MH, "sodium_memzero");
         try {
-            mh$.invokeExact(pnt.address(), len);
+            mh$.invokeExact(pnt, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5280,7 +5284,7 @@ public class sodium_h  {
     public static int sodium_memcmp ( Addressable b1_,  Addressable b2_,  long len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$79.sodium_memcmp$MH, "sodium_memcmp");
         try {
-            return (int)mh$.invokeExact(b1_.address(), b2_.address(), len);
+            return (int)mh$.invokeExact(b1_, b2_, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5291,7 +5295,7 @@ public class sodium_h  {
     public static int sodium_compare ( Addressable b1_,  Addressable b2_,  long len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$79.sodium_compare$MH, "sodium_compare");
         try {
-            return (int)mh$.invokeExact(b1_.address(), b2_.address(), len);
+            return (int)mh$.invokeExact(b1_, b2_, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5302,7 +5306,7 @@ public class sodium_h  {
     public static int sodium_is_zero ( Addressable n,  long nlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$79.sodium_is_zero$MH, "sodium_is_zero");
         try {
-            return (int)mh$.invokeExact(n.address(), nlen);
+            return (int)mh$.invokeExact(n, nlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5313,7 +5317,7 @@ public class sodium_h  {
     public static void sodium_increment ( Addressable n,  long nlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$79.sodium_increment$MH, "sodium_increment");
         try {
-            mh$.invokeExact(n.address(), nlen);
+            mh$.invokeExact(n, nlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5324,7 +5328,7 @@ public class sodium_h  {
     public static void sodium_add ( Addressable a,  Addressable b,  long len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$79.sodium_add$MH, "sodium_add");
         try {
-            mh$.invokeExact(a.address(), b.address(), len);
+            mh$.invokeExact(a, b, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5335,7 +5339,7 @@ public class sodium_h  {
     public static void sodium_sub ( Addressable a,  Addressable b,  long len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$79.sodium_sub$MH, "sodium_sub");
         try {
-            mh$.invokeExact(a.address(), b.address(), len);
+            mh$.invokeExact(a, b, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5346,7 +5350,7 @@ public class sodium_h  {
     public static MemoryAddress sodium_bin2hex ( Addressable hex,  long hex_maxlen,  Addressable bin,  long bin_len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$80.sodium_bin2hex$MH, "sodium_bin2hex");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(hex.address(), hex_maxlen, bin.address(), bin_len);
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(hex, hex_maxlen, bin, bin_len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5357,7 +5361,7 @@ public class sodium_h  {
     public static int sodium_hex2bin ( Addressable bin,  long bin_maxlen,  Addressable hex,  long hex_len,  Addressable ignore,  Addressable bin_len,  Addressable hex_end) {
         var mh$ = RuntimeHelper.requireNonNull(constants$80.sodium_hex2bin$MH, "sodium_hex2bin");
         try {
-            return (int)mh$.invokeExact(bin.address(), bin_maxlen, hex.address(), hex_len, ignore.address(), bin_len.address(), hex_end.address());
+            return (int)mh$.invokeExact(bin, bin_maxlen, hex, hex_len, ignore, bin_len, hex_end);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5379,7 +5383,7 @@ public class sodium_h  {
     public static MemoryAddress sodium_bin2base64 ( Addressable b64,  long b64_maxlen,  Addressable bin,  long bin_len,  int variant) {
         var mh$ = RuntimeHelper.requireNonNull(constants$80.sodium_bin2base64$MH, "sodium_bin2base64");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(b64.address(), b64_maxlen, bin.address(), bin_len, variant);
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(b64, b64_maxlen, bin, bin_len, variant);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5390,7 +5394,7 @@ public class sodium_h  {
     public static int sodium_base642bin ( Addressable bin,  long bin_maxlen,  Addressable b64,  long b64_len,  Addressable ignore,  Addressable bin_len,  Addressable b64_end,  int variant) {
         var mh$ = RuntimeHelper.requireNonNull(constants$80.sodium_base642bin$MH, "sodium_base642bin");
         try {
-            return (int)mh$.invokeExact(bin.address(), bin_maxlen, b64.address(), b64_len, ignore.address(), bin_len.address(), b64_end.address(), variant);
+            return (int)mh$.invokeExact(bin, bin_maxlen, b64, b64_len, ignore, bin_len, b64_end, variant);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5401,7 +5405,7 @@ public class sodium_h  {
     public static int sodium_mlock ( Addressable addr,  long len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$80.sodium_mlock$MH, "sodium_mlock");
         try {
-            return (int)mh$.invokeExact(addr.address(), len);
+            return (int)mh$.invokeExact(addr, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5412,7 +5416,7 @@ public class sodium_h  {
     public static int sodium_munlock ( Addressable addr,  long len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$81.sodium_munlock$MH, "sodium_munlock");
         try {
-            return (int)mh$.invokeExact(addr.address(), len);
+            return (int)mh$.invokeExact(addr, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5445,7 +5449,7 @@ public class sodium_h  {
     public static void sodium_free ( Addressable ptr) {
         var mh$ = RuntimeHelper.requireNonNull(constants$81.sodium_free$MH, "sodium_free");
         try {
-            mh$.invokeExact(ptr.address());
+            mh$.invokeExact(ptr);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5456,7 +5460,7 @@ public class sodium_h  {
     public static int sodium_mprotect_noaccess ( Addressable ptr) {
         var mh$ = RuntimeHelper.requireNonNull(constants$81.sodium_mprotect_noaccess$MH, "sodium_mprotect_noaccess");
         try {
-            return (int)mh$.invokeExact(ptr.address());
+            return (int)mh$.invokeExact(ptr);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5467,7 +5471,7 @@ public class sodium_h  {
     public static int sodium_mprotect_readonly ( Addressable ptr) {
         var mh$ = RuntimeHelper.requireNonNull(constants$81.sodium_mprotect_readonly$MH, "sodium_mprotect_readonly");
         try {
-            return (int)mh$.invokeExact(ptr.address());
+            return (int)mh$.invokeExact(ptr);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5478,7 +5482,7 @@ public class sodium_h  {
     public static int sodium_mprotect_readwrite ( Addressable ptr) {
         var mh$ = RuntimeHelper.requireNonNull(constants$82.sodium_mprotect_readwrite$MH, "sodium_mprotect_readwrite");
         try {
-            return (int)mh$.invokeExact(ptr.address());
+            return (int)mh$.invokeExact(ptr);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5489,7 +5493,7 @@ public class sodium_h  {
     public static int sodium_pad ( Addressable padded_buflen_p,  Addressable buf,  long unpadded_buflen,  long blocksize,  long max_buflen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$82.sodium_pad$MH, "sodium_pad");
         try {
-            return (int)mh$.invokeExact(padded_buflen_p.address(), buf.address(), unpadded_buflen, blocksize, max_buflen);
+            return (int)mh$.invokeExact(padded_buflen_p, buf, unpadded_buflen, blocksize, max_buflen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5500,7 +5504,7 @@ public class sodium_h  {
     public static int sodium_unpad ( Addressable unpadded_buflen_p,  Addressable buf,  long padded_buflen,  long blocksize) {
         var mh$ = RuntimeHelper.requireNonNull(constants$82.sodium_unpad$MH, "sodium_unpad");
         try {
-            return (int)mh$.invokeExact(unpadded_buflen_p.address(), buf.address(), padded_buflen, blocksize);
+            return (int)mh$.invokeExact(unpadded_buflen_p, buf, padded_buflen, blocksize);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5555,7 +5559,7 @@ public class sodium_h  {
     public static int crypto_stream_xchacha20 ( Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$83.crypto_stream_xchacha20$MH, "crypto_stream_xchacha20");
         try {
-            return (int)mh$.invokeExact(c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5566,7 +5570,7 @@ public class sodium_h  {
     public static int crypto_stream_xchacha20_xor ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$83.crypto_stream_xchacha20_xor$MH, "crypto_stream_xchacha20_xor");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5577,7 +5581,7 @@ public class sodium_h  {
     public static int crypto_stream_xchacha20_xor_ic ( Addressable c,  Addressable m,  long mlen,  Addressable n,  long ic,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$83.crypto_stream_xchacha20_xor_ic$MH, "crypto_stream_xchacha20_xor_ic");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), ic, k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, ic, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5588,7 +5592,7 @@ public class sodium_h  {
     public static void crypto_stream_xchacha20_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$83.crypto_stream_xchacha20_keygen$MH, "crypto_stream_xchacha20_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5676,7 +5680,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_seed_keypair ( Addressable pk,  Addressable sk,  Addressable seed) {
         var mh$ = RuntimeHelper.requireNonNull(constants$85.crypto_box_curve25519xchacha20poly1305_seed_keypair$MH, "crypto_box_curve25519xchacha20poly1305_seed_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address(), seed.address());
+            return (int)mh$.invokeExact(pk, sk, seed);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5687,7 +5691,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_keypair ( Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$85.crypto_box_curve25519xchacha20poly1305_keypair$MH, "crypto_box_curve25519xchacha20poly1305_keypair");
         try {
-            return (int)mh$.invokeExact(pk.address(), sk.address());
+            return (int)mh$.invokeExact(pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5698,7 +5702,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_easy ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$85.crypto_box_curve25519xchacha20poly1305_easy$MH, "crypto_box_curve25519xchacha20poly1305_easy");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5709,7 +5713,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_open_easy ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$85.crypto_box_curve25519xchacha20poly1305_open_easy$MH, "crypto_box_curve25519xchacha20poly1305_open_easy");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(m, c, clen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5720,7 +5724,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_detached ( Addressable c,  Addressable mac,  Addressable m,  long mlen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$85.crypto_box_curve25519xchacha20poly1305_detached$MH, "crypto_box_curve25519xchacha20poly1305_detached");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), m.address(), mlen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(c, mac, m, mlen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5731,7 +5735,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_open_detached ( Addressable m,  Addressable c,  Addressable mac,  long clen,  Addressable n,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$85.crypto_box_curve25519xchacha20poly1305_open_detached$MH, "crypto_box_curve25519xchacha20poly1305_open_detached");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), mac.address(), clen, n.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(m, c, mac, clen, n, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5742,7 +5746,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_beforenm ( Addressable k,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$86.crypto_box_curve25519xchacha20poly1305_beforenm$MH, "crypto_box_curve25519xchacha20poly1305_beforenm");
         try {
-            return (int)mh$.invokeExact(k.address(), pk.address(), sk.address());
+            return (int)mh$.invokeExact(k, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5753,7 +5757,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_easy_afternm ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$86.crypto_box_curve25519xchacha20poly1305_easy_afternm$MH, "crypto_box_curve25519xchacha20poly1305_easy_afternm");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5764,7 +5768,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_open_easy_afternm ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$86.crypto_box_curve25519xchacha20poly1305_open_easy_afternm$MH, "crypto_box_curve25519xchacha20poly1305_open_easy_afternm");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5775,7 +5779,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_detached_afternm ( Addressable c,  Addressable mac,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$86.crypto_box_curve25519xchacha20poly1305_detached_afternm$MH, "crypto_box_curve25519xchacha20poly1305_detached_afternm");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, mac, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5786,7 +5790,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_open_detached_afternm ( Addressable m,  Addressable c,  Addressable mac,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$86.crypto_box_curve25519xchacha20poly1305_open_detached_afternm$MH, "crypto_box_curve25519xchacha20poly1305_open_detached_afternm");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), mac.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, mac, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5808,7 +5812,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_seal ( Addressable c,  Addressable m,  long mlen,  Addressable pk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$87.crypto_box_curve25519xchacha20poly1305_seal$MH, "crypto_box_curve25519xchacha20poly1305_seal");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, pk.address());
+            return (int)mh$.invokeExact(c, m, mlen, pk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5819,7 +5823,7 @@ public class sodium_h  {
     public static int crypto_box_curve25519xchacha20poly1305_seal_open ( Addressable m,  Addressable c,  long clen,  Addressable pk,  Addressable sk) {
         var mh$ = RuntimeHelper.requireNonNull(constants$87.crypto_box_curve25519xchacha20poly1305_seal_open$MH, "crypto_box_curve25519xchacha20poly1305_seal_open");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, pk.address(), sk.address());
+            return (int)mh$.invokeExact(m, c, clen, pk, sk);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5885,7 +5889,7 @@ public class sodium_h  {
     public static int crypto_core_ed25519_is_valid_point ( Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$88.crypto_core_ed25519_is_valid_point$MH, "crypto_core_ed25519_is_valid_point");
         try {
-            return (int)mh$.invokeExact(p.address());
+            return (int)mh$.invokeExact(p);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5896,7 +5900,7 @@ public class sodium_h  {
     public static int crypto_core_ed25519_add ( Addressable r,  Addressable p,  Addressable q) {
         var mh$ = RuntimeHelper.requireNonNull(constants$88.crypto_core_ed25519_add$MH, "crypto_core_ed25519_add");
         try {
-            return (int)mh$.invokeExact(r.address(), p.address(), q.address());
+            return (int)mh$.invokeExact(r, p, q);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5907,7 +5911,7 @@ public class sodium_h  {
     public static int crypto_core_ed25519_sub ( Addressable r,  Addressable p,  Addressable q) {
         var mh$ = RuntimeHelper.requireNonNull(constants$88.crypto_core_ed25519_sub$MH, "crypto_core_ed25519_sub");
         try {
-            return (int)mh$.invokeExact(r.address(), p.address(), q.address());
+            return (int)mh$.invokeExact(r, p, q);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5918,7 +5922,7 @@ public class sodium_h  {
     public static int crypto_core_ed25519_from_uniform ( Addressable p,  Addressable r) {
         var mh$ = RuntimeHelper.requireNonNull(constants$88.crypto_core_ed25519_from_uniform$MH, "crypto_core_ed25519_from_uniform");
         try {
-            return (int)mh$.invokeExact(p.address(), r.address());
+            return (int)mh$.invokeExact(p, r);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5929,7 +5933,7 @@ public class sodium_h  {
     public static int crypto_core_ed25519_from_hash ( Addressable p,  Addressable h) {
         var mh$ = RuntimeHelper.requireNonNull(constants$88.crypto_core_ed25519_from_hash$MH, "crypto_core_ed25519_from_hash");
         try {
-            return (int)mh$.invokeExact(p.address(), h.address());
+            return (int)mh$.invokeExact(p, h);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5940,7 +5944,7 @@ public class sodium_h  {
     public static void crypto_core_ed25519_random ( Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$89.crypto_core_ed25519_random$MH, "crypto_core_ed25519_random");
         try {
-            mh$.invokeExact(p.address());
+            mh$.invokeExact(p);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5951,7 +5955,7 @@ public class sodium_h  {
     public static void crypto_core_ed25519_scalar_random ( Addressable r) {
         var mh$ = RuntimeHelper.requireNonNull(constants$89.crypto_core_ed25519_scalar_random$MH, "crypto_core_ed25519_scalar_random");
         try {
-            mh$.invokeExact(r.address());
+            mh$.invokeExact(r);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5962,7 +5966,7 @@ public class sodium_h  {
     public static int crypto_core_ed25519_scalar_invert ( Addressable recip,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$89.crypto_core_ed25519_scalar_invert$MH, "crypto_core_ed25519_scalar_invert");
         try {
-            return (int)mh$.invokeExact(recip.address(), s.address());
+            return (int)mh$.invokeExact(recip, s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5973,7 +5977,7 @@ public class sodium_h  {
     public static void crypto_core_ed25519_scalar_negate ( Addressable neg,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$89.crypto_core_ed25519_scalar_negate$MH, "crypto_core_ed25519_scalar_negate");
         try {
-            mh$.invokeExact(neg.address(), s.address());
+            mh$.invokeExact(neg, s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5984,7 +5988,7 @@ public class sodium_h  {
     public static void crypto_core_ed25519_scalar_complement ( Addressable comp,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$89.crypto_core_ed25519_scalar_complement$MH, "crypto_core_ed25519_scalar_complement");
         try {
-            mh$.invokeExact(comp.address(), s.address());
+            mh$.invokeExact(comp, s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5995,7 +5999,7 @@ public class sodium_h  {
     public static void crypto_core_ed25519_scalar_add ( Addressable z,  Addressable x,  Addressable y) {
         var mh$ = RuntimeHelper.requireNonNull(constants$89.crypto_core_ed25519_scalar_add$MH, "crypto_core_ed25519_scalar_add");
         try {
-            mh$.invokeExact(z.address(), x.address(), y.address());
+            mh$.invokeExact(z, x, y);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6006,7 +6010,7 @@ public class sodium_h  {
     public static void crypto_core_ed25519_scalar_sub ( Addressable z,  Addressable x,  Addressable y) {
         var mh$ = RuntimeHelper.requireNonNull(constants$90.crypto_core_ed25519_scalar_sub$MH, "crypto_core_ed25519_scalar_sub");
         try {
-            mh$.invokeExact(z.address(), x.address(), y.address());
+            mh$.invokeExact(z, x, y);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6017,7 +6021,7 @@ public class sodium_h  {
     public static void crypto_core_ed25519_scalar_mul ( Addressable z,  Addressable x,  Addressable y) {
         var mh$ = RuntimeHelper.requireNonNull(constants$90.crypto_core_ed25519_scalar_mul$MH, "crypto_core_ed25519_scalar_mul");
         try {
-            mh$.invokeExact(z.address(), x.address(), y.address());
+            mh$.invokeExact(z, x, y);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6028,7 +6032,7 @@ public class sodium_h  {
     public static void crypto_core_ed25519_scalar_reduce ( Addressable r,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$90.crypto_core_ed25519_scalar_reduce$MH, "crypto_core_ed25519_scalar_reduce");
         try {
-            mh$.invokeExact(r.address(), s.address());
+            mh$.invokeExact(r, s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6083,7 +6087,7 @@ public class sodium_h  {
     public static int crypto_core_ristretto255_is_valid_point ( Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$91.crypto_core_ristretto255_is_valid_point$MH, "crypto_core_ristretto255_is_valid_point");
         try {
-            return (int)mh$.invokeExact(p.address());
+            return (int)mh$.invokeExact(p);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6094,7 +6098,7 @@ public class sodium_h  {
     public static int crypto_core_ristretto255_add ( Addressable r,  Addressable p,  Addressable q) {
         var mh$ = RuntimeHelper.requireNonNull(constants$91.crypto_core_ristretto255_add$MH, "crypto_core_ristretto255_add");
         try {
-            return (int)mh$.invokeExact(r.address(), p.address(), q.address());
+            return (int)mh$.invokeExact(r, p, q);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6105,7 +6109,7 @@ public class sodium_h  {
     public static int crypto_core_ristretto255_sub ( Addressable r,  Addressable p,  Addressable q) {
         var mh$ = RuntimeHelper.requireNonNull(constants$91.crypto_core_ristretto255_sub$MH, "crypto_core_ristretto255_sub");
         try {
-            return (int)mh$.invokeExact(r.address(), p.address(), q.address());
+            return (int)mh$.invokeExact(r, p, q);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6116,7 +6120,7 @@ public class sodium_h  {
     public static int crypto_core_ristretto255_from_hash ( Addressable p,  Addressable r) {
         var mh$ = RuntimeHelper.requireNonNull(constants$91.crypto_core_ristretto255_from_hash$MH, "crypto_core_ristretto255_from_hash");
         try {
-            return (int)mh$.invokeExact(p.address(), r.address());
+            return (int)mh$.invokeExact(p, r);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6127,7 +6131,7 @@ public class sodium_h  {
     public static void crypto_core_ristretto255_random ( Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$91.crypto_core_ristretto255_random$MH, "crypto_core_ristretto255_random");
         try {
-            mh$.invokeExact(p.address());
+            mh$.invokeExact(p);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6138,7 +6142,7 @@ public class sodium_h  {
     public static void crypto_core_ristretto255_scalar_random ( Addressable r) {
         var mh$ = RuntimeHelper.requireNonNull(constants$92.crypto_core_ristretto255_scalar_random$MH, "crypto_core_ristretto255_scalar_random");
         try {
-            mh$.invokeExact(r.address());
+            mh$.invokeExact(r);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6149,7 +6153,7 @@ public class sodium_h  {
     public static int crypto_core_ristretto255_scalar_invert ( Addressable recip,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$92.crypto_core_ristretto255_scalar_invert$MH, "crypto_core_ristretto255_scalar_invert");
         try {
-            return (int)mh$.invokeExact(recip.address(), s.address());
+            return (int)mh$.invokeExact(recip, s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6160,7 +6164,7 @@ public class sodium_h  {
     public static void crypto_core_ristretto255_scalar_negate ( Addressable neg,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$92.crypto_core_ristretto255_scalar_negate$MH, "crypto_core_ristretto255_scalar_negate");
         try {
-            mh$.invokeExact(neg.address(), s.address());
+            mh$.invokeExact(neg, s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6171,7 +6175,7 @@ public class sodium_h  {
     public static void crypto_core_ristretto255_scalar_complement ( Addressable comp,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$92.crypto_core_ristretto255_scalar_complement$MH, "crypto_core_ristretto255_scalar_complement");
         try {
-            mh$.invokeExact(comp.address(), s.address());
+            mh$.invokeExact(comp, s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6182,7 +6186,7 @@ public class sodium_h  {
     public static void crypto_core_ristretto255_scalar_add ( Addressable z,  Addressable x,  Addressable y) {
         var mh$ = RuntimeHelper.requireNonNull(constants$92.crypto_core_ristretto255_scalar_add$MH, "crypto_core_ristretto255_scalar_add");
         try {
-            mh$.invokeExact(z.address(), x.address(), y.address());
+            mh$.invokeExact(z, x, y);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6193,7 +6197,7 @@ public class sodium_h  {
     public static void crypto_core_ristretto255_scalar_sub ( Addressable z,  Addressable x,  Addressable y) {
         var mh$ = RuntimeHelper.requireNonNull(constants$92.crypto_core_ristretto255_scalar_sub$MH, "crypto_core_ristretto255_scalar_sub");
         try {
-            mh$.invokeExact(z.address(), x.address(), y.address());
+            mh$.invokeExact(z, x, y);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6204,7 +6208,7 @@ public class sodium_h  {
     public static void crypto_core_ristretto255_scalar_mul ( Addressable z,  Addressable x,  Addressable y) {
         var mh$ = RuntimeHelper.requireNonNull(constants$93.crypto_core_ristretto255_scalar_mul$MH, "crypto_core_ristretto255_scalar_mul");
         try {
-            mh$.invokeExact(z.address(), x.address(), y.address());
+            mh$.invokeExact(z, x, y);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6215,7 +6219,7 @@ public class sodium_h  {
     public static void crypto_core_ristretto255_scalar_reduce ( Addressable r,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$93.crypto_core_ristretto255_scalar_reduce$MH, "crypto_core_ristretto255_scalar_reduce");
         try {
-            mh$.invokeExact(r.address(), s.address());
+            mh$.invokeExact(r, s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6248,7 +6252,7 @@ public class sodium_h  {
     public static int crypto_scalarmult_ed25519 ( Addressable q,  Addressable n,  Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$93.crypto_scalarmult_ed25519$MH, "crypto_scalarmult_ed25519");
         try {
-            return (int)mh$.invokeExact(q.address(), n.address(), p.address());
+            return (int)mh$.invokeExact(q, n, p);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6259,7 +6263,7 @@ public class sodium_h  {
     public static int crypto_scalarmult_ed25519_noclamp ( Addressable q,  Addressable n,  Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$93.crypto_scalarmult_ed25519_noclamp$MH, "crypto_scalarmult_ed25519_noclamp");
         try {
-            return (int)mh$.invokeExact(q.address(), n.address(), p.address());
+            return (int)mh$.invokeExact(q, n, p);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6270,7 +6274,7 @@ public class sodium_h  {
     public static int crypto_scalarmult_ed25519_base ( Addressable q,  Addressable n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$94.crypto_scalarmult_ed25519_base$MH, "crypto_scalarmult_ed25519_base");
         try {
-            return (int)mh$.invokeExact(q.address(), n.address());
+            return (int)mh$.invokeExact(q, n);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6281,7 +6285,7 @@ public class sodium_h  {
     public static int crypto_scalarmult_ed25519_base_noclamp ( Addressable q,  Addressable n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$94.crypto_scalarmult_ed25519_base_noclamp$MH, "crypto_scalarmult_ed25519_base_noclamp");
         try {
-            return (int)mh$.invokeExact(q.address(), n.address());
+            return (int)mh$.invokeExact(q, n);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6314,7 +6318,7 @@ public class sodium_h  {
     public static int crypto_scalarmult_ristretto255 ( Addressable q,  Addressable n,  Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$94.crypto_scalarmult_ristretto255$MH, "crypto_scalarmult_ristretto255");
         try {
-            return (int)mh$.invokeExact(q.address(), n.address(), p.address());
+            return (int)mh$.invokeExact(q, n, p);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6325,7 +6329,7 @@ public class sodium_h  {
     public static int crypto_scalarmult_ristretto255_base ( Addressable q,  Addressable n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$94.crypto_scalarmult_ristretto255_base$MH, "crypto_scalarmult_ristretto255_base");
         try {
-            return (int)mh$.invokeExact(q.address(), n.address());
+            return (int)mh$.invokeExact(q, n);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6380,7 +6384,7 @@ public class sodium_h  {
     public static int crypto_secretbox_xchacha20poly1305_easy ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$95.crypto_secretbox_xchacha20poly1305_easy$MH, "crypto_secretbox_xchacha20poly1305_easy");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6391,7 +6395,7 @@ public class sodium_h  {
     public static int crypto_secretbox_xchacha20poly1305_open_easy ( Addressable m,  Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$95.crypto_secretbox_xchacha20poly1305_open_easy$MH, "crypto_secretbox_xchacha20poly1305_open_easy");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6402,7 +6406,7 @@ public class sodium_h  {
     public static int crypto_secretbox_xchacha20poly1305_detached ( Addressable c,  Addressable mac,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$96.crypto_secretbox_xchacha20poly1305_detached$MH, "crypto_secretbox_xchacha20poly1305_detached");
         try {
-            return (int)mh$.invokeExact(c.address(), mac.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, mac, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6413,7 +6417,7 @@ public class sodium_h  {
     public static int crypto_secretbox_xchacha20poly1305_open_detached ( Addressable m,  Addressable c,  Addressable mac,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$96.crypto_secretbox_xchacha20poly1305_open_detached$MH, "crypto_secretbox_xchacha20poly1305_open_detached");
         try {
-            return (int)mh$.invokeExact(m.address(), c.address(), mac.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(m, c, mac, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6589,7 +6593,7 @@ public class sodium_h  {
     public static int crypto_pwhash_scryptsalsa208sha256 ( Addressable out,  long outlen,  Addressable passwd,  long passwdlen,  Addressable salt,  long opslimit,  long memlimit) {
         var mh$ = RuntimeHelper.requireNonNull(constants$98.crypto_pwhash_scryptsalsa208sha256$MH, "crypto_pwhash_scryptsalsa208sha256");
         try {
-            return (int)mh$.invokeExact(out.address(), outlen, passwd.address(), passwdlen, salt.address(), opslimit, memlimit);
+            return (int)mh$.invokeExact(out, outlen, passwd, passwdlen, salt, opslimit, memlimit);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6600,7 +6604,7 @@ public class sodium_h  {
     public static int crypto_pwhash_scryptsalsa208sha256_str ( Addressable out,  Addressable passwd,  long passwdlen,  long opslimit,  long memlimit) {
         var mh$ = RuntimeHelper.requireNonNull(constants$99.crypto_pwhash_scryptsalsa208sha256_str$MH, "crypto_pwhash_scryptsalsa208sha256_str");
         try {
-            return (int)mh$.invokeExact(out.address(), passwd.address(), passwdlen, opslimit, memlimit);
+            return (int)mh$.invokeExact(out, passwd, passwdlen, opslimit, memlimit);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6611,7 +6615,7 @@ public class sodium_h  {
     public static int crypto_pwhash_scryptsalsa208sha256_str_verify ( Addressable str,  Addressable passwd,  long passwdlen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$99.crypto_pwhash_scryptsalsa208sha256_str_verify$MH, "crypto_pwhash_scryptsalsa208sha256_str_verify");
         try {
-            return (int)mh$.invokeExact(str.address(), passwd.address(), passwdlen);
+            return (int)mh$.invokeExact(str, passwd, passwdlen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6622,7 +6626,7 @@ public class sodium_h  {
     public static int crypto_pwhash_scryptsalsa208sha256_ll ( Addressable passwd,  long passwdlen,  Addressable salt,  long saltlen,  long N,  int r,  int p,  Addressable buf,  long buflen) {
         var mh$ = RuntimeHelper.requireNonNull(constants$99.crypto_pwhash_scryptsalsa208sha256_ll$MH, "crypto_pwhash_scryptsalsa208sha256_ll");
         try {
-            return (int)mh$.invokeExact(passwd.address(), passwdlen, salt.address(), saltlen, N, r, p, buf.address(), buflen);
+            return (int)mh$.invokeExact(passwd, passwdlen, salt, saltlen, N, r, p, buf, buflen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6633,7 +6637,7 @@ public class sodium_h  {
     public static int crypto_pwhash_scryptsalsa208sha256_str_needs_rehash ( Addressable str,  long opslimit,  long memlimit) {
         var mh$ = RuntimeHelper.requireNonNull(constants$99.crypto_pwhash_scryptsalsa208sha256_str_needs_rehash$MH, "crypto_pwhash_scryptsalsa208sha256_str_needs_rehash");
         try {
-            return (int)mh$.invokeExact(str.address(), opslimit, memlimit);
+            return (int)mh$.invokeExact(str, opslimit, memlimit);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6677,7 +6681,7 @@ public class sodium_h  {
     public static int crypto_stream_salsa2012 ( Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$100.crypto_stream_salsa2012$MH, "crypto_stream_salsa2012");
         try {
-            return (int)mh$.invokeExact(c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6688,7 +6692,7 @@ public class sodium_h  {
     public static int crypto_stream_salsa2012_xor ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$100.crypto_stream_salsa2012_xor$MH, "crypto_stream_salsa2012_xor");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6699,7 +6703,7 @@ public class sodium_h  {
     public static void crypto_stream_salsa2012_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$100.crypto_stream_salsa2012_keygen$MH, "crypto_stream_salsa2012_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6743,7 +6747,7 @@ public class sodium_h  {
     public static int crypto_stream_salsa208 ( Addressable c,  long clen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$101.crypto_stream_salsa208$MH, "crypto_stream_salsa208");
         try {
-            return (int)mh$.invokeExact(c.address(), clen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, clen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6754,7 +6758,7 @@ public class sodium_h  {
     public static int crypto_stream_salsa208_xor ( Addressable c,  Addressable m,  long mlen,  Addressable n,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$101.crypto_stream_salsa208_xor$MH, "crypto_stream_salsa208_xor");
         try {
-            return (int)mh$.invokeExact(c.address(), m.address(), mlen, n.address(), k.address());
+            return (int)mh$.invokeExact(c, m, mlen, n, k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6765,7 +6769,7 @@ public class sodium_h  {
     public static void crypto_stream_salsa208_keygen ( Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$101.crypto_stream_salsa208_keygen$MH, "crypto_stream_salsa208_keygen");
         try {
-            mh$.invokeExact(k.address());
+            mh$.invokeExact(k);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

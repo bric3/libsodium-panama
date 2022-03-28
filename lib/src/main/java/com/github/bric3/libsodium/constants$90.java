@@ -6,54 +6,48 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$90 {
 
     static final FunctionDescriptor crypto_core_ed25519_scalar_sub$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_ed25519_scalar_sub$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ed25519_scalar_sub",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_core_ed25519_scalar_sub",
         constants$90.crypto_core_ed25519_scalar_sub$FUNC, false
     );
     static final FunctionDescriptor crypto_core_ed25519_scalar_mul$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_ed25519_scalar_mul$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ed25519_scalar_mul",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_core_ed25519_scalar_mul",
         constants$90.crypto_core_ed25519_scalar_mul$FUNC, false
     );
     static final FunctionDescriptor crypto_core_ed25519_scalar_reduce$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER,
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_ed25519_scalar_reduce$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ed25519_scalar_reduce",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_core_ed25519_scalar_reduce",
         constants$90.crypto_core_ed25519_scalar_reduce$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ristretto255_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_ristretto255_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_ristretto255_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_bytes",
-        "()J",
+        "crypto_core_ristretto255_bytes",
         constants$90.crypto_core_ristretto255_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ristretto255_hashbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_ristretto255_hashbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_ristretto255_hashbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_hashbytes",
-        "()J",
+        "crypto_core_ristretto255_hashbytes",
         constants$90.crypto_core_ristretto255_hashbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_ristretto255_scalarbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_ristretto255_scalarbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_ristretto255_scalarbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_ristretto255_scalarbytes",
-        "()J",
+        "crypto_core_ristretto255_scalarbytes",
         constants$90.crypto_core_ristretto255_scalarbytes$FUNC, false
     );
 }

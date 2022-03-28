@@ -6,63 +6,57 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$60 {
 
-    static final FunctionDescriptor crypto_stream_chacha20_ietf_messagebytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_stream_chacha20_ietf_messagebytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_stream_chacha20_ietf_messagebytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_chacha20_ietf_messagebytes_max",
-        "()J",
+        "crypto_stream_chacha20_ietf_messagebytes_max",
         constants$60.crypto_stream_chacha20_ietf_messagebytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_chacha20_ietf$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_chacha20_ietf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_chacha20_ietf$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_chacha20_ietf",
-        "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_chacha20_ietf",
         constants$60.crypto_stream_chacha20_ietf$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_chacha20_ietf_xor$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_chacha20_ietf_xor$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_chacha20_ietf_xor$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_chacha20_ietf_xor",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_chacha20_ietf_xor",
         constants$60.crypto_stream_chacha20_ietf_xor$FUNC, false
     );
-    static final FunctionDescriptor crypto_stream_chacha20_ietf_xor_ic$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_LONG_LONG,
-        C_POINTER,
-        C_INT,
-        C_POINTER
+    static final FunctionDescriptor crypto_stream_chacha20_ietf_xor_ic$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_chacha20_ietf_xor_ic$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_chacha20_ietf_xor_ic",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_stream_chacha20_ietf_xor_ic",
         constants$60.crypto_stream_chacha20_ietf_xor_ic$FUNC, false
     );
     static final FunctionDescriptor crypto_stream_chacha20_ietf_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_stream_chacha20_ietf_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_stream_chacha20_ietf_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_stream_chacha20_ietf_keygen",
         constants$60.crypto_stream_chacha20_ietf_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_abytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_secretstream_xchacha20poly1305_abytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_secretstream_xchacha20poly1305_abytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_secretstream_xchacha20poly1305_abytes",
-        "()J",
+        "crypto_secretstream_xchacha20poly1305_abytes",
         constants$60.crypto_secretstream_xchacha20poly1305_abytes$FUNC, false
     );
 }

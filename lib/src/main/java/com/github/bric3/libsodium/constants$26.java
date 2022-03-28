@@ -6,53 +6,47 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$26 {
 
-    static final FunctionDescriptor crypto_core_hsalsa20$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_core_hsalsa20$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_hsalsa20$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_hsalsa20",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_core_hsalsa20",
         constants$26.crypto_core_hsalsa20$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_hchacha20_outputbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_hchacha20_outputbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_hchacha20_outputbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_hchacha20_outputbytes",
-        "()J",
+        "crypto_core_hchacha20_outputbytes",
         constants$26.crypto_core_hchacha20_outputbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_hchacha20_inputbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_hchacha20_inputbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_hchacha20_inputbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_hchacha20_inputbytes",
-        "()J",
+        "crypto_core_hchacha20_inputbytes",
         constants$26.crypto_core_hchacha20_inputbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_hchacha20_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_hchacha20_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_hchacha20_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_hchacha20_keybytes",
-        "()J",
+        "crypto_core_hchacha20_keybytes",
         constants$26.crypto_core_hchacha20_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_hchacha20_constbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_hchacha20_constbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_hchacha20_constbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_hchacha20_constbytes",
-        "()J",
+        "crypto_core_hchacha20_constbytes",
         constants$26.crypto_core_hchacha20_constbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_hchacha20$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_core_hchacha20$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_hchacha20$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_hchacha20",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_core_hchacha20",
         constants$26.crypto_core_hchacha20$FUNC, false
     );
 }

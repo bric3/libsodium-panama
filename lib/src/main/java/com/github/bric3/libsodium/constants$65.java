@@ -6,45 +6,39 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$65 {
 
     static final FunctionDescriptor crypto_shorthash_keygen$FUNC = FunctionDescriptor.ofVoid(
-        C_POINTER
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_shorthash_keygen$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_shorthash_keygen",
-        "(Ljdk/incubator/foreign/MemoryAddress;)V",
+        "crypto_shorthash_keygen",
         constants$65.crypto_shorthash_keygen$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_ed25519ph_statebytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_sign_ed25519ph_statebytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_sign_ed25519ph_statebytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_ed25519ph_statebytes",
-        "()J",
+        "crypto_sign_ed25519ph_statebytes",
         constants$65.crypto_sign_ed25519ph_statebytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_ed25519_bytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_sign_ed25519_bytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_sign_ed25519_bytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_ed25519_bytes",
-        "()J",
+        "crypto_sign_ed25519_bytes",
         constants$65.crypto_sign_ed25519_bytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_ed25519_seedbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_sign_ed25519_seedbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_sign_ed25519_seedbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_ed25519_seedbytes",
-        "()J",
+        "crypto_sign_ed25519_seedbytes",
         constants$65.crypto_sign_ed25519_seedbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_ed25519_publickeybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_sign_ed25519_publickeybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_sign_ed25519_publickeybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_ed25519_publickeybytes",
-        "()J",
+        "crypto_sign_ed25519_publickeybytes",
         constants$65.crypto_sign_ed25519_publickeybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_sign_ed25519_secretkeybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_sign_ed25519_secretkeybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_sign_ed25519_secretkeybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_sign_ed25519_secretkeybytes",
-        "()J",
+        "crypto_sign_ed25519_secretkeybytes",
         constants$65.crypto_sign_ed25519_secretkeybytes$FUNC, false
     );
 }

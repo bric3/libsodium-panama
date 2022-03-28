@@ -6,13 +6,13 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 public class crypto_hash_sha256_state {
 
-    static final MemoryLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(8, C_INT).withName("state"),
-        C_LONG_LONG.withName("count"),
-        MemoryLayout.sequenceLayout(64, C_CHAR).withName("buf")
+    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(8, Constants$root.C_INT$LAYOUT).withName("state"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("count"),
+        MemoryLayout.sequenceLayout(64, Constants$root.C_CHAR$LAYOUT).withName("buf")
     ).withName("crypto_hash_sha256_state");
     public static MemoryLayout $LAYOUT() {
         return crypto_hash_sha256_state.$struct$LAYOUT;
@@ -20,7 +20,7 @@ public class crypto_hash_sha256_state {
     public static MemorySegment state$slice(MemorySegment seg) {
         return seg.asSlice(0, 32);
     }
-    static final VarHandle count$VH = $struct$LAYOUT.varHandle(long.class, MemoryLayout.PathElement.groupElement("count"));
+    static final VarHandle count$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("count"));
     public static VarHandle count$VH() {
         return crypto_hash_sha256_state.count$VH;
     }
@@ -41,12 +41,12 @@ public class crypto_hash_sha256_state {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.ofScope(scope)); }
     public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
+    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.nativeAllocator(scope)); }
     public static MemorySegment allocateArray(int len, ResourceScope scope) {
-        return allocateArray(len, SegmentAllocator.ofScope(scope));
+        return allocateArray(len, SegmentAllocator.nativeAllocator(scope));
     }
     public static MemorySegment ofAddress(MemoryAddress addr, ResourceScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }

@@ -6,49 +6,43 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$35 {
 
-    static final FunctionDescriptor crypto_kdf_blake2b_bytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_kdf_blake2b_bytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_kdf_blake2b_bytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kdf_blake2b_bytes_max",
-        "()J",
+        "crypto_kdf_blake2b_bytes_max",
         constants$35.crypto_kdf_blake2b_bytes_max$FUNC, false
     );
-    static final FunctionDescriptor crypto_kdf_blake2b_contextbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_kdf_blake2b_contextbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_kdf_blake2b_contextbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kdf_blake2b_contextbytes",
-        "()J",
+        "crypto_kdf_blake2b_contextbytes",
         constants$35.crypto_kdf_blake2b_contextbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_kdf_blake2b_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_kdf_blake2b_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_kdf_blake2b_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kdf_blake2b_keybytes",
-        "()J",
+        "crypto_kdf_blake2b_keybytes",
         constants$35.crypto_kdf_blake2b_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_kdf_blake2b_derive_from_key$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_LONG,
-        C_LONG_LONG,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_kdf_blake2b_derive_from_key$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_kdf_blake2b_derive_from_key$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kdf_blake2b_derive_from_key",
-        "(Ljdk/incubator/foreign/MemoryAddress;JJLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_kdf_blake2b_derive_from_key",
         constants$35.crypto_kdf_blake2b_derive_from_key$FUNC, false
     );
-    static final FunctionDescriptor crypto_kdf_bytes_min$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_kdf_bytes_min$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_kdf_bytes_min$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kdf_bytes_min",
-        "()J",
+        "crypto_kdf_bytes_min",
         constants$35.crypto_kdf_bytes_min$FUNC, false
     );
-    static final FunctionDescriptor crypto_kdf_bytes_max$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_kdf_bytes_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_kdf_bytes_max$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_kdf_bytes_max",
-        "()J",
+        "crypto_kdf_bytes_max",
         constants$35.crypto_kdf_bytes_max$FUNC, false
     );
 }

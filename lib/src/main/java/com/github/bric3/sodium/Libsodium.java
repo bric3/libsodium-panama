@@ -13,6 +13,11 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.ADDRESS;
+import static jdk.incubator.foreign.ValueLayout.JAVA_BYTE;
+import static jdk.incubator.foreign.ValueLayout.JAVA_CHAR;
+import static jdk.incubator.foreign.ValueLayout.JAVA_INT;
+import static jdk.incubator.foreign.ValueLayout.JAVA_LONG;
 
 /**
  * On macos when the library is installed via brew, there is a symlink
@@ -34,8 +39,8 @@ public class Libsodium {
 
 //    static SymbolLookup lookup() {
 //        SymbolLookup loaderLookup = SymbolLookup.loaderLookup();
-//        SymbolLookup systemLookup = CLinker.systemLookup();
-//        return name -> loaderLookup.lookup(name).or(() -> systemLookup.lookup(name));
+//        SymbolLookup systemCLinker = CLinker.systemCLinker();
+//        return name -> loaderLookup.lookup(name).or(() -> systemCLinker.lookup(name));
 //    }
 
     private Libsodium(String libraryName) {
@@ -85,6 +90,18 @@ public class Libsodium {
     }
 
     public Libsodium ofJextract() {
+        System.getLogger("libsodium").log(System.Logger.Level.INFO,
+                                          """
+                                          Make sure libsodium is available, possibly by
+                                            - setting the system property 'java.library.path'
+                                            - setting the environment variable 'JAVA_LIBRARY_PATH'
+                                            
+                                          Current java.library.path
+                                          """
+                                          + System.getProperty("java.library.path")
+                                          + "\nCurrent JAVA_LIBRARY_PATH"
+                                          + System.getenv("JAVA_LIBRARY_PATH"));
+
         return new JextractedLibsodium(libsodiumLookup);
     }
 
@@ -92,11 +109,10 @@ public class Libsodium {
     public int crypto_box_sealbytes() throws Throwable {
         // size_t crypto_box_sealbytes(void);
         MethodHandle crypto_box_sealbytes =
-                CLinker.getInstance()
+                CLinker.systemCLinker()
                        .downcallHandle(
                                libsodiumLookup.lookup("crypto_box_sealbytes").get(),
-                               MethodType.methodType(int.class),
-                               FunctionDescriptor.of(C_INT)
+                               FunctionDescriptor.of(JAVA_INT)
                        );
 
         return (int) crypto_box_sealbytes.invokeExact();
@@ -105,11 +121,10 @@ public class Libsodium {
     public int crypto_box_publickeybytes() throws Throwable {
         // size_t  crypto_box_publickeybytes(void);
         MethodHandle crypto_box_sealbytes =
-                CLinker.getInstance()
+                CLinker.systemCLinker()
                        .downcallHandle(
                                libsodiumLookup.lookup("crypto_box_publickeybytes").get(),
-                               MethodType.methodType(int.class),
-                               FunctionDescriptor.of(C_INT)
+                               FunctionDescriptor.of(JAVA_INT)
                        );
 
         return (int) crypto_box_sealbytes.invokeExact();
@@ -118,11 +133,10 @@ public class Libsodium {
     public int crypto_box_secretkeybytes() throws Throwable {
         // crypto_box_secretkeybytes(void);
         MethodHandle crypto_box_sealbytes =
-                CLinker.getInstance()
+                CLinker.systemCLinker()
                        .downcallHandle(
                                libsodiumLookup.lookup("crypto_box_secretkeybytes").get(),
-                               MethodType.methodType(int.class),
-                               FunctionDescriptor.of(C_INT)
+                               FunctionDescriptor.of(JAVA_INT)
                        );
 
         return (int) crypto_box_sealbytes.invokeExact();
@@ -133,27 +147,22 @@ public class Libsodium {
         // __attribute__ ((nonnull));
 
         MethodHandle crypto_box_keypair =
-                CLinker.getInstance().downcallHandle(
+                CLinker.systemCLinker().downcallHandle(
                         libsodiumLookup.lookup("crypto_box_keypair").get(),
-                        MethodType.methodType(
-                                void.class,
-                                MemoryAddress.class, // pk
-                                MemoryAddress.class  // sk
-                        ),
-                        FunctionDescriptor.ofVoid(C_POINTER, C_POINTER)
+                        FunctionDescriptor.ofVoid(ADDRESS, ADDRESS)
                 );
 
         try (var scope = ResourceScope.newConfinedScope()) {
-            var segmentAllocator = SegmentAllocator.ofScope(scope);
+            var segmentAllocator = SegmentAllocator.nativeAllocator(scope);
             var recipientPublicKey = segmentAllocator.allocate(crypto_box_publickeybytes());
             var recipientSecretKey = segmentAllocator.allocate(crypto_box_secretkeybytes());
 
-            crypto_box_keypair.invokeExact(recipientPublicKey.address(),
+            crypto_box_keypair.invoke(recipientPublicKey.address(),
                                            recipientSecretKey.address());
 
             return new CryptoBoxKeyPair(
-                    recipientPublicKey.toByteArray(),
-                    recipientSecretKey.toByteArray()
+                    recipientPublicKey.toArray(JAVA_BYTE),
+                    recipientSecretKey.toArray(JAVA_BYTE)
             );
         }
     }
@@ -162,7 +171,7 @@ public class Libsodium {
     public byte[] crypto_box_seal(String message,
                                   byte[] publicKey
     ) throws Throwable {
-        var crypto_box_seal = CLinker.getInstance().downcallHandle(
+        var crypto_box_seal = CLinker.systemCLinker().downcallHandle(
                 libsodiumLookup.lookup("crypto_box_seal").get(),
                 // src/libsodium/include/sodium/crypto_box.h
                 // SODIUM_EXPORT
@@ -178,30 +187,24 @@ public class Libsodium {
                 // )"
                 //
                 // c.address(), m.address(), mlen, pk.address()
-                MethodType.methodType(int.class,
-                                      MemoryAddress.class, // cipherText, output buffer
-                                      MemoryAddress.class, // message
-                                      long.class,          // message length
-                                      MemoryAddress.class  // publicKey
-                ),
-                FunctionDescriptor.of(C_INT,
-                                      C_POINTER,
-                                      C_POINTER,
-                                      C_LONG_LONG,
-                                      C_POINTER)
+                FunctionDescriptor.of(JAVA_INT,
+                                      ADDRESS,
+                                      ADDRESS,
+                                      JAVA_LONG,
+                                      ADDRESS)
 
         );
 
         try (var scope = ResourceScope.newConfinedScope()) {
-            var segmentAllocator = SegmentAllocator.ofScope(scope);
-            var nativeMessage = CLinker.toCString(message, scope);
+            var segmentAllocator = SegmentAllocator.nativeAllocator(scope);
+            var nativeMessage = segmentAllocator.allocateUtf8String(message);
             var cipherText = segmentAllocator.allocate(crypto_box_sealbytes() + nativeMessage.byteSize());
-            var ret = (int) crypto_box_seal.invokeExact(
+            var ret = (int) crypto_box_seal.invoke(
                     cipherText.address(),
                     nativeMessage.address(),
                     (long) nativeMessage.byteSize(),
-                    segmentAllocator.allocateArray(C_CHAR, publicKey).address());
-            return cipherText.toByteArray();
+                    segmentAllocator.allocateArray(JAVA_BYTE, publicKey).address());
+            return cipherText.toArray(JAVA_BYTE);
         }
     }
 
@@ -210,52 +213,45 @@ public class Libsodium {
                                        byte[] secretKey
     ) throws Throwable {
 
-        var crypto_box_seal_open = getInstance().downcallHandle(
+        var crypto_box_seal_open = systemCLinker().downcallHandle(
                 libsodiumLookup.lookup("crypto_box_seal_open").get(),
                 // "(Ljdk/incubator/foreign/MemoryAddress;
                 //   Ljdk/incubator/foreign/MemoryAddress;
                 //   J
                 //   Ljdk/incubator/foreign/MemoryAddress;
                 //   Ljdk/incubator/foreign/MemoryAddress;)I"
-                MethodType.methodType(int.class,
-                                      MemoryAddress.class, // message
-                                      MemoryAddress.class, // cipherText
-                                      long.class,          // cipherText.length
-                                      MemoryAddress.class, // public key
-                                      MemoryAddress.class  // secret key
-                ),
-                FunctionDescriptor.of(C_INT,
-                                      C_POINTER,
-                                      C_POINTER,
-                                      C_LONG_LONG,
-                                      C_POINTER,
-                                      C_POINTER
+                FunctionDescriptor.of(JAVA_INT,
+                                      ADDRESS,
+                                      ADDRESS,
+                                      JAVA_LONG,
+                                      ADDRESS,
+                                      ADDRESS
                 )
         );
 
         try (var scope = ResourceScope.newConfinedScope()) {
-            var segmentAllocator = SegmentAllocator.arenaAllocator(scope);
-            var decipheredText = segmentAllocator.allocateArray(C_CHAR, cipherText.length - crypto_box_sealbytes());
-            var ret = (int) crypto_box_seal_open.invokeExact(decipheredText.address(),
-                                                             segmentAllocator.allocateArray(C_CHAR, cipherText).address(),
+            var segmentAllocator = SegmentAllocator.newNativeArena(scope);
+            var decipheredText = segmentAllocator.allocateArray(JAVA_CHAR, cipherText.length - crypto_box_sealbytes());
+            var ret = (int) crypto_box_seal_open.invoke(decipheredText.address(),
+                                                             segmentAllocator.allocateArray(JAVA_BYTE, cipherText).address(),
                                                              (long) cipherText.length,
-                                                             segmentAllocator.allocateArray(C_CHAR, publicKey).address(),
-                                                             segmentAllocator.allocateArray(C_CHAR, secretKey).address());
+                                                             segmentAllocator.allocateArray(JAVA_BYTE, publicKey).address(),
+                                                             segmentAllocator.allocateArray(JAVA_BYTE, secretKey).address());
 
-            return CLinker.toJavaString(decipheredText);
+            return decipheredText.getUtf8String(0);
         }
     }
 
-    public long c_strlen_smokeTest(String str, Charset charset) throws Throwable {
-        MethodHandle strlen = CLinker.getInstance()
+    public long JAVA_strlen_smokeTest(String str, Charset charset) throws Throwable {
+        MethodHandle strlen = CLinker.systemCLinker()
                                      .downcallHandle(
-                                             CLinker.systemLookup().lookup("strlen").get(),
-                                             MethodType.methodType(long.class, MemoryAddress.class),
-                                             FunctionDescriptor.of(C_LONG, C_POINTER)
+                                             CLinker.systemCLinker().lookup("strlen").get(),
+                                             FunctionDescriptor.of(JAVA_LONG, ADDRESS)
                                      );
 
         try (var scope = ResourceScope.newConfinedScope()) {
-            return (long) strlen.invokeExact(CLinker.toCString(str, scope).address());
+            var segmentAllocator = SegmentAllocator.newNativeArena(scope);
+            return (long) strlen.invokeExact(segmentAllocator.allocateUtf8String(str).address());
         }
     }
 
@@ -278,15 +274,15 @@ public class Libsodium {
         @Override
         public CryptoBoxKeyPair crypto_box_keypair() {
             try (var scope = ResourceScope.newConfinedScope()) {
-                var segmentAllocator = SegmentAllocator.ofScope(scope);
+                var segmentAllocator = SegmentAllocator.nativeAllocator(scope);
                 var recipientPublicKey = segmentAllocator.allocate(sodium_h.crypto_box_PUBLICKEYBYTES());
                 var recipientSecretKey = segmentAllocator.allocate(sodium_h.crypto_box_SECRETKEYBYTES());
 
                 sodium_h.crypto_box_keypair(recipientPublicKey, recipientSecretKey);
 
                 return new CryptoBoxKeyPair(
-                        recipientPublicKey.toByteArray(),
-                        recipientSecretKey.toByteArray()
+                        recipientPublicKey.toArray(JAVA_BYTE),
+                        recipientSecretKey.toArray(JAVA_BYTE)
                 );
             }
         }
@@ -295,14 +291,14 @@ public class Libsodium {
         public byte[] crypto_box_seal(String message,
                                       byte[] publicKey) {
             try (var scope = ResourceScope.newConfinedScope()) {
-                var segmentAllocator = SegmentAllocator.ofScope(scope);
-                var nativeMessage = CLinker.toCString(message, scope);
+                var segmentAllocator = SegmentAllocator.nativeAllocator(scope);
+                var nativeMessage = segmentAllocator.allocateUtf8String(message);
                 var cipherText = segmentAllocator.allocate(sodium_h.crypto_box_SEALBYTES() + nativeMessage.byteSize());
                 sodium_h.crypto_box_seal(cipherText.address(),
-                                         CLinker.toCString(message, scope).address(),
+                                         nativeMessage.address(),
                                          nativeMessage.byteSize(),
-                                         segmentAllocator.allocateArray(C_CHAR, publicKey).address());
-                return cipherText.toByteArray();
+                                         segmentAllocator.allocateArray(JAVA_BYTE, publicKey).address());
+                return cipherText.toArray(JAVA_BYTE);
             }
         }
 
@@ -310,15 +306,15 @@ public class Libsodium {
                                            byte[] publicKey,
                                            byte[] secretKey) {
             try (var scope = ResourceScope.newConfinedScope()) {
-                var segmentAllocator = SegmentAllocator.ofScope(scope);
-                var decipheredText = segmentAllocator.allocateArray(C_CHAR, cipherText.length - sodium_h.crypto_box_SEALBYTES());
+                var segmentAllocator = SegmentAllocator.nativeAllocator(scope);
+                var decipheredText = segmentAllocator.allocateArray(JAVA_BYTE, cipherText.length - sodium_h.crypto_box_SEALBYTES());
                 sodium_h.crypto_box_seal_open(decipheredText.address(),
-                                              segmentAllocator.allocateArray(C_CHAR, cipherText).address(),
+                                              segmentAllocator.allocateArray(JAVA_BYTE, cipherText).address(),
                                               cipherText.length,
-                                              segmentAllocator.allocateArray(C_CHAR, publicKey).address(),
-                                              segmentAllocator.allocateArray(C_CHAR, secretKey).address());
+                                              segmentAllocator.allocateArray(JAVA_BYTE, publicKey).address(),
+                                              segmentAllocator.allocateArray(JAVA_BYTE, secretKey).address());
 
-                return CLinker.toJavaString(decipheredText);
+                return decipheredText.getUtf8String(0);
             }
         }
     }

@@ -6,48 +6,42 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.ValueLayout.*;
 class constants$28 {
 
-    static final FunctionDescriptor crypto_core_salsa2012_inputbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_salsa2012_inputbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_salsa2012_inputbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_salsa2012_inputbytes",
-        "()J",
+        "crypto_core_salsa2012_inputbytes",
         constants$28.crypto_core_salsa2012_inputbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_salsa2012_keybytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_salsa2012_keybytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_salsa2012_keybytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_salsa2012_keybytes",
-        "()J",
+        "crypto_core_salsa2012_keybytes",
         constants$28.crypto_core_salsa2012_keybytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_salsa2012_constbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_salsa2012_constbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_salsa2012_constbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_salsa2012_constbytes",
-        "()J",
+        "crypto_core_salsa2012_constbytes",
         constants$28.crypto_core_salsa2012_constbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_salsa2012$FUNC = FunctionDescriptor.of(C_INT,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER,
-        C_POINTER
+    static final FunctionDescriptor crypto_core_salsa2012$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle crypto_core_salsa2012$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_salsa2012",
-        "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I",
+        "crypto_core_salsa2012",
         constants$28.crypto_core_salsa2012$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_salsa208_outputbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_salsa208_outputbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_salsa208_outputbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_salsa208_outputbytes",
-        "()J",
+        "crypto_core_salsa208_outputbytes",
         constants$28.crypto_core_salsa208_outputbytes$FUNC, false
     );
-    static final FunctionDescriptor crypto_core_salsa208_inputbytes$FUNC = FunctionDescriptor.of(C_LONG);
+    static final FunctionDescriptor crypto_core_salsa208_inputbytes$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle crypto_core_salsa208_inputbytes$MH = RuntimeHelper.downcallHandle(
-        sodium_h.LIBRARIES, "crypto_core_salsa208_inputbytes",
-        "()J",
+        "crypto_core_salsa208_inputbytes",
         constants$28.crypto_core_salsa208_inputbytes$FUNC, false
     );
 }
