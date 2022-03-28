@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.guthub.bric3.benchmark;
+package com.github.bric3.benchmark;
 
 import org.apache.tuweni.crypto.sodium.Box;
 import org.apache.tuweni.crypto.sodium.Sodium;

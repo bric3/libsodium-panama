@@ -1,3 +1,5 @@
+import me.champeau.jmh.JmhBytecodeGeneratorTask
+
 /*
  * MIT License
  *
@@ -33,8 +35,8 @@ repositories {
 
 
 dependencies {
-  implementation("net.java.dev.jna:jna-platform:5.9.0")
-  implementation("com.github.jnr:jnr-ffi:2.2.8")
+  implementation("net.java.dev.jna:jna-platform:5.11.0")
+  implementation("com.github.jnr:jnr-ffi:2.2.11")
 
   // https://github.com/joshjdevl/libsodium-jni
   // Note this lib doesn't include the JNI glue library, see https://github.com/joshjdevl/libsodium-jni/issues/66
@@ -44,7 +46,7 @@ dependencies {
   implementation("com.muquit.libsodiumjna:libsodium-jna:1.0.4")
 
   // libsodium with JNR
-  implementation("org.apache.tuweni:tuweni-crypto:2.0.0")
+  implementation("org.apache.tuweni:tuweni-crypto:2.2.0")
 
   implementation("org.apache.commons:commons-lang3:3.12.0")
 }
@@ -52,7 +54,7 @@ dependencies {
 
 java {
   toolchain {
-    languageVersion.set(JavaLanguageVersion.of(17))
+    languageVersion.set(JavaLanguageVersion.of(18))
   }
 }
 val launcher = javaToolchains.launcherFor(java.toolchain).get()
@@ -63,8 +65,11 @@ jmh {
   // Strategy to apply when encountering duplicate classes during creation of the fat jar (i.e. while executing jmhJar task)
   duplicateClassesStrategy.set(DuplicatesStrategy.WARN)
 
-//  environment("JAVA_LIBRARY_PATH", ".:${project.projectDir}/jni") // not supported in this plugin version
-
+  // environment("JAVA_LIBRARY_PATH", ".:${project.projectDir}/jni") // not supported in this plugin version
+  // instead run manually
+  // env JAVA_LIBRARY_PATH=$(grealpath jmh-panama/jni) \
+  //   $(asdf where java corretto-18.0.0.37.1)/bin/java -jar jmh-panama/build/libs/jmh-panama-jmh.jar \
+  //   -jvmArgs '-Xms256m -Xmx256m -Djmh.separateClasspathJAR=true --add-modules=jdk.incubator.foreign --enable-native-access=ALL-UNNAMED'
   jvmArgs.set(listOf(
           "-Xms256m", "-Xmx256m",
           "-Djmh.separateClasspathJAR=true",
@@ -73,21 +78,26 @@ jmh {
   ))
 
   jvm.set(launcher.executablePath.asFile.absolutePath)
-  jmhVersion.set("1.33")
+  jmhVersion.set("1.34")
 }
 
 tasks {
-  withType<JavaCompile>() {
+  withType<JavaCompile>().configureEach {
     options.compilerArgs = listOf(
             "--add-modules", "jdk.incubator.foreign"
     )
-    options.release.set(17)
+    options.release.set(18)
+    javaCompiler.set(project.javaToolchains.compilerFor(java.toolchain))
   }
 
   withType<JavaExec>().configureEach {
     environment("JAVA_LIBRARY_PATH", ".:${project.projectDir}/jni")
     jvmArgs("--enable-native-access=ALL-UNNAMED",
             "--add-modules", "jdk.incubator.foreign")
+    javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
+  }
+
+  withType<JmhBytecodeGeneratorTask>().configureEach {
     javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
   }
 }

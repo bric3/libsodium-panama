@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.guthub.bric3.benchmark;
+package com.github.bric3.benchmark;
 
 import com.muquit.libsodiumjna.exceptions.SodiumLibraryException;
 import org.openjdk.jmh.annotations.Benchmark;
