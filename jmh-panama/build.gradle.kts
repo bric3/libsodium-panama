@@ -78,7 +78,7 @@ jmh {
   ))
 
   jvm.set(launcher.executablePath.asFile.absolutePath)
-  jmhVersion.set("1.34")
+  jmhVersion.set("1.35")
 }
 
 tasks {
